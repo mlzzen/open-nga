@@ -27,7 +27,6 @@ public class HttpUtil {
     private static final String[] servers = {"https://nga.178.com", "https://bbs.ngacn.cc"};
     private static final String TAG = HttpUtil.class.getSimpleName();
     private static final String[] host_arr = {};
-    public static String PATH_IMAGES = AppEnvironment.getExternalStoragePictureDirectory();
     public static String PATH = AppEnvironment.getExternalStoragePictureDirectory() + "/nga_cache";
     public static String PATH_AVATAR = PATH + "/nga_cache";
 
