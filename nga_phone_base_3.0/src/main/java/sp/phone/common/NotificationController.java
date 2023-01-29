@@ -118,7 +118,7 @@ public class NotificationController {
 
         intent.putParcelableArrayListExtra("unread", infoList);
 
-        PendingIntent pending = PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        PendingIntent pending = PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
 
         NotificationCompat.Builder builder = buildNotification(context);
         builder.setContentIntent(pending)
@@ -137,7 +137,7 @@ public class NotificationController {
 
         Intent intent = new Intent(context, MessageListActivity.class);
 
-        PendingIntent pending = PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        PendingIntent pending = PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
 
         NotificationCompat.Builder builder = buildNotification(context);
         builder.setContentIntent(pending)
