@@ -134,7 +134,6 @@ dependencies {
     implementation project(':lib_common')
     implementation project(':lib_cloud')
     implementation project(':lib_core')
-    implementation project(":lib_network")
 
     // database
     implementation "androidx.room:room-runtime:$room_version"
