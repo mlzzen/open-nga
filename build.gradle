@@ -15,10 +15,10 @@ buildscript {
 
 allprojects {
     repositories {
-        maven { url 'https://maven.aliyun.com/repository/google'}
+        maven { url 'https://maven.aliyun.com/repository/google' }
         //TODO Remove all dependencies in jcenter
         maven { url 'https://maven.aliyun.com/repository/public' }
-        maven { url "https://www.jitpack.io" }
+        maven { url 'https://www.jitpack.io' }
         google()
         mavenCentral()
     }

@@ -1,11 +1,12 @@
-apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+}
 
 def static getDate() {
     def date = new Date()
     def formattedDate = date.format('yyyyMMddHHmm')
     return formattedDate
-
 }
 
 def isJenkins() {
@@ -70,6 +71,7 @@ android {
             signingConfig signingConfigs.signingConfig
         }
         debug {
+            applicationIdSuffix '.debug'
             debuggable true
             minifyEnabled false
         }
