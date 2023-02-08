@@ -6,8 +6,6 @@ import android.net.Uri;
 import android.text.TextUtils;
 
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import gov.anzong.androidnga.activity.ArticleListActivity;
 import gov.anzong.androidnga.activity.TopicListActivity;

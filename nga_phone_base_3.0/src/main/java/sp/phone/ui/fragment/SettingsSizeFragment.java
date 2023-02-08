@@ -1,20 +1,19 @@
 package sp.phone.ui.fragment;
 
 
-import android.graphics.Color;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 import com.zhouyou.view.seekbar.SignSeekBar;
 
 import gov.anzong.androidnga.R;
 import gov.anzong.androidnga.base.widget.SeekBarEx;
-import gov.anzong.androidnga.common.util.FileUtils;
 import sp.phone.common.Constants;
 import sp.phone.common.PhoneConfiguration;
 

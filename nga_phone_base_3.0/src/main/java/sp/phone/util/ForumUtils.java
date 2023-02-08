@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 import gov.anzong.androidnga.R;
-import gov.anzong.androidnga.base.util.ContextUtils;;
+import gov.anzong.androidnga.base.util.ContextUtils;
 import gov.anzong.androidnga.common.PreferenceKey;
 
 /**

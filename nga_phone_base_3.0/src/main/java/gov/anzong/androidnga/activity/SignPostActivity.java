@@ -3,7 +3,6 @@ package gov.anzong.androidnga.activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import androidx.appcompat.app.ActionBar;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.style.BackgroundColorSpan;
@@ -12,11 +11,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
 
+import androidx.appcompat.app.ActionBar;
+
 import gov.anzong.androidnga.R;
+import gov.anzong.androidnga.http.OnHttpCallBack;
 import gov.anzong.androidnga.util.ToastUtils;
 import sp.phone.common.UserManagerImpl;
 import sp.phone.param.SignPostParam;
-import gov.anzong.androidnga.http.OnHttpCallBack;
 import sp.phone.task.SignPostTask;
 import sp.phone.util.ActivityUtils;
 import sp.phone.util.FunctionUtils;

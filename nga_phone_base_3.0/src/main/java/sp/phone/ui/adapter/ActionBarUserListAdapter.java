@@ -1,11 +1,12 @@
 package sp.phone.ui.adapter;
 
 import android.content.Context;
-import androidx.core.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import androidx.core.content.ContextCompat;
 
 import gov.anzong.androidnga.R;
 import sp.phone.theme.ThemeManager;

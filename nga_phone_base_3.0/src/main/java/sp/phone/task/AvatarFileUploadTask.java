@@ -7,7 +7,6 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.ParcelFileDescriptor;
-import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
 
@@ -22,7 +21,6 @@ import java.net.URL;
 import gov.anzong.androidnga.R;
 import gov.anzong.androidnga.Utils;
 import gov.anzong.androidnga.base.util.ToastUtils;
-import sp.phone.util.ImageUtils;
 import sp.phone.util.ActivityUtils;
 import sp.phone.util.ImageUtils;
 import sp.phone.util.NLog;

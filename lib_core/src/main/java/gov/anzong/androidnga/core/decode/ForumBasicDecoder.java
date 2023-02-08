@@ -1,9 +1,6 @@
 package gov.anzong.androidnga.core.decode;
 
-import android.text.TextUtils;
-
 import gov.anzong.androidnga.base.util.StringUtils;
-import gov.anzong.androidnga.common.util.LogUtils;
 import gov.anzong.androidnga.core.data.HtmlData;
 
 /**

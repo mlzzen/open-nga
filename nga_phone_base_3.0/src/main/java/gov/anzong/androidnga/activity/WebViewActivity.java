@@ -3,10 +3,7 @@ package gov.anzong.androidnga.activity;
 import android.os.Bundle;
 import android.text.TextUtils;
 
-import androidx.activity.OnBackPressedCallback;
-import androidx.activity.OnBackPressedDispatcherOwner;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 
 import gov.anzong.androidnga.activity.fragment.WebViewFragment;
 import gov.anzong.androidnga.ui.fragment.BaseFragment;

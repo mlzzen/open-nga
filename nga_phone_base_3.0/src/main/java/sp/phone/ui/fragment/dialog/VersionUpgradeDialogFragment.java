@@ -3,14 +3,12 @@ package sp.phone.ui.fragment.dialog;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
 
-import java.lang.reflect.Field;
+import androidx.annotation.NonNull;
 
 import gov.anzong.androidnga.BuildConfig;
 import gov.anzong.androidnga.NgaClientApp;
 import gov.anzong.androidnga.R;
-import sp.phone.common.VersionUpgradeTips;
 
 
 public class VersionUpgradeDialogFragment extends BaseDialogFragment {

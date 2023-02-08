@@ -2,20 +2,21 @@ package sp.phone.ui.adapter;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.recyclerview.widget.RecyclerView;
+
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import gov.anzong.androidnga.R;
-import sp.phone.util.ImageUtils;
 import sp.phone.common.User;
+import sp.phone.util.ImageUtils;
 
 
 public class BlackListAdapter extends RecyclerView.Adapter<BlackListAdapter.UserViewHolder> {

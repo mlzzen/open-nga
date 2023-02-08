@@ -4,9 +4,10 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
 import android.text.TextUtils;
 import android.widget.ImageView;
+
+import androidx.annotation.NonNull;
 
 import gov.anzong.androidnga.R;
 import gov.anzong.androidnga.gallery.ImageZoomActivity;

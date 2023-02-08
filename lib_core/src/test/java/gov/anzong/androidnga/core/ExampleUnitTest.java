@@ -1,5 +1,7 @@
 package gov.anzong.androidnga.core;
 
+import static org.junit.Assert.assertEquals;
+
 import org.junit.Test;
 
 import java.io.UnsupportedEncodingException;
@@ -7,8 +9,6 @@ import java.net.URLEncoder;
 
 import gov.anzong.androidnga.core.data.HtmlData;
 import gov.anzong.androidnga.core.decode.ForumBasicDecoder;
-
-import static org.junit.Assert.*;
 
 /**
  * Example local unit test, which will execute on the development machine (host).

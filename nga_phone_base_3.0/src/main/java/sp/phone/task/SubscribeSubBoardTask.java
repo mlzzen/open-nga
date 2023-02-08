@@ -3,13 +3,13 @@ package sp.phone.task;
 import com.trello.rxlifecycle2.LifecycleProvider;
 import com.trello.rxlifecycle2.android.FragmentEvent;
 
+import gov.anzong.androidnga.http.OnHttpCallBack;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.schedulers.Schedulers;
-import sp.phone.mvp.model.entity.SubBoard;
-import gov.anzong.androidnga.http.OnHttpCallBack;
 import sp.phone.http.retrofit.RetrofitHelper;
 import sp.phone.http.retrofit.RetrofitService;
+import sp.phone.mvp.model.entity.SubBoard;
 import sp.phone.rxjava.BaseSubscriber;
 
 /**

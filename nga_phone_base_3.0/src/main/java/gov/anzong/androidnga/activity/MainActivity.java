@@ -5,10 +5,11 @@ import android.app.Activity;
 import android.app.Application;
 import android.content.Intent;
 import android.os.Bundle;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.FragmentManager;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import androidx.annotation.Nullable;
+import androidx.fragment.app.FragmentManager;
 
 import com.alibaba.android.arouter.facade.Postcard;
 import com.alibaba.android.arouter.launcher.ARouter;
@@ -16,18 +17,18 @@ import com.alibaba.android.arouter.launcher.ARouter;
 import gov.anzong.androidnga.NgaClientApp;
 import gov.anzong.androidnga.R;
 import gov.anzong.androidnga.arouter.ARouterConstants;
+import gov.anzong.androidnga.base.util.PermissionUtils;
 import gov.anzong.androidnga.base.util.ThemeUtils;
 import sp.phone.common.User;
 import sp.phone.common.UserManagerImpl;
 import sp.phone.param.ParamKey;
+import sp.phone.theme.ThemeManager;
 import sp.phone.ui.fragment.BaseFragment;
 import sp.phone.ui.fragment.NavigationDrawerFragment;
 import sp.phone.ui.fragment.dialog.UrlInputDialogFragment;
 import sp.phone.ui.fragment.dialog.VersionUpgradeDialogFragment;
-import sp.phone.theme.ThemeManager;
 import sp.phone.util.ARouterUtils;
 import sp.phone.util.ActivityUtils;
-import gov.anzong.androidnga.base.util.PermissionUtils;
 
 public class MainActivity extends BaseActivity {
 

@@ -11,10 +11,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import gov.anzong.androidnga.R;
+import gov.anzong.androidnga.base.util.ContextUtils;
+import sp.phone.common.PhoneConfiguration;
 import sp.phone.http.bean.MessageArticlePageInfo;
 import sp.phone.http.bean.MessageDetailInfo;
-import gov.anzong.androidnga.base.util.ContextUtils;;
-import sp.phone.common.PhoneConfiguration;
 import sp.phone.theme.ThemeManager;
 
 /**

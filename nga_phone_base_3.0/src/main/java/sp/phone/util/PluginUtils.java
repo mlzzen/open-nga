@@ -14,7 +14,7 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
 import dalvik.system.DexClassLoader;
-import gov.anzong.androidnga.base.util.ContextUtils;;
+import gov.anzong.androidnga.base.util.ContextUtils;
 
 /**
  * Created by Justwen on 2018/8/22.

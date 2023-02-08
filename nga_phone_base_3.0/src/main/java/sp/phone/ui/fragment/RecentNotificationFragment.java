@@ -5,10 +5,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import androidx.annotation.Nullable;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
-import androidx.recyclerview.widget.DividerItemDecoration;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -16,17 +12,22 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import gov.anzong.androidnga.R;
-import gov.anzong.androidnga.http.OnHttpCallBack;
-import sp.phone.mvp.model.entity.RecentReplyInfo;
-import sp.phone.ui.adapter.RecentNotificationAdapter;
-import sp.phone.common.PhoneConfiguration;
 import gov.anzong.androidnga.common.PreferenceKey;
+import gov.anzong.androidnga.http.OnHttpCallBack;
+import sp.phone.common.PhoneConfiguration;
+import sp.phone.mvp.model.entity.RecentReplyInfo;
 import sp.phone.param.ParamKey;
 import sp.phone.task.ForumNotificationTask;
+import sp.phone.ui.adapter.RecentNotificationAdapter;
 import sp.phone.view.EmptyLayout;
 import sp.phone.view.LoadingLayout;
 import sp.phone.view.RecyclerViewEx;

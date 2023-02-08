@@ -1,8 +1,8 @@
 package sp.phone.mvp.model;
 
-import gov.anzong.androidnga.base.util.ContextUtils;;
-import sp.phone.param.MessagePostParam;
+import gov.anzong.androidnga.base.util.ContextUtils;
 import sp.phone.mvp.contract.MessagePostContract;
+import sp.phone.param.MessagePostParam;
 import sp.phone.task.MessagePostTask;
 
 /**

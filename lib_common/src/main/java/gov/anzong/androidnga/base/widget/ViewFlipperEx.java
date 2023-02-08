@@ -1,9 +1,10 @@
 package gov.anzong.androidnga.base.widget;
 
 import android.content.Context;
-import androidx.recyclerview.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.widget.ViewFlipper;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 public class ViewFlipperEx extends ViewFlipper {
 

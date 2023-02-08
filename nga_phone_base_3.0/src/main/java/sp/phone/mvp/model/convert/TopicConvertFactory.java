@@ -12,7 +12,6 @@ import java.util.Map;
 import java.util.Objects;
 
 import sp.phone.common.FilterKeyword;
-import sp.phone.common.FilterKeywordsManager;
 import sp.phone.common.FilterKeywordsManagerImpl;
 import sp.phone.common.PhoneConfiguration;
 import sp.phone.common.User;

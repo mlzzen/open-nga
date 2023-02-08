@@ -1,9 +1,10 @@
 package gov.anzong.androidnga.activity;
 
 import android.os.Bundle;
+import android.view.View;
+
 import androidx.annotation.Nullable;
 import androidx.viewpager.widget.ViewPager;
-import android.view.View;
 
 import java.io.File;
 import java.util.ArrayList;

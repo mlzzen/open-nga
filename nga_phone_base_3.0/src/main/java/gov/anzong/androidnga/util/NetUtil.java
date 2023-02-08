@@ -4,8 +4,7 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
-import gov.anzong.androidnga.base.util.ContextUtils;;
-import gov.anzong.androidnga.base.util.ContextUtils;;
+import gov.anzong.androidnga.base.util.ContextUtils;
 
 /**
  * Created by elrond on 2016/12/22.

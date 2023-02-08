@@ -1,6 +1,7 @@
 package sp.phone.theme;
 
 import android.content.Context;
+
 import androidx.core.content.ContextCompat;
 
 import gov.anzong.androidnga.R;

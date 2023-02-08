@@ -1,12 +1,13 @@
 package sp.phone.ui.adapter;
 
 import android.content.Context;
-import androidx.recyclerview.widget.RecyclerView;
 import android.text.TextPaint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,12 +15,12 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import gov.anzong.androidnga.R;
+import gov.anzong.androidnga.base.util.ContextUtils;
 import gov.anzong.androidnga.base.util.ToastUtils;
+import sp.phone.common.PhoneConfiguration;
 import sp.phone.http.bean.MessageListInfo;
 import sp.phone.http.bean.MessageThreadPageInfo;
-import sp.phone.common.PhoneConfiguration;
 import sp.phone.theme.ThemeManager;
-import gov.anzong.androidnga.base.util.ContextUtils;;
 import sp.phone.util.StringUtils;
 import sp.phone.view.RecyclerViewEx;
 

@@ -5,8 +5,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -16,12 +14,15 @@ import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.EditText;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 import gov.anzong.androidnga.R;
 import gov.anzong.androidnga.base.util.ToastUtils;
 import gov.anzong.androidnga.base.widget.ProgressBarEx;
-import sp.phone.param.ParamKey;
 import sp.phone.mvp.contract.TopicPostContract;
 import sp.phone.mvp.presenter.TopicPostPresenter;
+import sp.phone.param.ParamKey;
 import sp.phone.rxjava.RxEvent;
 import sp.phone.util.StringUtils;
 import sp.phone.view.toolbar.ToolbarContainer;

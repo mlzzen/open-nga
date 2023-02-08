@@ -13,7 +13,6 @@ import com.alibaba.android.arouter.launcher.ARouter;
 
 import gov.anzong.androidnga.R;
 import gov.anzong.androidnga.arouter.ARouterConstants;
-import gov.anzong.androidnga.ui.fragment.TopicListBaseFragment;
 import gov.anzong.androidnga.ui.fragment.TopicListSimpleFragment;
 import sp.phone.mvp.model.BoardModel;
 import sp.phone.param.ParamKey;

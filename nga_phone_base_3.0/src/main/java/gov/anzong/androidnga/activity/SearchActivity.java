@@ -1,12 +1,13 @@
 package gov.anzong.androidnga.activity;
 
 import android.os.Bundle;
-import androidx.fragment.app.FragmentTabHost;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.widget.SearchView;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
+
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.widget.SearchView;
+import androidx.fragment.app.FragmentTabHost;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 

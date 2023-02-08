@@ -18,9 +18,6 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
-import androidx.fragment.app.DialogFragment;
-import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.FragmentManager;
 import android.text.TextPaint;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -33,6 +30,10 @@ import android.webkit.WebViewClient;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
+
 import java.util.Objects;
 
 import gov.anzong.androidnga.BuildConfig;
@@ -41,14 +42,13 @@ import gov.anzong.androidnga.Utils;
 import gov.anzong.androidnga.base.util.ToastUtils;
 import gov.anzong.androidnga.core.data.HtmlData;
 import gov.anzong.androidnga.core.decode.ForumDecoder;
-import gov.anzong.androidnga.util.NetUtil;
-import sp.phone.http.bean.MessageArticlePageInfo;
-import sp.phone.http.bean.ThreadRowInfo;
 import sp.phone.common.PhoneConfiguration;
 import sp.phone.common.UserManagerImpl;
-import sp.phone.ui.fragment.dialog.ReportDialogFragment;
+import sp.phone.http.bean.MessageArticlePageInfo;
+import sp.phone.http.bean.ThreadRowInfo;
 import sp.phone.proxy.ProxyBridge;
 import sp.phone.theme.ThemeManager;
+import sp.phone.ui.fragment.dialog.ReportDialogFragment;
 import sp.phone.view.webview.WebViewClientEx;
 
 @SuppressLint("DefaultLocale")

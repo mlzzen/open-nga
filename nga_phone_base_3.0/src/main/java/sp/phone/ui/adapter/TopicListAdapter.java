@@ -1,13 +1,14 @@
 package sp.phone.ui.adapter;
 
 import android.content.Context;
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
@@ -15,8 +16,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import gov.anzong.androidnga.R;
 import sp.phone.common.PhoneConfiguration;
-import sp.phone.param.TopicTitleHelper;
 import sp.phone.mvp.model.entity.ThreadPageInfo;
+import sp.phone.param.TopicTitleHelper;
 import sp.phone.rxjava.RxUtils;
 import sp.phone.theme.ThemeManager;
 

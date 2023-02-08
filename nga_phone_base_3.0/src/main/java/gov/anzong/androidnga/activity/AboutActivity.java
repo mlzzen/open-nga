@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
@@ -16,8 +17,8 @@ import com.danielstone.materialaboutlibrary.model.MaterialAboutList;
 import gov.anzong.androidnga.BuildConfig;
 import gov.anzong.androidnga.R;
 import gov.anzong.androidnga.debug.Debugger;
-import sp.phone.ui.fragment.dialog.VersionUpgradeDialogFragment;
 import sp.phone.theme.ThemeManager;
+import sp.phone.ui.fragment.dialog.VersionUpgradeDialogFragment;
 import sp.phone.util.FunctionUtils;
 
 public class AboutActivity extends MaterialAboutActivity {

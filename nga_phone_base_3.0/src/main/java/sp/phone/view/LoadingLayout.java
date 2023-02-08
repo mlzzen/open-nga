@@ -1,12 +1,13 @@
 package sp.phone.view;
 
 import android.content.Context;
-import androidx.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import androidx.annotation.Nullable;
 
 import gov.anzong.androidnga.R;
 import sp.phone.util.StringUtils;

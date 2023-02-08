@@ -2,24 +2,25 @@ package sp.phone.ui.fragment;
 
 
 import android.os.Bundle;
-import androidx.annotation.Nullable;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import gov.anzong.androidnga.R;
 import gov.anzong.androidnga.arouter.ARouterConstants;
-import sp.phone.ui.adapter.MessageContentAdapter;
 import sp.phone.http.bean.MessageDetailInfo;
 import sp.phone.mvp.contract.MessageDetailContract;
 import sp.phone.mvp.presenter.MessageDetailPresenter;
+import sp.phone.ui.adapter.MessageContentAdapter;
 import sp.phone.view.RecyclerViewEx;
 
 public class MessageDetailFragment extends BaseMvpFragment<MessageDetailPresenter> implements MessageDetailContract.IMessageView {

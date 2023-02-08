@@ -2,7 +2,6 @@ package sp.phone.view.toolbar;
 
 import android.content.Context;
 import android.graphics.Paint;
-import androidx.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +12,8 @@ import android.widget.BaseAdapter;
 import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
+
+import androidx.annotation.Nullable;
 
 import gov.anzong.androidnga.R;
 import sp.phone.mvp.contract.TopicPostContract.Presenter;

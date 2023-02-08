@@ -1,6 +1,5 @@
 package sp.phone.util;
 
-import android.Manifest;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -31,9 +30,8 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
 import gov.anzong.androidnga.R;
-import gov.anzong.androidnga.base.util.PermissionUtils;
+import gov.anzong.androidnga.base.util.ContextUtils;
 import gov.anzong.androidnga.util.GlideApp;
-import gov.anzong.androidnga.base.util.ContextUtils;;
 import sp.phone.common.PhoneConfiguration;
 
 public class ImageUtils {

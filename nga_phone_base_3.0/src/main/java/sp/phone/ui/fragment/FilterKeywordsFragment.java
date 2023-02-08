@@ -1,10 +1,6 @@
 package sp.phone.ui.fragment;
 
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.recyclerview.widget.ItemTouchHelper;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,11 +8,16 @@ import android.view.ViewGroup;
 import android.widget.Checkable;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.ItemTouchHelper;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import gov.anzong.androidnga.R;
 import io.reactivex.annotations.Nullable;
-import sp.phone.ui.adapter.FilterKeywordsAdapter;
 import sp.phone.common.FilterKeyword;
 import sp.phone.common.FilterKeywordsManagerImpl;
+import sp.phone.ui.adapter.FilterKeywordsAdapter;
 import sp.phone.view.RecyclerViewEx;
 
 

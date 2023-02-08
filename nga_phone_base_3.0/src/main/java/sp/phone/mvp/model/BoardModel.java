@@ -14,7 +14,6 @@ import sp.phone.http.bean.CategoryBean;
 import sp.phone.mvp.contract.BoardContract;
 import sp.phone.mvp.model.entity.Board;
 import sp.phone.mvp.model.entity.BoardCategory;
-import sp.phone.util.NLog;
 import sp.phone.util.StringUtils;
 
 /**

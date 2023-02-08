@@ -2,12 +2,13 @@ package sp.phone.ui.fragment;
 
 import android.app.Activity;
 import android.os.Bundle;
-import androidx.annotation.Nullable;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Checkable;
+
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 
@@ -15,11 +16,11 @@ import java.util.List;
 
 import gov.anzong.androidnga.R;
 import gov.anzong.androidnga.arouter.ARouterConstants;
-import sp.phone.ui.adapter.BoardSubListAdapter;
-import sp.phone.mvp.model.entity.SubBoard;
 import gov.anzong.androidnga.http.OnHttpCallBack;
+import sp.phone.mvp.model.entity.SubBoard;
 import sp.phone.param.ParamKey;
 import sp.phone.task.SubscribeSubBoardTask;
+import sp.phone.ui.adapter.BoardSubListAdapter;
 import sp.phone.view.RecyclerViewEx;
 
 /**

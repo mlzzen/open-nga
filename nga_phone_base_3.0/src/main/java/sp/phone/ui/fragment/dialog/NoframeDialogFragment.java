@@ -1,8 +1,9 @@
 package sp.phone.ui.fragment.dialog;
 
-import androidx.fragment.app.DialogFragment;
 import android.os.Bundle;
 import android.view.View;
+
+import androidx.fragment.app.DialogFragment;
 
 public abstract class NoframeDialogFragment extends DialogFragment {
 

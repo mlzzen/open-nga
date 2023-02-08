@@ -5,11 +5,11 @@ import com.trello.rxlifecycle2.android.FragmentEvent;
 
 import org.reactivestreams.Subscription;
 
+import gov.anzong.androidnga.http.OnHttpCallBack;
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.schedulers.Schedulers;
-import gov.anzong.androidnga.http.OnHttpCallBack;
 import sp.phone.http.retrofit.RetrofitHelper;
 import sp.phone.http.retrofit.RetrofitService;
 import sp.phone.rxjava.BaseSubscriber;

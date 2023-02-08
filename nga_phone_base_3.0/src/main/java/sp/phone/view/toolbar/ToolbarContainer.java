@@ -2,7 +2,6 @@ package sp.phone.view.toolbar;
 
 import android.app.Activity;
 import android.content.Context;
-import androidx.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
@@ -13,6 +12,8 @@ import android.view.ViewStub;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.LinearLayout;
+
+import androidx.annotation.Nullable;
 
 import gov.anzong.androidnga.R;
 import sp.phone.mvp.contract.TopicPostContract.Presenter;

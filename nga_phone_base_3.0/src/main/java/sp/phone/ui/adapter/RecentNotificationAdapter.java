@@ -2,21 +2,22 @@ package sp.phone.ui.adapter;
 
 import android.content.Context;
 import android.graphics.Typeface;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.recyclerview.widget.RecyclerView;
+
 import java.util.List;
 
 import gov.anzong.androidnga.R;
+import sp.phone.common.ApiConstants;
+import sp.phone.common.UserManagerImpl;
 import sp.phone.mvp.model.entity.RecentReplyInfo;
 import sp.phone.util.ImageUtils;
 import sp.phone.util.StringUtils;
-import sp.phone.common.ApiConstants;
-import sp.phone.common.UserManagerImpl;
 
 public class RecentNotificationAdapter extends RecyclerView.Adapter<RecentNotificationAdapter.ViewHolder> {
 

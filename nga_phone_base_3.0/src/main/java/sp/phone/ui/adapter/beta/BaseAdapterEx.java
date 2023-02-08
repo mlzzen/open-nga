@@ -1,8 +1,9 @@
 package sp.phone.ui.adapter.beta;
 
 import android.content.Context;
-import androidx.recyclerview.widget.RecyclerView;
 import android.widget.TextView;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 import gov.anzong.androidnga.R;
 import sp.phone.util.ActivityUtils;

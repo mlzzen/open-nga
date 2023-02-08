@@ -1,8 +1,9 @@
 package gov.anzong.androidnga.base.common;
 
 import android.app.Activity;
-import androidx.annotation.IdRes;
 import android.view.View;
+
+import androidx.annotation.IdRes;
 
 import me.imid.swipebacklayout.lib.SwipeBackLayout;
 import me.imid.swipebacklayout.lib.app.SwipeBackActivityHelper;
