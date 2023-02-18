@@ -310,6 +310,8 @@ public class ArticleListAdapter extends RecyclerView.Adapter<ArticleListAdapter.
         }
     };
 
+    private View.OnClickListener mSupportListener;
+    private View.OnClickListener mOpposeListener;
     private View.OnClickListener mMenuTogglerListener;
 
     public class ArticleViewHolder extends RecyclerView.ViewHolder {
@@ -327,6 +329,12 @@ public class ArticleListAdapter extends RecyclerView.Adapter<ArticleListAdapter.
 
         @BindView(R.id.tv_post_time)
         TextView postTimeTv;
+
+        @BindView(R.id.iv_support)
+        ImageView supportBtn;
+
+        @BindView(R.id.iv_oppose)
+        ImageView opposeBtn;
 
         @BindView(R.id.iv_reply)
         ImageView replyBtn;
@@ -375,6 +383,14 @@ public class ArticleListAdapter extends RecyclerView.Adapter<ArticleListAdapter.
         mData = data;
     }
 
+    public void setSupportListener(View.OnClickListener listener) {
+        mSupportListener = listener;
+    }
+
+    public void setOpposeListener(View.OnClickListener listener) {
+        mOpposeListener = listener;
+    }
+
     public void setMenuTogglerListener(View.OnClickListener menuTogglerListener) {
         mMenuTogglerListener = menuTogglerListener;
     }
@@ -399,6 +415,8 @@ public class ArticleListAdapter extends RecyclerView.Adapter<ArticleListAdapter.
             //  viewHolder.contentTV.setVisibility(View.GONE);
         }
         RxUtils.clicks(viewHolder.nickNameTV, mOnProfileClickListener);
+        RxUtils.clicks(viewHolder.supportBtn, mSupportListener);
+        RxUtils.clicks(viewHolder.opposeBtn, mOpposeListener);
         RxUtils.clicks(viewHolder.replyBtn, mOnReplyClickListener);
         RxUtils.clicks(viewHolder.clientIv, mOnClientClickListener);
         RxUtils.clicks(viewHolder.menuIv, mMenuTogglerListener);
@@ -421,6 +439,8 @@ public class ArticleListAdapter extends RecyclerView.Adapter<ArticleListAdapter.
             holder.itemView.setBackgroundResource(ThemeManager.getInstance().getBackgroundColor(position));
         }
 
+        holder.supportBtn.setTag(row);
+        holder.opposeBtn.setTag(row);
         holder.replyBtn.setTag(row);
         holder.nickNameTV.setTag(row);
         holder.menuIv.setTag(row);
@@ -435,7 +455,7 @@ public class ArticleListAdapter extends RecyclerView.Adapter<ArticleListAdapter.
 
         holder.floorTv.setText(MessageFormat.format("[{0} 楼]", String.valueOf(row.getLou())));
         holder.postTimeTv.setText(row.getPostdate());
-        holder.scoreTv.setText(MessageFormat.format("顶 : {0}", row.getScore()));
+        holder.scoreTv.setText(MessageFormat.format("{0}", row.getScore()));
 
         holder.detailTv.setText(String.format("级别：%s   威望：%s   发帖：%s", row.getMemberGroup(), row.getReputation(), row.getPostCount()));
 
