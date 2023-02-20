@@ -3,7 +3,6 @@ package sp.phone.ui.fragment;
 
 import android.app.Activity;
 import android.os.Bundle;
-import androidx.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,13 +10,15 @@ import android.webkit.WebView;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
+
 import gov.anzong.androidnga.R;
-import sp.phone.ui.fragment.dialog.LoginDialogFragment;
 import sp.phone.mvp.contract.LoginContract;
 import sp.phone.mvp.presenter.LoginPresenter;
 import sp.phone.rxjava.RxBus;
 import sp.phone.rxjava.RxEvent;
 import sp.phone.rxjava.RxUtils;
+import sp.phone.ui.fragment.dialog.LoginDialogFragment;
 
 public class LoginFragment extends BaseMvpFragment<LoginPresenter> implements View.OnClickListener, LoginContract.View, LoginDialogFragment.OnAuthCodeLoadCallback {
 

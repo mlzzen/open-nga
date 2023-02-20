@@ -7,7 +7,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import gov.anzong.androidnga.base.util.StringUtils;
-import gov.anzong.androidnga.common.util.LogUtils;
 
 /**
  * Created by Justwen on 2018/8/25.

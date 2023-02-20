@@ -1,13 +1,14 @@
 package sp.phone.view.behavior;
 
 import android.content.Context;
+import android.util.AttributeSet;
+import android.view.View;
+import android.view.animation.Interpolator;
+
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.ViewPropertyAnimatorListener;
 import androidx.interpolator.view.animation.FastOutSlowInInterpolator;
-import android.util.AttributeSet;
-import android.view.View;
-import android.view.animation.Interpolator;
 
 import com.getbase.floatingactionbutton.FloatingActionsMenu;
 

@@ -2,6 +2,7 @@ package sp.phone.util;
 
 import android.annotation.SuppressLint;
 import android.content.res.AssetManager;
+
 import androidx.annotation.Nullable;
 
 import java.io.IOException;
@@ -22,7 +23,6 @@ import gov.anzong.androidnga.Utils;
 import gov.anzong.androidnga.base.util.ContextUtils;
 import gov.anzong.androidnga.common.util.EmoticonUtils;
 import sp.phone.http.bean.StringFindResult;
-import gov.anzong.androidnga.base.util.ContextUtils;;
 import sp.phone.theme.ThemeManager;
 
 @SuppressLint("SimpleDateFormat")

@@ -6,15 +6,16 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import androidx.core.content.FileProvider;
-import androidx.viewpager.widget.ViewPager;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AlertDialog;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
+import androidx.core.content.FileProvider;
+import androidx.viewpager.widget.ViewPager;
 
 import com.justwen.androidnga.cloud.CloudServerManager;
 import com.tbruyelle.rxpermissions2.RxPermissions;
@@ -25,9 +26,9 @@ import java.util.Arrays;
 import gov.anzong.androidnga.BuildConfig;
 import gov.anzong.androidnga.R;
 import gov.anzong.androidnga.activity.BaseActivity;
+import gov.anzong.androidnga.base.util.DeviceUtils;
 import gov.anzong.androidnga.base.util.ToastUtils;
 import sp.phone.http.OnSimpleHttpCallBack;
-import gov.anzong.androidnga.base.util.DeviceUtils;
 
 /**
  * 显示图片

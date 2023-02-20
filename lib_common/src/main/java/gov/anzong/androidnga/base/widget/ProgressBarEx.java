@@ -2,8 +2,9 @@ package gov.anzong.androidnga.base.widget;
 
 import android.app.Activity;
 import android.graphics.Color;
-import androidx.fragment.app.Fragment;
 import android.view.ViewGroup;
+
+import androidx.fragment.app.Fragment;
 
 import net.steamcrafted.loadtoast.LoadToast;
 

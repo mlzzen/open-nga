@@ -7,7 +7,6 @@ import java.net.UnknownHostException;
 
 import gov.anzong.androidnga.R;
 import gov.anzong.androidnga.base.util.ContextUtils;
-import gov.anzong.androidnga.base.util.ContextUtils;;
 
 /**
  * Created by Justwen on 2017/11/23.

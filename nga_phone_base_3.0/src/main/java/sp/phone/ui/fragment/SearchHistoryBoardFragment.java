@@ -3,13 +3,14 @@ package sp.phone.ui.fragment;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import androidx.annotation.Nullable;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.alibaba.fastjson.JSON;
@@ -19,10 +20,10 @@ import java.util.List;
 
 import gov.anzong.androidnga.R;
 import gov.anzong.androidnga.arouter.ARouterConstants;
-import sp.phone.ui.adapter.SearchHistoryAdapter;
 import gov.anzong.androidnga.common.PreferenceKey;
 import sp.phone.param.ParamKey;
 import sp.phone.task.SearchBoardTask;
+import sp.phone.ui.adapter.SearchHistoryAdapter;
 import sp.phone.util.ActivityUtils;
 
 /**

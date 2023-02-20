@@ -1,11 +1,12 @@
 package gov.anzong.androidnga.activity;
 
 import android.os.Bundle;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.widget.EditText;
+
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,11 +14,11 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import gov.anzong.androidnga.R;
-import sp.phone.ui.fragment.BoardCategoryFragment;
 import sp.phone.mvp.model.ForumsListModel;
 import sp.phone.task.GetAllForumsTask;
-import sp.phone.ui.adapter.ForumListAdapter;
 import sp.phone.theme.ThemeManager;
+import sp.phone.ui.adapter.ForumListAdapter;
+import sp.phone.ui.fragment.BoardCategoryFragment;
 
 /**
  * 在线获取版面列表

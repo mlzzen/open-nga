@@ -1,11 +1,12 @@
 package sp.phone.view;
 
 import android.content.Context;
+import android.util.AttributeSet;
+import android.view.View;
+
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import android.util.AttributeSet;
-import android.view.View;
 
 /**
  * Created by Justwen on 2017/10/9.

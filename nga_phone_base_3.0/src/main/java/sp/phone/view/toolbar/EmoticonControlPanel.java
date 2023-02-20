@@ -1,11 +1,13 @@
 package sp.phone.view.toolbar;
 
 import android.content.Context;
-import androidx.annotation.Nullable;
-import com.google.android.material.tabs.TabLayout;
-import androidx.viewpager.widget.ViewPager;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
+
+import androidx.annotation.Nullable;
+import androidx.viewpager.widget.ViewPager;
+
+import com.google.android.material.tabs.TabLayout;
 
 import gov.anzong.androidnga.R;
 import sp.phone.ui.adapter.EmoticonParentAdapter;

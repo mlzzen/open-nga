@@ -3,11 +3,11 @@ package sp.phone.mvp.presenter;
 import android.text.TextUtils;
 
 import gov.anzong.androidnga.R;
-import sp.phone.http.bean.MessageDetailInfo;
-import sp.phone.ui.fragment.MessageDetailFragment;
 import gov.anzong.androidnga.http.OnHttpCallBack;
-import sp.phone.mvp.model.MessageDetailModel;
+import sp.phone.http.bean.MessageDetailInfo;
 import sp.phone.mvp.contract.MessageDetailContract;
+import sp.phone.mvp.model.MessageDetailModel;
+import sp.phone.ui.fragment.MessageDetailFragment;
 
 /**
  * Created by Justwen on 2017/10/11.

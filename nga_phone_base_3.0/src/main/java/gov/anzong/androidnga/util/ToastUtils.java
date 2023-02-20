@@ -1,10 +1,11 @@
 package gov.anzong.androidnga.util;
 
 import android.annotation.SuppressLint;
-import androidx.annotation.StringRes;
 import android.widget.Toast;
 
-import gov.anzong.androidnga.base.util.ContextUtils;;
+import androidx.annotation.StringRes;
+
+import gov.anzong.androidnga.base.util.ContextUtils;
 
 /**
  * Created by Justwen on 2018/8/11.

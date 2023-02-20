@@ -11,6 +11,7 @@ import android.graphics.Color;
 import android.os.Handler;
 import android.os.Message;
 import android.preference.PreferenceManager;
+
 import androidx.core.app.NotificationCompat;
 
 import java.util.ArrayList;
@@ -20,12 +21,12 @@ import gov.anzong.androidnga.R;
 import gov.anzong.androidnga.activity.MessageListActivity;
 import gov.anzong.androidnga.activity.RecentNotificationActivity;
 import gov.anzong.androidnga.base.util.ContextUtils;
+import gov.anzong.androidnga.base.util.DeviceUtils;
 import gov.anzong.androidnga.common.PreferenceKey;
 import gov.anzong.androidnga.http.OnHttpCallBack;
 import sp.phone.mvp.model.entity.NotificationInfo;
 import sp.phone.mvp.model.entity.RecentReplyInfo;
 import sp.phone.task.ForumNotificationTask;
-import gov.anzong.androidnga.base.util.DeviceUtils;
 
 public class NotificationController {
 

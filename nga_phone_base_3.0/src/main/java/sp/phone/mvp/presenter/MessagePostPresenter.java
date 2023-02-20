@@ -1,11 +1,11 @@
 package sp.phone.mvp.presenter;
 
 import gov.anzong.androidnga.R;
-import sp.phone.param.MessagePostParam;
-import sp.phone.ui.fragment.MessagePostFragment;
 import sp.phone.mvp.contract.MessagePostContract;
 import sp.phone.mvp.model.MessagePostModel;
+import sp.phone.param.MessagePostParam;
 import sp.phone.task.MessagePostTask;
+import sp.phone.ui.fragment.MessagePostFragment;
 import sp.phone.util.ActivityUtils;
 
 /**

@@ -11,7 +11,6 @@ import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.lifecycle.Observer;
 
 import gov.anzong.androidnga.R;
 import gov.anzong.androidnga.activity.ArticleCacheActivity;

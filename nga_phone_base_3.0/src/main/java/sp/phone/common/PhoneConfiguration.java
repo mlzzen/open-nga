@@ -3,7 +3,6 @@ package sp.phone.common;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import gov.anzong.androidnga.R;
 import gov.anzong.androidnga.activity.ArticleListActivity;
 import gov.anzong.androidnga.activity.LoginActivity;
 import gov.anzong.androidnga.activity.MessageDetailActivity;

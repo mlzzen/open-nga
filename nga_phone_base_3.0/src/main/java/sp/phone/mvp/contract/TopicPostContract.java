@@ -4,8 +4,8 @@ import android.net.Uri;
 
 import java.util.List;
 
-import sp.phone.param.PostParam;
 import gov.anzong.androidnga.http.OnHttpCallBack;
+import sp.phone.param.PostParam;
 import sp.phone.task.TopicPostTask.CallBack;
 
 public interface TopicPostContract {

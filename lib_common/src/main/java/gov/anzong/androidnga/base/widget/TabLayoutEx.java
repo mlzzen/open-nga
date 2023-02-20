@@ -1,11 +1,10 @@
 package gov.anzong.androidnga.base.widget;
 
 import android.content.Context;
+import android.util.AttributeSet;
+import android.view.ViewGroup;
 
 import androidx.viewpager.widget.ViewPager;
-import android.util.AttributeSet;
-import android.view.View;
-import android.view.ViewGroup;
 
 import com.nshmura.recyclertablayout.RecyclerTabLayout;
 

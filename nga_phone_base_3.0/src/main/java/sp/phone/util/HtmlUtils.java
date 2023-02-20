@@ -1,8 +1,9 @@
 package sp.phone.util;
 
 import android.content.Context;
-import androidx.annotation.ColorInt;
 import android.text.TextUtils;
+
+import androidx.annotation.ColorInt;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -13,9 +14,9 @@ import gov.anzong.androidnga.R;
 import gov.anzong.androidnga.Utils;
 import gov.anzong.androidnga.core.data.HtmlData;
 import gov.anzong.androidnga.core.decode.ForumDecoder;
+import sp.phone.common.PhoneConfiguration;
 import sp.phone.http.bean.Attachment;
 import sp.phone.http.bean.ThreadRowInfo;
-import sp.phone.common.PhoneConfiguration;
 import sp.phone.theme.ThemeManager;
 
 /**

@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
 import gov.anzong.androidnga.R;
-import gov.anzong.androidnga.base.util.DeviceUtils;
 import sp.phone.mvp.model.BoardModel;
 import sp.phone.mvp.model.entity.Board;
 import sp.phone.mvp.model.entity.BoardCategory;

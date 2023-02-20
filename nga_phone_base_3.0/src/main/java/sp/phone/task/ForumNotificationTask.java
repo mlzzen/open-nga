@@ -8,15 +8,15 @@ import com.trello.rxlifecycle2.android.FragmentEvent;
 import java.util.List;
 
 import gov.anzong.androidnga.Utils;
+import gov.anzong.androidnga.http.OnHttpCallBack;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
-import gov.anzong.androidnga.http.OnHttpCallBack;
+import sp.phone.http.retrofit.RetrofitHelper;
+import sp.phone.http.retrofit.RetrofitService;
 import sp.phone.mvp.model.convert.ForumNotificationFactory;
 import sp.phone.mvp.model.entity.NotificationInfo;
 import sp.phone.mvp.model.entity.RecentReplyInfo;
-import sp.phone.http.retrofit.RetrofitHelper;
-import sp.phone.http.retrofit.RetrofitService;
 import sp.phone.rxjava.BaseSubscriber;
 import sp.phone.util.NLog;
 

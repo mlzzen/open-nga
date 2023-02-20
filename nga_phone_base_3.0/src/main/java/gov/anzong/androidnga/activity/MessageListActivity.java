@@ -2,21 +2,22 @@ package gov.anzong.androidnga.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import androidx.fragment.app.Fragment;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Spinner;
 
+import androidx.fragment.app.Fragment;
+
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import gov.anzong.androidnga.R;
 import gov.anzong.androidnga.arouter.ARouterConstants;
-import sp.phone.ui.adapter.ActionBarUserListAdapter;
 import sp.phone.common.PhoneConfiguration;
 import sp.phone.common.UserManager;
 import sp.phone.common.UserManagerImpl;
+import sp.phone.ui.adapter.ActionBarUserListAdapter;
 import sp.phone.ui.fragment.MessageListFragment;
 import sp.phone.util.StringUtils;
 

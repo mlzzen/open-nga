@@ -1,14 +1,9 @@
 package sp.phone.mvp.contract;
 
-import android.net.Uri;
-
-import androidx.fragment.app.Fragment;
-
-import sp.phone.mvp.model.entity.Board;
-import sp.phone.param.TopicListParam;
 import gov.anzong.androidnga.http.OnHttpCallBack;
 import sp.phone.mvp.model.entity.ThreadPageInfo;
 import sp.phone.mvp.model.entity.TopicListInfo;
+import sp.phone.param.TopicListParam;
 
 /**
  * Created by Justwen on 2017/6/3.

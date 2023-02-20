@@ -1,6 +1,7 @@
 package gov.anzong.androidnga.activity;
 
 import android.os.Bundle;
+
 import androidx.fragment.app.Fragment;
 
 import gov.anzong.androidnga.R;
