@@ -77,10 +77,6 @@ android {
         }
     }
 
-    dexOptions {
-        javaMaxHeapSize "2g"
-    }
-
     lintOptions {
         abortOnError false
         disable 'MissingTranslation'
