@@ -39,7 +39,6 @@ android {
         applicationId "gov.anzong.androidnga"
         minSdkVersion project.minSdkVersion
         targetSdkVersion project.targetSdkVersion
-        multiDexEnabled true
         resConfigs "zh", "en"
 
         versionCode project.appVersionCode
