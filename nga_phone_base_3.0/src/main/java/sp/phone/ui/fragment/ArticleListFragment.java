@@ -185,6 +185,22 @@ public class ArticleListFragment extends BaseMvpFragment<ArticleListPresenter> i
 
     };
 
+    private View.OnClickListener mSupportListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            ThreadRowInfo row = ((ThreadRowInfo) view.getTag());
+            mPresenter.postSupportTask(row.getTid(), row.getPid());
+        }
+    };
+
+    private View.OnClickListener mOpposeListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            ThreadRowInfo row = ((ThreadRowInfo) view.getTag());
+            mPresenter.postOpposeTask(row.getTid(), row.getPid());
+        }
+    };
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         NLog.d(TAG, "onCreate");
@@ -235,6 +251,8 @@ public class ArticleListFragment extends BaseMvpFragment<ArticleListPresenter> i
         ButterKnife.bind(this, view);
         ((BaseActivity) getActivity()).setupToolbar();
         mArticleAdapter = new ArticleListAdapter(getContext(),getActivity().getSupportFragmentManager());
+        mArticleAdapter.setSupportListener(mSupportListener);
+        mArticleAdapter.setOpposeListener(mOpposeListener);
         mArticleAdapter.setMenuTogglerListener(mMenuTogglerListener);
         mListView.setLayoutManager(new LinearLayoutManager(getContext()));
         mListView.setItemViewCacheSize(20);
