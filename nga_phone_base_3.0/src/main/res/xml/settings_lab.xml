@@ -15,9 +15,9 @@
 
     <SwitchPreference
         android:defaultValue="false"
-        android:key="@string/pref_debug_switch"
+        android:key="@string/pref_local_debug_switch"
         android:summary="日志存放在/Download/nga_open_source/log/"
         android:iconSpaceReserved="false"
-        android:title="调试开关" />
+        android:title="本地日志" />
 
 </PreferenceScreen>

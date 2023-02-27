@@ -12,7 +12,6 @@ import org.apache.commons.io.FileUtils;
 import java.io.File;
 import java.io.IOException;
 
-import gov.anzong.androidnga.base.logger.DebugLogger;
 import gov.anzong.androidnga.base.logger.Logger;
 import gov.anzong.androidnga.base.util.ContextUtils;
 import gov.anzong.androidnga.base.util.PreferenceUtils;
@@ -48,9 +47,6 @@ public class NgaClientApp extends Application {
     }
 
     private void initLogger() {
-        if (BuildConfig.DEBUG) {
-            Logger.getInstance().setLogger(new DebugLogger());
-        }
         Logger.getInstance().d(TAG, "app nga android start");
     }
 

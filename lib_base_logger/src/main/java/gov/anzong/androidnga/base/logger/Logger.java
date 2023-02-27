@@ -4,11 +4,27 @@ public class Logger implements ILogger {
 
     private static final Logger INSTANCE = new Logger();
 
-    private ILogger mLoggerDelegate = new ReleaseLogger();
+    private ILogger mLoggerDelegate;
+
+    private boolean mLocalDebug;
+
+    private Logger() {
+        updateLogger();
+    }
+
+    public boolean isLocalDebug() {
+        return mLocalDebug;
+    }
+
+    public void setLocalDebug(boolean localDebug) {
+        mLocalDebug = localDebug;
+    }
 
     public void setLogger(ILogger logger) {
         if (logger != null) {
-            mLoggerDelegate.clear();
+            if (mLoggerDelegate != null) {
+                mLoggerDelegate.clear();
+            }
             mLoggerDelegate = logger;
         }
     }
@@ -50,5 +66,15 @@ public class Logger implements ILogger {
     @Override
     public void clear() {
         mLoggerDelegate.clear();
+    }
+
+    public void updateLogger() {
+        if (mLocalDebug) {
+            setLogger(new LocalDebugLogger());
+        } else if (BuildConfig.DEBUG) {
+            setLogger(new DebugLogger());
+        } else {
+            setLogger(new ReleaseLogger());
+        }
     }
 }

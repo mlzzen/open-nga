@@ -1,6 +1,6 @@
 package gov.anzong.androidnga.base.logger;
 
-import android.content.Context;
+import android.os.Build;
 import android.os.Environment;
 
 import java.io.File;
@@ -15,7 +15,7 @@ import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
-public class RemoteDebugLogger extends DebugLogger {
+public class LocalDebugLogger extends DebugLogger {
 
     private static final String FILE_TAG = "log";
 
@@ -25,7 +25,7 @@ public class RemoteDebugLogger extends DebugLogger {
 
     private final DateFormat mDateFormat;
 
-    public RemoteDebugLogger() {
+    public LocalDebugLogger() {
         mExecutorService = new ThreadPoolExecutor(0, 1, 1, TimeUnit.MINUTES, new LinkedBlockingQueue<>(), new ThreadPoolExecutor.DiscardOldestPolicy());
         mDateFormat = new SimpleDateFormat("yyyy/MM/dd:HH:mm:ss:SSS", Locale.getDefault());
         try {
@@ -36,7 +36,8 @@ public class RemoteDebugLogger extends DebugLogger {
     }
 
     private File getOutputFile() {
-        File logDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + "/nga_open_source/log/");
+        File rootDir = Build.VERSION.SDK_INT >= Build.VERSION_CODES.P ? Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) : Environment.getExternalStorageDirectory();
+        File logDir = new File(rootDir, "/nga_open_source/log/");
         if (!logDir.exists()) {
             logDir.mkdirs();
         }
