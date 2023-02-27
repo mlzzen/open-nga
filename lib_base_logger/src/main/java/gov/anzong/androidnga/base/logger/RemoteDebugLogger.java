@@ -36,7 +36,7 @@ public class RemoteDebugLogger extends DebugLogger {
     }
 
     private File getOutputFile() {
-        File logDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)+ "/nga_open_source/log/");
+        File logDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + "/nga_open_source/log/");
         if (!logDir.exists()) {
             logDir.mkdirs();
         }
@@ -96,6 +96,20 @@ public class RemoteDebugLogger extends DebugLogger {
         String finalMsg = super.d(msg);
         output(TAG, finalMsg);
         return finalMsg;
+    }
+
+    @Override
+    public void clear() {
+        mExecutorService.execute(() -> {
+            try {
+                if (mFileWriter != null) {
+                    mFileWriter.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+        mExecutorService.shutdown();
     }
 
     private void output(String tag, String msg) {

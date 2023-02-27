@@ -6,6 +6,10 @@ public interface ILogger {
 
     String d(String tag, String msg);
 
+    default void clear() {
+
+    }
+
     default String d(int msg) {
         return "";
     }

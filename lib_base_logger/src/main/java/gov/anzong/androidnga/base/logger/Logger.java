@@ -8,6 +8,7 @@ public class Logger implements ILogger {
 
     public void setLogger(ILogger logger) {
         if (logger != null) {
+            mLoggerDelegate.clear();
             mLoggerDelegate = logger;
         }
     }
@@ -44,5 +45,10 @@ public class Logger implements ILogger {
     @Override
     public String d() {
         return mLoggerDelegate.d();
+    }
+
+    @Override
+    public void clear() {
+        mLoggerDelegate.clear();
     }
 }
