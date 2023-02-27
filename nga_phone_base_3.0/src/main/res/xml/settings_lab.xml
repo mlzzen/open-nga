@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <SwitchPreference
+        android:defaultValue="true"
+        android:key="hardware_accelerated"
+        android:summary="@string/setting_summary_hardware_accelerated"
+        android:title="@string/setting_title_hardware_accelerated" />
+
+    <SwitchPreference
+        android:defaultValue="true"
+        android:title="@string/title_show_with_webview"
+        android:summary="@string/summary_show_with_webview"
+        android:key="@string/pref_show_with_webview"/>
+
+    <SwitchPreference
+        android:defaultValue="false"
+        android:key="@string/pref_debug_switch"
+        android:summary="日志存放在/Download/nga_open_source/log/"
+        android:iconSpaceReserved="false"
+        android:title="调试开关" />
+
+</PreferenceScreen>

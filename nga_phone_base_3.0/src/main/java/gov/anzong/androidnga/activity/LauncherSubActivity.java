@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.ActionBar;
 
+import gov.anzong.androidnga.ui.fragment.BasePreferenceFragment;
 import sp.phone.ui.fragment.BaseFragment;
 
 public class LauncherSubActivity extends BaseActivity {
@@ -38,6 +39,8 @@ public class LauncherSubActivity extends BaseActivity {
                 Bundle bundle = getIntent().getExtras();
                 mBaseFragment.setArguments(bundle);
                 getSupportFragmentManager().beginTransaction().replace(android.R.id.content, mBaseFragment).commit();
+            } else if (fragment instanceof BasePreferenceFragment) {
+                getSupportFragmentManager().beginTransaction().replace(android.R.id.content, (BasePreferenceFragment)fragment).commit();
             } else {
                 Bundle bundle = getIntent().getExtras();
                 ((Fragment) fragment).setArguments(bundle);

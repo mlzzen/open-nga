@@ -117,22 +117,12 @@
             android:key="bottom_tab"
             android:title="@string/setting_title_bottom_tab" />
 
-        <SwitchPreference
-            android:defaultValue="true"
-            android:key="hardware_accelerated"
-            android:summary="@string/setting_summary_hardware_accelerated"
-            android:title="@string/setting_title_hardware_accelerated" />
+
 
         <SwitchPreference
             android:defaultValue="false"
             android:key="showSignature"
             android:title="@string/showSignature" />
-
-        <SwitchPreference
-            android:defaultValue="true"
-            android:title="@string/title_show_with_webview"
-            android:summary="@string/summary_show_with_webview"
-            android:key="@string/pref_show_with_webview"/>
 
     </PreferenceCategory>
 
@@ -150,5 +140,8 @@
             android:title="@string/refresh_after_post_setting_mode" />
 
     </PreferenceCategory>
+
+    <PreferenceScreen
+        android:title="实验室" android:fragment="sp.phone.ui.fragment.SettingsLabFragment"/>
 
 </PreferenceScreen>

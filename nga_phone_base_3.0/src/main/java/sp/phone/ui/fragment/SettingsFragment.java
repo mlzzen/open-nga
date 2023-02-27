@@ -42,21 +42,6 @@ public class SettingsFragment extends BasePreferenceFragment implements Preferen
         configPreference();
     }
 
-    private void mapping(PreferenceGroup group) {
-        for (int i = 0; i < group.getPreferenceCount(); i++) {
-            Preference preference = group.getPreference(i);
-            preference.setIconSpaceReserved(false);
-            if (preference instanceof PreferenceGroup) {
-                mapping((PreferenceGroup) preference);
-            } else {
-                preference.setOnPreferenceChangeListener(this);
-//                if (preference instanceof ListPreference) {
-//                    preference.setSummary(((ListPreference) preference).getEntry());
-//                }
-            }
-        }
-    }
-
     private void configPreference() {
         findPreference(PreferenceKey.NIGHT_MODE).setEnabled(!ThemeManager.getInstance().isNightModeFollowSystem());
         findPreference(PreferenceKey.MATERIAL_THEME).setEnabled(!ThemeManager.getInstance().isNightMode());
@@ -154,6 +139,12 @@ public class SettingsFragment extends BasePreferenceFragment implements Preferen
 
     @Override
     public boolean onPreferenceTreeClick(Preference preference) {
+        if (preference.getFragment() != null) {
+            Intent intent = new Intent(getActivity(), LauncherSubActivity.class);
+            intent.putExtra("fragment", preference.getFragment());
+            startActivity(intent);
+            return true;
+        }
         switch (preference.getKey()) {
             case PreferenceKey.ADJUST_SIZE:
             case PreferenceKey.PREF_USER:
