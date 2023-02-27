@@ -12,6 +12,8 @@ import org.apache.commons.io.FileUtils;
 import java.io.File;
 import java.io.IOException;
 
+import gov.anzong.androidnga.base.logger.DebugLogger;
+import gov.anzong.androidnga.base.logger.Logger;
 import gov.anzong.androidnga.base.util.ContextUtils;
 import gov.anzong.androidnga.base.util.PreferenceUtils;
 import gov.anzong.androidnga.base.util.ThreadUtils;
@@ -21,7 +23,6 @@ import gov.anzong.androidnga.db.AppDatabase;
 import sp.phone.common.FilterKeywordsManagerImpl;
 import sp.phone.common.UserManagerImpl;
 import sp.phone.common.VersionUpgradeHelper;
-import sp.phone.util.NLog;
 
 public class NgaClientApp extends Application {
 
@@ -31,7 +32,7 @@ public class NgaClientApp extends Application {
 
     @Override
     public void onCreate() {
-        NLog.w(TAG, "app nga android start");
+        initLogger();
         ContextUtils.setApplication(this);
         PreferenceUtils.transfer(this);
         checkNewVersion();
@@ -44,6 +45,13 @@ public class NgaClientApp extends Application {
         // fixWebViewMultiProcessException();
         CloudServerManager.init(this);
         Thread.setDefaultUncaughtExceptionHandler(new ExceptionHandlerProxy(Thread.getDefaultUncaughtExceptionHandler()));
+    }
+
+    private void initLogger() {
+        if (BuildConfig.DEBUG) {
+            Logger.getInstance().setLogger(new DebugLogger());
+        }
+        Logger.getInstance().d(TAG, "app nga android start");
     }
 
     private void fixWebViewMultiProcessException() {
