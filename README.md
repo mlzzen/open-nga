@@ -1,14 +1,17 @@
 NGA-CLIENT-VER-OPEN-SOURCE
 ==========================
 
-NGA¿Í»§¶Ë¿ªÔ´°æ´úÂë²Ö¿â
+NGAå®¢æˆ·ç«¯å¼€æºç‰ˆä»£ç ä»“åº“
 
-¿ÉÖ±½Óµ¼ÈëAndroid Studio¡£
+å¯ç›´æ¥å¯¼å…¥Android Studioã€‚
 
 - - -
-¸üĞÂÄÚÈİÈ¥ÏÂÃæÁ´½ÓÕÒ
+æ›´æ–°å†…å®¹å»ä¸‹é¢é“¾æ¥æ‰¾
 - - -
-<https://play.google.com/store/apps/details?id=gov.anzong.androidnga><br>
-The APP in Google Play Based on our project!
 
-
+[<img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png"
+     alt="Get it on F-Droid"
+     height="80">](https://f-droid.org/packages/gov.anzong.androidnga/)
+[<img src="https://play.google.com/intl/en_us/badges/images/generic/en-play-badge.png"
+     alt="Get it on Google Play"
+     height="80">](https://play.google.com/store/apps/details?id=gov.anzong.androidnga)
