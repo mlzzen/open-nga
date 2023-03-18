@@ -13,6 +13,11 @@
         android:summary="@string/summary_show_with_webview"
         android:key="@string/pref_show_with_webview"/>
 
+    <EditTextPreference
+        android:dialogTitle="USER AGENT"
+        android:title="USER AGENT"
+        android:key="preference_key_ua"/>
+
     <SwitchPreference
         android:defaultValue="false"
         android:key="@string/pref_local_debug_switch"

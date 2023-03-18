@@ -3,10 +3,12 @@ package sp.phone.http.retrofit;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.text.TextUtils;
+import android.webkit.WebSettings;
 
 import java.net.URLDecoder;
 
 import gov.anzong.androidnga.base.util.ContextUtils;
+import gov.anzong.androidnga.base.util.PreferenceUtils;
 import gov.anzong.androidnga.base.util.StringUtils;
 import gov.anzong.androidnga.base.util.ThreadUtils;
 import gov.anzong.androidnga.common.PreferenceKey;
@@ -38,7 +40,8 @@ public class RetrofitHelper {
     private String mUserAgent = "";
 
     private RetrofitHelper() {
-        SharedPreferences sp = ContextUtils.getContext().getSharedPreferences(PreferenceKey.PERFERENCE, Context.MODE_PRIVATE);
+        Context context = ContextUtils.getContext();
+        SharedPreferences sp = context.getSharedPreferences(PreferenceKey.PERFERENCE, Context.MODE_PRIVATE);
         mBaseUrl = ForumUtils.getAvailableDomain();
         mRetrofit = createRetrofit();
 
@@ -49,16 +52,12 @@ public class RetrofitHelper {
             }
         });
 
-        mUserAgent = sp.getString(PreferenceKey.USER_AGENT, "");
+        mUserAgent = sp.getString(PreferenceKey.USER_AGENT, null);
 
         if (TextUtils.isEmpty(mUserAgent)) {
-            ThreadUtils.postOnMainThread(() -> {
-                mUserAgent = WebViewEx.getDefaultUserAgent();
-                sp.edit().putString(PreferenceKey.USER_AGENT, mUserAgent).apply();
-                //mUserAgent = "NGA_WP_JW/(;WINDOWS)";
-            });
+            mUserAgent = WebSettings.getDefaultUserAgent(context);
+            PreferenceUtils.putData(PreferenceKey.USER_AGENT, mUserAgent);
         }
-
 
     }
 

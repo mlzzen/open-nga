@@ -51,19 +51,6 @@ public class SettingsFragment extends BasePreferenceFragment implements Preferen
             return true;
         });
 
-        EditTextPreference preference = findPreference(PreferenceKey.USER_AGENT);
-        if (preference != null) {
-            preference.setOnPreferenceChangeListener((preference1, newValue) -> {
-                String ua = newValue.toString();
-                if (TextUtils.isEmpty(newValue.toString())) {
-                    ua = WebViewEx.getDefaultUserAgent();
-                }
-                RetrofitHelper.getInstance().setUserAgent(ua);
-                preference.setText(ua);
-                return false;
-            });
-        }
-
     }
 
     private void showClearCacheDialog() {

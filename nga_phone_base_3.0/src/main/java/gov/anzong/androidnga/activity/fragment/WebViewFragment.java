@@ -119,10 +119,6 @@ public class WebViewFragment extends BaseFragment {
         webSettings.setSupportZoom(true);
         webSettings.setBuiltInZoomControls(true);
         webSettings.setUseWideViewPort(true);
-        String ua = PreferenceUtils.getData(PreferenceKey.USER_AGENT, "");
-        if (!TextUtils.isEmpty(ua)) {
-            webSettings.setUserAgentString(ua);
-        }
         return webView;
     }
 

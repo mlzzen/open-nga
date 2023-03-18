@@ -2,13 +2,18 @@ package sp.phone.ui.fragment;
 
 import android.Manifest;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.webkit.WebSettings;
 
+import androidx.preference.EditTextPreference;
 import androidx.preference.SwitchPreference;
 
 import gov.anzong.androidnga.R;
 import gov.anzong.androidnga.base.logger.Logger;
 import gov.anzong.androidnga.base.util.PermissionUtils;
+import gov.anzong.androidnga.common.PreferenceKey;
 import gov.anzong.androidnga.ui.fragment.BasePreferenceFragment;
+import sp.phone.http.retrofit.RetrofitHelper;
 
 public class SettingsLabFragment extends BasePreferenceFragment {
 
@@ -17,6 +22,7 @@ public class SettingsLabFragment extends BasePreferenceFragment {
         addPreferencesFromResource(R.xml.settings_lab);
         mapping(getPreferenceScreen());
         initDebugPreference();
+        initWebViewSettings();
     }
 
     private void initDebugPreference() {
@@ -36,8 +42,21 @@ public class SettingsLabFragment extends BasePreferenceFragment {
             Logger.getInstance().updateLogger();
             return true;
         });
+    }
 
-
+    private void initWebViewSettings() {
+        EditTextPreference preference = findPreference(PreferenceKey.USER_AGENT);
+        if (preference != null) {
+            preference.setOnPreferenceChangeListener((preference1, newValue) -> {
+                String ua = newValue.toString();
+                if (TextUtils.isEmpty(newValue.toString())) {
+                    ua = WebSettings.getDefaultUserAgent(getContext());
+                }
+                RetrofitHelper.getInstance().setUserAgent(ua);
+                preference.setText(ua);
+                return false;
+            });
+        }
     }
 
     @Override
