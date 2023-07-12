@@ -44,6 +44,8 @@ public class PreferenceKey {
 
     public static final String BOOKMARK_BOARD = "bookmark_board";
 
+    public static final String CHECK_IN_LAST_TIME = "check_in_last_time";
+
     public static final String USER_ACTIVE_INDEX = "user_active_index";
 
     public static final String SORT_BY_POST = "sort_by_post";

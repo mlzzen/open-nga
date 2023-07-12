@@ -16,18 +16,22 @@ import gov.anzong.androidnga.base.logger.Logger;
 import gov.anzong.androidnga.base.util.ContextUtils;
 import gov.anzong.androidnga.base.util.PreferenceUtils;
 import gov.anzong.androidnga.base.util.ThreadUtils;
+import gov.anzong.androidnga.base.util.ToastUtils;
 import gov.anzong.androidnga.common.PreferenceKey;
 import gov.anzong.androidnga.common.util.ReflectUtils;
 import gov.anzong.androidnga.db.AppDatabase;
 import sp.phone.common.FilterKeywordsManagerImpl;
 import sp.phone.common.UserManagerImpl;
 import sp.phone.common.VersionUpgradeHelper;
+import sp.phone.task.CheckInTask;
 
 public class NgaClientApp extends Application {
 
     private static final String TAG = NgaClientApp.class.getSimpleName();
 
     private static boolean sNewVersion;
+
+    private CheckInTask mCheckInTask;
 
     @Override
     public void onCreate() {
@@ -39,6 +43,7 @@ public class NgaClientApp extends Application {
         AppDatabase.init(this);
         initCoreModule();
         initRouter();
+        checkIn();
         super.onCreate();
 
         // fixWebViewMultiProcessException();
@@ -62,7 +67,7 @@ public class NgaClientApp extends Application {
             if (dirs != null) {
                 for (File dir : dirs) {
                     if (dir.getName().contains("webview")) {
-                        if (!dir.getName().contains("webview_" + ppid)){
+                        if (!dir.getName().contains("webview_" + ppid)) {
                             ThreadUtils.postOnSubThread(() -> {
                                 try {
                                     FileUtils.deleteDirectory(dir);
@@ -107,6 +112,13 @@ public class NgaClientApp extends Application {
             sNewVersion = true;
             PreferenceUtils.putData(PreferenceKey.KEY_WEBVIEW_DATA_INDEX, 0);
         }
+    }
+
+    private void checkIn() {
+        if (mCheckInTask == null) {
+            mCheckInTask = new CheckInTask();
+        }
+        mCheckInTask.execute();
     }
 
     public static boolean isNewVersion() {
