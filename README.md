@@ -10,6 +10,10 @@
 - [ ] 用html解析帖子避开nga接口的限制
 - [ ] 常用的表情
 
+## 下载
+
+https://github.com/mlzzen/open-nga/releases
+
 NGA-CLIENT-VER-OPEN-SOURCE
 ==========================
 
