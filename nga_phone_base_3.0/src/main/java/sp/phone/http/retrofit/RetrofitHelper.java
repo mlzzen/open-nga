@@ -105,6 +105,7 @@ public class RetrofitHelper {
             Request request = original.newBuilder()
                     .header("Cookie", cookie)
                     .header("User-Agent", mUserAgent)
+                    .header("X-User-Agent", "Nga_Official")
                     .method(original.method(), original.body())
                     .build();
             return chain.proceed(request);
