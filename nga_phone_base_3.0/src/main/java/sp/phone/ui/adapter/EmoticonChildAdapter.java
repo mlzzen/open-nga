@@ -8,7 +8,6 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -17,6 +16,7 @@ import org.apache.commons.io.FilenameUtils;
 import java.io.IOException;
 import java.io.InputStream;
 
+import gov.anzong.androidnga.common.view.EmotionImageView;
 import sp.phone.rxjava.RxBus;
 import sp.phone.rxjava.RxEvent;
 import sp.phone.theme.ThemeManager;
@@ -57,7 +57,7 @@ public class EmoticonChildAdapter extends RecyclerView.Adapter<EmoticonChildAdap
 
     @Override
     public EmoticonViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        ImageView emoticonView = new ImageView(mContext);
+        EmotionImageView emoticonView = new EmotionImageView(mContext);
         int padding = 32;
         emoticonView.setPadding(padding, padding, padding, padding);
         emoticonView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, mHeight / 3));
@@ -83,6 +83,7 @@ public class EmoticonChildAdapter extends RecyclerView.Adapter<EmoticonChildAdap
             }
             holder.mEmoticonItem.setImageBitmap(bm);
             holder.mEmoticonItem.setTag("[img]" + mImageUrls[position] + "[/img]");
+            holder.mEmoticonItem.setEmotionCode(mImageUrls[position]);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -112,11 +113,11 @@ public class EmoticonChildAdapter extends RecyclerView.Adapter<EmoticonChildAdap
 
     static class EmoticonViewHolder extends RecyclerView.ViewHolder {
 
-        ImageView mEmoticonItem;
+        EmotionImageView mEmoticonItem;
 
         public EmoticonViewHolder(View itemView) {
             super(itemView);
-            mEmoticonItem = (ImageView) itemView;
+            mEmoticonItem = (EmotionImageView) itemView;
         }
     }
 }
