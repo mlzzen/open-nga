@@ -1,12 +1,8 @@
 # open-nga
 
-## 新的功能
+## roadmap
 
-- [x] 自动签到
-- [ ] 多文件收藏
-- [ ] 更方便的回复贴条
-- [ ] 帖子跳到版面
-- [ ] 常用的表情
+https://github.com/mlzzen/open-nga/issues/1
 
 ## 下载
 
