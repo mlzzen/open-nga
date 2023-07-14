@@ -1,5 +1,7 @@
 package sp.phone.ui.adapter;
 
+import static gov.anzong.androidnga.common.util.EmoticonUtils.EMOTICON_LABEL;
+
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -8,6 +10,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -16,7 +19,6 @@ import org.apache.commons.io.FilenameUtils;
 import java.io.IOException;
 import java.io.InputStream;
 
-import gov.anzong.androidnga.common.view.EmotionImageView;
 import sp.phone.rxjava.RxBus;
 import sp.phone.rxjava.RxEvent;
 import sp.phone.theme.ThemeManager;
@@ -31,6 +33,7 @@ public class EmoticonChildAdapter extends RecyclerView.Adapter<EmoticonChildAdap
 
     private String[] mImageUrls;
 
+    private String[] mEmotionCodes;
     private String mCategoryName;
 
     private int mHeight;
@@ -50,14 +53,15 @@ public class EmoticonChildAdapter extends RecyclerView.Adapter<EmoticonChildAdap
         isNightMode = ThemeManager.getInstance().isNightMode();
     }
 
-    public void setData(String categoryName, String[] urls) {
+    public void setData(String categoryName, String[] urls, String[] codes) {
         mImageUrls = urls;
+        mEmotionCodes = codes;
         mCategoryName = categoryName;
     }
 
     @Override
     public EmoticonViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        EmotionImageView emoticonView = new EmotionImageView(mContext);
+        ImageView emoticonView = new ImageView(mContext);
         int padding = 32;
         emoticonView.setPadding(padding, padding, padding, padding);
         emoticonView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, mHeight / 3));
@@ -82,8 +86,8 @@ public class EmoticonChildAdapter extends RecyclerView.Adapter<EmoticonChildAdap
                 }
             }
             holder.mEmoticonItem.setImageBitmap(bm);
-            holder.mEmoticonItem.setTag("[img]" + mImageUrls[position] + "[/img]");
-            holder.mEmoticonItem.setEmotionCode(mImageUrls[position]);
+            holder.mEmoticonItem.setTag(mEmotionCodes[position] +
+                    "-" + mCategoryName + "/" + mImageUrls[position]);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -113,11 +117,11 @@ public class EmoticonChildAdapter extends RecyclerView.Adapter<EmoticonChildAdap
 
     static class EmoticonViewHolder extends RecyclerView.ViewHolder {
 
-        EmotionImageView mEmoticonItem;
+        ImageView mEmoticonItem;
 
         public EmoticonViewHolder(View itemView) {
             super(itemView);
-            mEmoticonItem = (EmotionImageView) itemView;
+            mEmoticonItem = (ImageView) itemView;
         }
     }
 }
