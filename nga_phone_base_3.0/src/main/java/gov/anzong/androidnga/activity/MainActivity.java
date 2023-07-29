@@ -108,6 +108,9 @@ public class MainActivity extends BaseActivity {
             case R.id.menu_bookmark:
                 startFavoriteTopicActivity();
                 break;
+            case R.id.menu_history:
+                ActivityUtils.startHistoryTopicActivity(this);
+                break;
             case R.id.menu_msg:
                 startMessageActivity();
                 break;
@@ -163,6 +166,7 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == ActivityUtils.REQUEST_CODE_SETTING && resultCode == Activity.RESULT_OK) {
             recreate();
         } else {
