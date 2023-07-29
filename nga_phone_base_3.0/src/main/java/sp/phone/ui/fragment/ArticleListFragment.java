@@ -283,6 +283,7 @@ public class ArticleListFragment extends BaseMvpFragment<ArticleListPresenter> i
         ArticleShareViewModel viewModel = getActivityViewModelProvider().get(ArticleShareViewModel.class);
         if (getActivity() != null && data != null) {
             viewModel.setReplyCount(data.get__ROWS());
+            viewModel.setFid(data.getThreadInfo().getFid());
         }
         if (data != null && getActivity() != null && mRequestParam.title == null) {
             getActivity().setTitle(data.getThreadInfo().getSubject());

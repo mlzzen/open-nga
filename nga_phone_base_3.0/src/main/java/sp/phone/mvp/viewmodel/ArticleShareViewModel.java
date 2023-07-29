@@ -17,12 +17,22 @@ public class ArticleShareViewModel extends ViewModel {
 
     private MutableLiveData<String> mTopicOwner = new MutableLiveData<>();
 
+    private MutableLiveData<Integer> mFid = new MutableLiveData<>();
+
     public MutableLiveData<Integer> getReplyCount() {
         return mReplyCount;
     }
 
     public void setReplyCount(int replyCount) {
         mReplyCount.setValue(replyCount);
+    }
+
+    public void setFid(int fid) {
+        mFid.setValue(fid);
+    }
+
+    public MutableLiveData<Integer> getFid() {
+        return mFid;
     }
 
     public MutableLiveData<Integer> getRefreshPage() {

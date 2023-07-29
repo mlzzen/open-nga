@@ -22,6 +22,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.viewpager.widget.ViewPager;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.getbase.floatingactionbutton.FloatingActionsMenu;
 import com.trello.rxlifecycle2.android.FragmentEvent;
 
@@ -31,6 +32,7 @@ import butterknife.OnClick;
 import gov.anzong.androidnga.R;
 import gov.anzong.androidnga.Utils;
 import gov.anzong.androidnga.activity.WebViewActivity;
+import gov.anzong.androidnga.arouter.ARouterConstants;
 import gov.anzong.androidnga.base.widget.TabLayoutEx;
 import sp.phone.common.PhoneConfiguration;
 import sp.phone.common.UserManagerImpl;
@@ -72,6 +74,8 @@ public class ArticleTabFragment extends BaseRxFragment {
 
     private int mReplyCount;
 
+    private int mFid;
+
     private ScrollAwareFamBehavior mBehavior;
 
     @Override
@@ -91,6 +95,10 @@ public class ArticleTabFragment extends BaseRxFragment {
                 mTabLayout.setTabOnScreenLimit(count <= 5 ? count : 0);
                 mTabLayout.notifyDataSetChanged();
             }
+        });
+
+        viewModel.getFid().observe(this, fid -> {
+            mFid = fid;
         });
     }
 
@@ -180,6 +188,9 @@ public class ArticleTabFragment extends BaseRxFragment {
                 break;
             case R.id.menu_goto_floor:
                 createGotoDialog();
+                break;
+            case R.id.menu_goto_board:
+                gotoCurrentBoard();
                 break;
             case R.id.menu_share:
                 share();
@@ -293,6 +304,13 @@ public class ArticleTabFragment extends BaseRxFragment {
         }
         df.show(fm, GOTO_TAG);
 
+    }
+
+    private void gotoCurrentBoard(){
+        ARouter.getInstance()
+                .build(ARouterConstants.ACTIVITY_TOPIC_LIST)
+                .withInt(ParamKey.KEY_FID, mFid)
+                .navigation(getContext());
     }
 
     @Override
