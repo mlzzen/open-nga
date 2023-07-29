@@ -31,8 +31,6 @@ public class NgaClientApp extends Application {
 
     private static boolean sNewVersion;
 
-    private CheckInTask mCheckInTask;
-
     @Override
     public void onCreate() {
         initLogger();
@@ -115,10 +113,7 @@ public class NgaClientApp extends Application {
     }
 
     private void checkIn() {
-        if (mCheckInTask == null) {
-            mCheckInTask = new CheckInTask();
-        }
-        mCheckInTask.execute();
+        CheckInTask.execute();
     }
 
     public static boolean isNewVersion() {
