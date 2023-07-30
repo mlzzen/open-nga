@@ -58,6 +58,8 @@ public class PreferenceKey {
 
     public static final String KEY_TOPIC_HISTORY = "topic_history";
 
+    public static final String KEY_RECENTLY_EMOTION = "recently_emotion";
+
     public static final String KEY_REPLY_COUNT = "reply_count";
 
     public static final String KEY_SWIPE_BACK = "swipe_back";

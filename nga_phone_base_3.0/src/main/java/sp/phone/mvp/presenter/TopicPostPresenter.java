@@ -40,19 +40,25 @@ public class TopicPostPresenter extends BasePresenter<TopicPostFragment, TopicPo
 
     private PostParam mPostParam;
 
+    private String getEmotionCode(String category, String code) {
+        return "[s:" + category + ":" + code + "]";
+    }
+
     @Override
     public void setEmoticon(String emotion) {
         String[] emotions = emotion.split("-");
-        try (InputStream is = mBaseView.getContext().getResources().getAssets().open(emotions[1])) {
+        String emotionCode = getEmotionCode(emotions[0], emotions[1]);
+        String imageName = emotions[0] + "/" + emotions[2];
+        try (InputStream is = mBaseView.getContext().getResources().getAssets().open(imageName)) {
             if (is != null) {
                 Bitmap bitmap = BitmapFactory.decodeStream(is);
                 Drawable drawable = new BitmapDrawable(mBaseView.getContext().getResources(), bitmap);
                 drawable.setBounds(0, 0, drawable.getIntrinsicWidth(),
                         drawable.getIntrinsicHeight());
-                SpannableString spanString = new SpannableString(emotions[0]);
+                SpannableString spanString = new SpannableString(emotionCode);
                 ImageSpan span = new ImageSpan(drawable,
                         ImageSpan.ALIGN_BASELINE);
-                spanString.setSpan(span, 0, emotions[0].length(),
+                spanString.setSpan(span, 0, emotionCode.length(),
                         Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
                 mBaseView.insertBodyText(spanString);
             }

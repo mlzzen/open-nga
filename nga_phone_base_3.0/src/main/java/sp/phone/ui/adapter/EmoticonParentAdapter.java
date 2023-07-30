@@ -10,7 +10,10 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.PagerAdapter;
 
+import java.util.List;
+
 import gov.anzong.androidnga.common.util.EmoticonUtils;
+import sp.phone.common.RecentlyEmotionManager;
 
 /**
  * Created by Justwen on 2018/6/8.
@@ -19,7 +22,11 @@ public class EmoticonParentAdapter extends PagerAdapter {
 
     private Context mContext;
 
+    private RecentlyEmotionManager mRecentlyEmotionManager;
+
     private int mHeight;
+
+    private String[][][] mEmotionList;
 
     private static final int COLUMN_COUNT = 4;
 
@@ -28,17 +35,33 @@ public class EmoticonParentAdapter extends PagerAdapter {
         mHeight = height;
     }
 
+    private void combineEmotionList() {
+        mEmotionList = new String[7][70][3];
+        for (int i = 0; i < EmoticonUtils.EMOTICON_URL.length; i++) {
+            if (i == 0) {
+                String[][] recentlyList = mRecentlyEmotionManager.getEmotionArray();
+                mEmotionList[0] = recentlyList;
+            } else {
+                mEmotionList[i] = EmoticonUtils.EMOTICON_URL[i];
+            }
+        }
+    }
+
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
         RecyclerView recyclerView = new RecyclerView(mContext);
         recyclerView.setLayoutManager(new GridLayoutManager(mContext, COLUMN_COUNT));
         recyclerView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+        mRecentlyEmotionManager = RecentlyEmotionManager.getInstance();
+
+        combineEmotionList();
 
         EmoticonChildAdapter adapter = new EmoticonChildAdapter(mContext, mHeight);
-
-        adapter.setData(EMOTICON_LABEL[position][0], getEmotionList(EmoticonUtils.EMOTICON_URL[position], position, 1),
-                getEmotionList(EmoticonUtils.EMOTICON_URL[position], position, 0)
+        adapter.setData(EMOTICON_LABEL[position][0], getEmotionList(mEmotionList[position], 0),
+                getEmotionList(mEmotionList[position], 1), getEmotionList(mEmotionList[position], 2)
         );
+
+
 
         recyclerView.setAdapter(adapter);
 
@@ -51,18 +74,11 @@ public class EmoticonParentAdapter extends PagerAdapter {
         return EMOTICON_LABEL[position][1];
     }
 
-    private String[] getEmotionList(String[][] list, int emotionPosion, int emotionType) {
+    private String[] getEmotionList(String[][] list, int emotionType) {
         String[] result = new String[list.length];
-        if (emotionType == 0) {
-            for (int i = 0; i < list.length; i++) {
-                result[i] = "[s:" + EmoticonUtils.EMOTICON_LABEL[emotionPosion][0] + ":" + list[i][emotionType] + "]";
-            }
-        } else {
-            for (int i = 0; i < list.length; i++) {
-                result[i] = list[i][emotionType];
-            }
+        for (int i = 0; i < list.length; i++) {
+            result[i] = list[i][emotionType];
         }
-
         return result;
     }
 

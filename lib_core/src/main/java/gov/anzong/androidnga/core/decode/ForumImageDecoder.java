@@ -6,7 +6,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import gov.anzong.androidnga.base.util.StringUtils;
-import gov.anzong.androidnga.common.util.EmoticonUtils;
 import gov.anzong.androidnga.core.data.HtmlData;
 
 /**
@@ -54,19 +53,12 @@ public class ForumImageDecoder implements IForumDecoder {
         while (m.find()) {
             String s0 = m.group();
             String s1 = m.group(1);
-            String path = EmoticonUtils.getPathByURI(s1);
-            if (path != null) {
-                String newImgBlock = String.format(HTML_EMOTICON, path);
-                content = content.replace(s0, newImgBlock)
-                        // 移除可点击状态
-                        .replace(String.format(HTML_IMG_LINK, s1), "");
-            } else {
-                if (!showImage) {
-                    content = content.replace(s0, HTML_IMG_DEFAULT);
-                }
-                s1 = s1.replaceFirst("(http\\S+).(png|jpg).(thumb_s|medium|thumb|thumb_ss).jpg", "$1.$2");
-                mImageUrls.add(s1);
+
+            if (!showImage) {
+                content = content.replace(s0, HTML_IMG_DEFAULT);
             }
+            s1 = s1.replaceFirst("(http\\S+).(png|jpg).(thumb_s|medium|thumb|thumb_ss).jpg", "$1.$2");
+            mImageUrls.add(s1);
         }
         return content;
     }
