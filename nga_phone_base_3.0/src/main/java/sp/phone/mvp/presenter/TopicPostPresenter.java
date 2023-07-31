@@ -227,7 +227,7 @@ public class TopicPostPresenter extends BasePresenter<TopicPostFragment, TopicPo
 
     private void finishUpload(String picUrl, Uri uri) {
         String selectedImagePath2 = FunctionUtils.getPath(mBaseView.getContext(), uri);
-        String spanStr = "[img]./" + picUrl + "[/img]";
+        String spanStr = "[img]./" + picUrl + ".medium.jpg" + "[/img]";
         if (!StringUtils.isEmpty(selectedImagePath2)) {
             BitmapFactory.Options options = new BitmapFactory.Options();
             options.inJustDecodeBounds = true;
