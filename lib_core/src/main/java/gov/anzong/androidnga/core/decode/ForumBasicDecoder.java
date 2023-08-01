@@ -3,7 +3,10 @@ package gov.anzong.androidnga.core.decode;
 import android.icu.number.CompactNotation;
 import android.text.TextUtils;
 
+import java.util.Map;
+
 import gov.anzong.androidnga.base.util.StringUtils;
+import gov.anzong.androidnga.core.corebuild.HtmlVoteBuilder;
 import gov.anzong.androidnga.core.data.HtmlData;
 
 /**
@@ -224,8 +227,6 @@ public class ForumBasicDecoder implements IForumDecoder {
         content = StringUtils.replaceAll(content, ignoreCaseTag + "\\[/size\\]", "</span>");
 
 
-
-
         // [list][/list]
         // TODO: 2018/9/18  部分页面里和 collapse 标签有冲突 http://bbs.nga.cn/read.php?tid=14949699
         content = StringUtils.replaceAll(content, IGNORE_CASE_TAG + "\\[list\\](.+?)\\[/list\\]", "<ul>$1</ul>");
@@ -255,12 +256,12 @@ public class ForumBasicDecoder implements IForumDecoder {
         content = StringUtils.replaceAll(content, "\\[style float left margin 1 0 1 1 width 9 height 7 background #b22222 align center border-radius 0.3 font 0 #fff]", "<div style=\"display:inline-block;float:left;margin:1em 0em 1em 1em;width:9em;height:7em;background:#b22222;text-align:center;border-radius:0.3em;color:#fff;\">");
 
         // [style font 4 line-height 1.3 innerHTML &#36;votedata_voteavgvalue]
-        content = StringUtils.replaceAll(content, "\\[style font 4 line-height 1.3 innerHTML &#36;votedata_voteavgvalue]", "<div style=\"display:inline-block;font-size:4em;line-height:1.3em;\">4.1");
+        content = StringUtils.replaceAll(content, "\\[style font 4 line-height 1.3 innerHTML &#36;votedata_voteavgvalue]", "<div style=\"display:inline-block;font-size:4em;line-height:1.3em;\">&#36;votedata_voteavgvalue");
         // [style font 1 line-height 1.2]
         content = StringUtils.replaceAll(content, "\\[style font 1 line-height 1.2]", "<div style=\"display:inline-block;font-size:1em;line-height:1.2em;\">");
 
         // [style innerHTML &#36;votedata_usernum]
-        content = StringUtils.replaceAll(content, "\\[style innerHTML &#36;votedata_usernum]", "<div style=\"display:inline-block;\">123");
+        content = StringUtils.replaceAll(content, "\\[style innerHTML &#36;votedata_usernum]", "<div style=\"display:inline-block;\">&#36;votedata_usernum");
 
         // [style float left margin 1 0 1 1 color #444]
         content = StringUtils.replaceAll(content, "\\[style float left margin 1 0 1 1 color #444]", "<div style=\"display:inline-block;float:left;margin:1em 0em 1em 1em;color:#444;\">");
@@ -304,6 +305,19 @@ public class ForumBasicDecoder implements IForumDecoder {
 
         content = StringUtils.replaceAll(content, "\\[style font 2 #b22222 line-height 1.5]", "<div style=\"display:inline-block;font-size:2em;color:#b22222;line-height:1.5em;\">");
 
+        if (isVote) {
+            Map<String, String> voteMap = HtmlVoteBuilder.genVoteMap(htmlData);
+            for (Map.Entry<String, String> entry : voteMap.entrySet()) {
+                String key = entry.getKey();
+                if (HtmlVoteBuilder.isInteger(key) && voteMap.get("type").equals("2")) {
+                    String[] voteInfo = HtmlVoteBuilder.getVoteScore(voteMap, key);
+                    content = StringUtils.replaceAll(content, "&#36;votedata_voteavgvalue", voteInfo[0]);
+                    content = StringUtils.replaceAll(content, "&#36;votedata_usernum", voteInfo[1]);
+                }
+            }
+        }
+
+
         content = StringUtils.replaceAll(content, "\\[symbol link]", "");
         content = StringUtils.replaceAll(content, "\\[stripbr]", "");
         content = StringUtils.replaceAll(content, "\\[comment game_type]", "");
@@ -312,8 +326,8 @@ public class ForumBasicDecoder implements IForumDecoder {
         content = StringUtils.replaceAll(content, "\\[/comment game_publisher]", "");
         content = StringUtils.replaceAll(content, "\\[comment game_devloper]", "");
         content = StringUtils.replaceAll(content, "\\[/comment game_devloper]", "");
-        content = StringUtils.replaceAll(content, "\\[/style]\\<br/><br/><br/>", "</div><br/>");
-        content = StringUtils.replaceAll(content, "\\[/style]\\<br/><br/>", "</div><br/>");
+        content = StringUtils.replaceAll(content, "\\[/style]\\<br/>\\<br/>\\<br/>", "</div><br/>");
+        content = StringUtils.replaceAll(content, "\\[/style]\\<br/>\\<br/>", "</div><br/>");
         // [/style]
         content = StringUtils.replaceAll(content, "\\[/style]", "</div>");
         return content;
