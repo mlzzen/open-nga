@@ -40,14 +40,15 @@ public class HtmlVoteBuilder implements IHtmlBuild {
 
         for (Map.Entry<String, String> entry : voteMap.entrySet()) {
             String key = entry.getKey();
+            String voteType = voteMap.get("type");
             if (isInteger(key)) {
-                if (voteMap.get("type").equals("1")) {
+                if (voteType == null || voteType.equals("1")) {
                     resultHtml = resultHtml + "<div>" + voteMap.get(key) + "&emsp;";
                     String[] voteDataValues = voteMap.get("_" + key).split(",");
                     resultHtml = resultHtml + voteDataValues[0] + "人</div>";
-                } else if (voteMap.get("type").equals("2")) {
+                } else if (voteType != null && voteType.equals("2")) {
                     resultHtml += "总分：" + getVoteScore(voteMap, key)[0] + "分<br/>共计" + getVoteScore(voteMap, key)[1] + "人评分</div>";
-                } else if (voteMap.get("type").equals("3")) {
+                } else if (voteType != null && voteType.equals("3")) {
                     resultHtml += "总分：" + voteMap.get(key) + "</div>";
                 }
             }

@@ -309,7 +309,8 @@ public class ForumBasicDecoder implements IForumDecoder {
             Map<String, String> voteMap = HtmlVoteBuilder.genVoteMap(htmlData);
             for (Map.Entry<String, String> entry : voteMap.entrySet()) {
                 String key = entry.getKey();
-                if (HtmlVoteBuilder.isInteger(key) && voteMap.get("type").equals("2")) {
+                String voteType = voteMap.get("type");
+                if (voteType != null && HtmlVoteBuilder.isInteger(key) && voteType.equals("2")) {
                     String[] voteInfo = HtmlVoteBuilder.getVoteScore(voteMap, key);
                     content = StringUtils.replaceAll(content, "&#36;votedata_voteavgvalue", voteInfo[0]);
                     content = StringUtils.replaceAll(content, "&#36;votedata_usernum", voteInfo[1]);
