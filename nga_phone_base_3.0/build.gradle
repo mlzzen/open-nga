@@ -16,19 +16,6 @@ def isJenkins() {
 android {
     compileSdkVersion project.compileSdkVersion
 
-    signingConfigs {
-        signingConfig {
-            if (isJenkins()) {
-                storeFile file('../../android19910914.keystore')
-            } else {
-                storeFile file('..\\keystore\\android19910914.keystore')
-            }
-            storePassword '19910914'
-            keyAlias 'android.keystore'
-            keyPassword '19910914'
-        }
-    }
-
     defaultConfig {
         applicationId "gov.anzong.androidnga"
         minSdkVersion project.minSdkVersion
@@ -61,7 +48,6 @@ android {
             pseudoLocalesEnabled false
             minifyEnabled false
             zipAlignEnabled true
-            signingConfig signingConfigs.signingConfig
         }
         debug {
             applicationIdSuffix '.debug'
