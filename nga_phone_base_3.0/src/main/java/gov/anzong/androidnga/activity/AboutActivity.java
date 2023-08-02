@@ -68,18 +68,18 @@ public class AboutActivity extends MaterialAboutActivity {
                     startActivity(intent);
 
                 })
-                .icon(R.drawable.ic_license)
+                .icon(R.drawable.ic_update_24dp)
                 .build());
 
         builder.addItem(new MaterialAboutActionItem.Builder()
-                .text("检测更新")
-                .setOnClickAction(() -> {
-                    Intent intent = new Intent(AboutActivity.this, WebViewerActivity.class);
-                    intent.putExtra("path", "https://github.com/Justwen/NGA-CLIENT-VER-OPEN-SOURCE/releases");
-                    startActivity(intent);
-
-                })
-                .icon(R.drawable.ic_update_24dp)
+                .text("Github检测更新")
+                .setOnClickAction(() -> FunctionUtils.openUrlByDefaultBrowser(AboutActivity.this, "https://github.com/mlzzen/open-nga/releases"))
+                .icon(R.drawable.ic_github)
+                .build());
+        builder.addItem(new MaterialAboutActionItem.Builder()
+                .text("Gitee检测更新")
+                .setOnClickAction(() -> FunctionUtils.openUrlByDefaultBrowser(AboutActivity.this, "https://gitee.com/mlzzen/open-nga/releases"))
+                .icon(R.drawable.ic_gitee)
                 .build());
 
         return builder.build();
@@ -90,7 +90,7 @@ public class AboutActivity extends MaterialAboutActivity {
         builder.title("开发团队");
         builder.addItem(new MaterialAboutActionItem.Builder()
                 .text("代码")
-                .subText("[@竹井詩織里]/[@cfan8]/[@jjimmys]\n[@Moandor]/[@Elrond]/[@Justwen]")
+                .subText("[@竹井詩織里]/[@cfan8]/[@jjimmys]\n[@Moandor]/[@Elrond]/[@Justwen]/[@外地洋芋]")
                 .setOnLongClickAction(Debugger::toggleDebugMode)
                 .icon(R.drawable.ic_code)
                 .build());
@@ -104,8 +104,14 @@ public class AboutActivity extends MaterialAboutActivity {
         builder.addItem(new MaterialAboutActionItem.Builder()
                 .text("Github")
                 .subText("bug & 建议")
-                .setOnClickAction(() -> FunctionUtils.openUrlByDefaultBrowser(AboutActivity.this, "https://github.com/Justwen/NGA-CLIENT-VER-OPEN-SOURCE/issues"))
+                .setOnClickAction(() -> FunctionUtils.openUrlByDefaultBrowser(AboutActivity.this, "https://github.com/mlzzen/open-nga/issues"))
                 .icon(R.drawable.ic_github)
+                .build());
+        builder.addItem(new MaterialAboutActionItem.Builder()
+                .text("Gitee")
+                .subText("bug & 建议")
+                .setOnClickAction(() -> FunctionUtils.openUrlByDefaultBrowser(AboutActivity.this, "https://gitee.com/mlzzen/open-nga/issues"))
+                .icon(R.drawable.ic_gitee)
                 .build());
 
         return builder.build();
@@ -115,19 +121,6 @@ public class AboutActivity extends MaterialAboutActivity {
     private MaterialAboutCard buildExtraCard() {
         MaterialAboutCard.Builder builder = new MaterialAboutCard.Builder();
         builder.title("赞美片总!感谢[@force0119]");
-        builder.addItem(new MaterialAboutActionItem.Builder()
-                .text("客户端吐槽QQ群,欢迎加入捡肥皂")
-                .subText("1065310118")
-                .setOnClickAction(() -> FunctionUtils.copyToClipboard(AboutActivity.this, "1065310118"))
-                .icon(R.drawable.ic_qq)
-                .build());
-        builder.addItem(new MaterialAboutActionItem.Builder()
-                .text("客户端问题反馈群，请勿开车！")
-                .subText("1077054628")
-                .setOnClickAction(() -> FunctionUtils.copyToClipboard(AboutActivity.this, "1077054628"))
-                .icon(R.drawable.ic_qq)
-                .build());
-
         return builder.build();
     }
 
