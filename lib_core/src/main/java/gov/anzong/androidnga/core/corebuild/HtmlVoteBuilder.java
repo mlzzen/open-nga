@@ -36,11 +36,18 @@ public class HtmlVoteBuilder implements IHtmlBuild {
         }
         Map<String, String> voteMap = genVoteMap(htmlData);
 
-        String resultHtml = "<br/><hr/><div>";
+        String voteType = voteMap.get("type");
+
+        String resultHtml = "<br/><hr/>";
+
+        if (voteType == null || voteType.equals("1")){
+            resultHtml += "<div style=color:red;>本楼有投票/投注内容，在菜单中点击投票/投注按钮</div><br/>";
+        }
+        resultHtml += "<div>";
 
         for (Map.Entry<String, String> entry : voteMap.entrySet()) {
             String key = entry.getKey();
-            String voteType = voteMap.get("type");
+            
             if (isInteger(key)) {
                 if (voteType == null || voteType.equals("1")) {
                     resultHtml = resultHtml + "<div>" + voteMap.get(key) + "&emsp;";
