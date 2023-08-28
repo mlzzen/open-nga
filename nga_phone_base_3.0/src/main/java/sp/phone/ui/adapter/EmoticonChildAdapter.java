@@ -87,6 +87,7 @@ public class EmoticonChildAdapter extends RecyclerView.Adapter<EmoticonChildAdap
             // 只有三个组的表情在夜间模式需要背景
             if (isNightMode) {
                 switch (mCategoryName) {
+                    case "recently":
                     case "ac":
                     case "a2":
                     case "dt":
