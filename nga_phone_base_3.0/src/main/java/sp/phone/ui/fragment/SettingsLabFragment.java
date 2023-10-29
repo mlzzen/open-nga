@@ -57,6 +57,11 @@ public class SettingsLabFragment extends BasePreferenceFragment {
         }
     }
 
+    @Override
+    public boolean onPreferenceChange(Preference preference, Object newValue) {
+        return true;
+    }
+
     private void initWebViewSettings() {
         EditTextPreference preference = findPreference(PreferenceKey.USER_AGENT);
         if (preference != null) {
