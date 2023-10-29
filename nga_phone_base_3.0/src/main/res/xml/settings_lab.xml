@@ -25,4 +25,14 @@
         android:iconSpaceReserved="false"
         android:title="本地日志" />
 
+    <Preference
+        android:key="@string/pref_check_in"
+        android:title="每日签到"/>
+
+    <SwitchPreference
+        android:defaultValue="false"
+        android:key="@string/pref_auto_check_in"
+        android:title="自动签到"
+        android:iconSpaceReserved="false" />
+
 </PreferenceScreen>

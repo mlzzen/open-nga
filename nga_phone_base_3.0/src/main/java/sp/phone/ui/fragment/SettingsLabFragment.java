@@ -6,6 +6,7 @@ import android.text.TextUtils;
 import android.webkit.WebSettings;
 
 import androidx.preference.EditTextPreference;
+import androidx.preference.Preference;
 import androidx.preference.SwitchPreference;
 
 import gov.anzong.androidnga.R;
@@ -14,6 +15,7 @@ import gov.anzong.androidnga.base.util.PermissionUtils;
 import gov.anzong.androidnga.common.PreferenceKey;
 import gov.anzong.androidnga.ui.fragment.BasePreferenceFragment;
 import sp.phone.http.retrofit.RetrofitHelper;
+import sp.phone.task.CheckInTask;
 
 public class SettingsLabFragment extends BasePreferenceFragment {
 
@@ -23,6 +25,7 @@ public class SettingsLabFragment extends BasePreferenceFragment {
         mapping(getPreferenceScreen());
         initDebugPreference();
         initWebViewSettings();
+        initCheckInPreference();
     }
 
     private void initDebugPreference() {
@@ -42,6 +45,16 @@ public class SettingsLabFragment extends BasePreferenceFragment {
             Logger.getInstance().updateLogger();
             return true;
         });
+    }
+
+    private void initCheckInPreference() {
+        Preference preference = findPreference(getString(R.string.pref_check_in));
+        if (preference != null) {
+            preference.setOnPreferenceClickListener(preference1 -> {
+                CheckInTask.checkIn(false);
+                return true;
+            });
+        }
     }
 
     private void initWebViewSettings() {
