@@ -5,7 +5,11 @@ import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -26,6 +30,14 @@ import com.alibaba.android.arouter.launcher.ARouter;
 import com.getbase.floatingactionbutton.FloatingActionsMenu;
 import com.trello.rxlifecycle2.android.FragmentEvent;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -33,6 +45,7 @@ import gov.anzong.androidnga.R;
 import gov.anzong.androidnga.Utils;
 import gov.anzong.androidnga.activity.WebViewActivity;
 import gov.anzong.androidnga.arouter.ARouterConstants;
+import gov.anzong.androidnga.base.util.ToastUtils;
 import gov.anzong.androidnga.base.widget.TabLayoutEx;
 import sp.phone.common.PhoneConfiguration;
 import sp.phone.common.UserManagerImpl;
@@ -78,6 +91,8 @@ public class ArticleTabFragment extends BaseRxFragment {
 
     private ScrollAwareFamBehavior mBehavior;
 
+    private View mListView;
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -105,7 +120,7 @@ public class ArticleTabFragment extends BaseRxFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-
+        
         if (mConfig.isShowBottomTab()) {
             return inflater.inflate(R.layout.fragment_article_tab_bottom, container, false);
         } else {
@@ -117,6 +132,7 @@ public class ArticleTabFragment extends BaseRxFragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         ButterKnife.bind(this, view);
         updateFloatingMenu();
+        mListView = (View) getView().getParent();
         mPagerAdapter = new ArticlePagerAdapter(getChildFragmentManager(), mRequestParam);
         mViewPager.setAdapter(mPagerAdapter);
         mViewPager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
@@ -208,9 +224,12 @@ public class ArticleTabFragment extends BaseRxFragment {
                 mRequestParam.page = mViewPager.getCurrentItem() + 1;
                 getActivityViewModel().setCachePage(mRequestParam.page);
                 break;
+            case R.id.menu_export_pic:
+                exportPicture();
+                break;
             case R.id.menu_open_by_browser:
                 Intent intent = new Intent(getContext(), WebViewActivity.class);
-                intent.putExtra("url",getCurrentUrl());
+                intent.putExtra("url", getCurrentUrl());
                 intent.putExtra("title", mRequestParam.title);
                 startActivity(intent);
                 break;
@@ -265,6 +284,36 @@ public class ArticleTabFragment extends BaseRxFragment {
         super.onCreateOptionsMenu(menu, inflater);
     }
 
+    // 在导出按钮的点击事件中调用导出监听器的方法
+    private void exportPicture() {
+        int width = mListView.getWidth();
+        int height = mListView.getHeight();
+        // 创建位图
+        Bitmap bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
+
+        // 创建画布，并将其绑定到位图上
+        Canvas canvas = new Canvas(bitmap);
+
+        // 将视图绘制到画布上
+        mListView.draw(canvas);
+
+        // 保存位图为图片文件
+        String fileName = "article.png";
+        File pictureDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
+        DateFormat dateFormat = new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss", Locale.getDefault());
+        File imageFile = new File(pictureDir, dateFormat.format(new Date()) + "_" + fileName);
+//        File imageFile = new File(pictureDir, fileName);
+        try {
+            FileOutputStream outputStream = new FileOutputStream(imageFile);
+            bitmap.compress(Bitmap.CompressFormat.PNG, 100, outputStream);
+            outputStream.close();
+            ToastUtils.success("导出成功!");
+        } catch (IOException e) {
+            e.printStackTrace();
+            ToastUtils.error("导出失败!");
+        }
+    }
+
     @Override
     public void onPrepareOptionsMenu(Menu menu) {
         menu.findItem(R.id.menu_goto_floor).setVisible(mReplyCount != 0);
@@ -306,7 +355,7 @@ public class ArticleTabFragment extends BaseRxFragment {
 
     }
 
-    private void gotoCurrentBoard(){
+    private void gotoCurrentBoard() {
         ARouter.getInstance()
                 .build(ARouterConstants.ACTIVITY_TOPIC_LIST)
                 .withInt(ParamKey.KEY_FID, mFid)

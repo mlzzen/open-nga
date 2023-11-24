@@ -30,6 +30,11 @@
         androidnga:showAsAction="never" />
 
     <item
+        android:id="@+id/menu_export_pic"
+        android:title="@string/menu_title_export_pic"
+        androidnga:showAsAction="never" />
+
+    <item
         android:id="@+id/menu_share"
         android:icon="@drawable/btn_ic_share"
         android:title="@string/share"
