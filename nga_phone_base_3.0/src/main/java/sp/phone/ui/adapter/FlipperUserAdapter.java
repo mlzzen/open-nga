@@ -46,7 +46,7 @@ public class FlipperUserAdapter extends RecyclerView.Adapter<FlipperUserAdapter.
                 viewHolder.nextImage.setVisibility(View.GONE);
             }
             if (size == 1) {
-                viewHolder.loginState.setText("已登录1个账户");
+                viewHolder.loginState.setText("");
             } else {
                 viewHolder.loginState.setText(String.format("已登录%s", String.valueOf(size + "个账户,点击切换")));
             }
