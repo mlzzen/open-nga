@@ -252,6 +252,16 @@ public class ForumBasicDecoder implements IForumDecoder {
         content = StringUtils.replaceAll(content, "\\[randomblock]\\<br/>\\[fixsize height 52 width 50 90]", "<div class=\"fixblk\" style=\" clear: both; overflow: hidden; width: 100%;height:700px; box-shadow: rgb(0, 0, 0) 0px 0px 15px -8px inset; background: rgb(245, 232, 203); \"><br/><div style=\"margin: auto; overflow: hidden; position: relative; z-index: 0;height:52em; max-width: 90em; min-width: 28em; transform-origin: left top; transform: scale(0.496402, 0.496402);\">");
         content = StringUtils.replaceAll(content, "\\[/randomblock]", "</div>");
 
+        // 小说评分
+        // [randomblock]<br/>[fixsize height 10 width 30 90]
+        content = StringUtils.replaceAll(content, "\\[randomblock]\\<br/>\\[fixsize height 10 width 30 90]", "<div class=\"fixblk\" style=\" clear: both; overflow: hidden; width: 511.667px; height: 171px; box-shadow: rgb(0, 0, 0) 0px 0px 15px -8px inset; background: rgb(245, 232, 203); \"><br/><div style=\"margin: auto; overflow: hidden; position: relative; z-index: 0;height:30em; max-width: 90em; min-width: 28em; transform-origin: left top; transform: scale(0.496402, 0.496402);\">");
+
+        content = StringUtils.replaceAll(content,"\\[comment oth_title_alias]", "");
+        content = StringUtils.replaceAll(content,"\\[/comment oth_title_alias]", "");
+
+        content = StringUtils.replaceAll(content,"\\[comment oth_type_name]", "");
+        content = StringUtils.replaceAll(content,"\\[/comment oth_type_name]", "");
+
         // [style float left margin 1 0 1 1 width 9 height 7 background #b22222 align center border-radius 0.3 font 0 #fff]
         content = StringUtils.replaceAll(content, "\\[style float left margin 1 0 1 1 width 9 height 7 background #b22222 align center border-radius 0.3 font 0 #fff]", "<div style=\"display:inline-block;float:left;margin:1em 0em 1em 1em;width:9em;height:7em;background:#b22222;text-align:center;border-radius:0.3em;color:#fff;\">");
 
@@ -286,6 +296,9 @@ public class ForumBasicDecoder implements IForumDecoder {
 
         content = StringUtils.replaceAll(content, "\\[comment game_title_cn]", "");
         content = StringUtils.replaceAll(content, "\\[/comment game_title_cn]", "");
+
+        content = StringUtils.replaceAll(content, "\\[comment oth_title_cn]", "");
+        content = StringUtils.replaceAll(content, "\\[/comment oth_title_cn]", "");
 
         content = StringUtils.replaceAll(content, "\\[comment game_title]", "");
         content = StringUtils.replaceAll(content, "\\[/comment game_title]", "");
