@@ -163,6 +163,11 @@
         "name": "拳头游戏",
         "content": [
           {
+            "fid": -152678,
+            "name": "英雄联盟",
+            "info": "League Of Legends"
+          },
+          {
             "fid": 708,
             "name": "无畏契约"
           },
