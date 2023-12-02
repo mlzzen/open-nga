@@ -87,6 +87,10 @@
     </PreferenceCategory>
 
     <PreferenceCategory android:title="主题详情设置">
+        <PreferenceScreen
+            android:fragment="sp.phone.ui.fragment.SettingsNotesListFragment"
+            android:key="pref_notes_list"
+            android:title="@string/setting_title_notes_list" />
 
         <PreferenceScreen
             android:fragment="sp.phone.ui.fragment.SettingsBlackListFragment"

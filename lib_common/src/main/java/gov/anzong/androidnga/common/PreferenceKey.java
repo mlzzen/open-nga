@@ -50,6 +50,8 @@ public class PreferenceKey {
 
     public static final String SORT_BY_POST = "sort_by_post";
 
+    public static final String PREF_NOTES_LIST = "pref_NOTES_list";
+
     public static final String PREF_BLACK_LIST = "pref_black_list";
 
     public static final String PREF_USER = "pref_user";

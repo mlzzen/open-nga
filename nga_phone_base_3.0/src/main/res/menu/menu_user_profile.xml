@@ -7,6 +7,9 @@
         android:icon="@drawable/btn_ic_mail"
         android:title="@string/menu_send_msg"
         androidnga:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/menu_make_note"
+        android:title="@string/mark_note"/>
 
     <item
         android:id="@+id/menu_ban_this_one"

@@ -36,7 +36,7 @@ open class TopicListBaseFragment : BaseFragment(R.layout.fragment_topic_list_bas
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        mRequestParam = arguments!!.getParcelable(ParamKey.KEY_PARAM)
+        mRequestParam = requireArguments().getParcelable(ParamKey.KEY_PARAM)
         mPresenter = onCreatePresenter()
         lifecycle.addObserver(mPresenter)
         initState()

@@ -80,6 +80,7 @@
     <string name="signature_dialog">查看签名</string>
     <string name="vote_dialog">投票/投注</string>
     <string name="showprofile">查看用户信息</string>
+    <string name="mark_note">添加备注</string>
     <string name="ban_thisone">屏蔽此人</string>
     <string name="cancel_ban_thisone">取消屏蔽此人</string>
     <string name="avatar_dialog">查看头像</string>
@@ -347,6 +348,7 @@
     <string name="setting_title_sort_by_post">按发帖顺序排序</string>
     <string name="setting_title_user">用户管理</string>
     <string name="setting_title_black_list">黑名单</string>
+    <string name="setting_title_notes_list">备注</string>
     <string name="setting_title_filter_sub_board">过滤版主固定的渣帖子</string>
     <string name="setting_nga_domain">NGA域名</string>
     <string name="setting_avatar_network_title">载入头像</string>

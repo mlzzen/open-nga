@@ -12,6 +12,7 @@ import android.view.Window;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
+import androidx.fragment.app.Fragment;
 
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
@@ -43,6 +44,9 @@ import sp.phone.http.bean.ReputationData;
 import sp.phone.param.ParamKey;
 import sp.phone.task.JsonProfileLoadTask;
 import sp.phone.theme.ThemeManager;
+import sp.phone.ui.fragment.dialog.BaseDialogFragment;
+import sp.phone.ui.fragment.dialog.MakeNoteDialogFragment;
+import sp.phone.ui.fragment.dialog.PostCommentDialogFragment;
 import sp.phone.util.ActivityUtils;
 import sp.phone.util.FunctionUtils;
 import sp.phone.util.ImageUtils;
@@ -374,6 +378,9 @@ public class ProfileActivity extends BaseActivity implements OnHttpCallBack<Prof
             case R.id.menu_ban_this_one:
                 banThisSB();
                 break;
+            case R.id.menu_make_note:
+                showMakeNoteDialog();
+                break;
             default:
                 return super.onOptionsItemSelected(item);
 
@@ -390,6 +397,11 @@ public class ProfileActivity extends BaseActivity implements OnHttpCallBack<Prof
             um.addToBlackList(mProfileData.getUserName(), mProfileData.getUid());
             ToastUtils.success(R.string.add_to_blacklist_success);
         }
+    }
+
+    public void showMakeNoteDialog() {
+        BaseDialogFragment df = new MakeNoteDialogFragment();
+        df.show(getSupportFragmentManager());
     }
 
     private void startModifyAvatar() {
@@ -425,6 +437,7 @@ public class ProfileActivity extends BaseActivity implements OnHttpCallBack<Prof
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 321 && resultCode == Activity.RESULT_OK) {
             String signData = data.getStringExtra("sign");
             if (mProfileData != null) {
