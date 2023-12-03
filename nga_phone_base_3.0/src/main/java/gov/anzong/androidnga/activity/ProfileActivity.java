@@ -35,6 +35,7 @@ import gov.anzong.androidnga.base.util.ToastUtils;
 import gov.anzong.androidnga.core.data.HtmlData;
 import gov.anzong.androidnga.core.decode.ForumDecoder;
 import gov.anzong.androidnga.http.OnHttpCallBack;
+import sp.phone.common.NoteManangerImpl;
 import sp.phone.common.PhoneConfiguration;
 import sp.phone.common.UserManager;
 import sp.phone.common.UserManagerImpl;
@@ -204,7 +205,12 @@ public class ProfileActivity extends BaseActivity implements OnHttpCallBack<Prof
     }
 
     private void loadBasicProfile(ProfileData profileInfo) {
-        mToolbarLayout.setTitle(profileInfo.getUserName());
+        String userNote = NoteManangerImpl.Companion.getInstance().getNoteFromList(profileInfo.getUid());
+        String userName = profileInfo.getUserName();
+        if (userNote != null){
+            userName += "(" + userNote + ")";
+        }
+        mToolbarLayout.setTitle(userName);
         mUidTv.setText(String.format("用户ID : %s", profileInfo.getUid()));
         mPostCountTv.setText(profileInfo.getPostCount());
         mRegisterTimeTv.setText(profileInfo.getRegisterDate());

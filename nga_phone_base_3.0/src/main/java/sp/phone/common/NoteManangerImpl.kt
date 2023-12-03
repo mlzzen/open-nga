@@ -5,7 +5,6 @@ import android.content.SharedPreferences
 import android.preference.PreferenceManager
 import android.text.TextUtils
 import com.alibaba.fastjson.JSON
-import gov.anzong.androidnga.base.util.PreferenceUtils
 import gov.anzong.androidnga.base.util.ThreadUtils
 import gov.anzong.androidnga.common.PreferenceKey
 import gov.anzong.androidnga.db.AppDatabase
@@ -80,11 +79,8 @@ class NoteManangerImpl() : NoteMananger {
     }
 
     override fun removeAllNotesList() {
-        TODO("Not yet implemented")
-    }
-
-    override fun removeFromNotesList(uid: String?) {
-        TODO("Not yet implemented")
+        notesList?.clear()
+        commit()
     }
 
     override fun getNoteFromList(uid: String): String? {
@@ -95,5 +91,26 @@ class NoteManangerImpl() : NoteMananger {
             }
         }
         return null
+    }
+
+    override fun getNoteFromListByName(userName: String): String? {
+        for (i in notesList?.indices!!) {
+            val localNote: NoteInfo = notesList!![i]
+            if (localNote.nickName == userName) {
+                return localNote.note
+            }
+        }
+        return null
+    }
+
+    override fun removeFromNotesList(uid: String) {
+        for (i in notesList?.indices!!) {
+            val noteInfo: NoteInfo = notesList!!.get(i)
+            if (noteInfo.userId == uid) {
+                notesList!!.removeAt(i)
+                commit()
+                return
+            }
+        }
     }
 }

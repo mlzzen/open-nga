@@ -15,6 +15,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import gov.anzong.androidnga.R;
+import sp.phone.common.NoteManangerImpl;
 import sp.phone.common.PhoneConfiguration;
 import sp.phone.mvp.model.entity.ThreadPageInfo;
 import sp.phone.param.TopicTitleHelper;
@@ -59,11 +60,15 @@ public class TopicListAdapter extends BaseAppendableAdapter<ThreadPageInfo, Topi
     }
 
     private void handleJsonList(TopicViewHolder holder, ThreadPageInfo entry) {
-
         if (entry == null) {
             return;
         }
-        holder.author.setText(entry.getAuthor());
+        String userNote = NoteManangerImpl.Companion.getInstance().getNoteFromListByName(entry.getAuthor());
+        String authorName = entry.getAuthor();
+        if (userNote != null){
+            authorName += "(" + userNote + ")";
+        }
+        holder.author.setText(authorName);
         holder.lastReply.setText(entry.getLastPoster());
         holder.num.setText(String.valueOf(entry.getReplies()));
         holder.title.setText(TopicTitleHelper.handleTitleFormat(entry));

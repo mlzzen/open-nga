@@ -31,6 +31,8 @@ public class ThreadRowInfo {
     private List<ThreadRowInfo> comments;
     public List<String> hotReplies; //热门回复
 
+    private String userNote;
+
     private boolean isInBlackList;
 
     private String mFormattedHtmlData;
@@ -82,6 +84,15 @@ public class ThreadRowInfo {
     public boolean get_isInBlackList() {
         return isInBlackList;
     }
+
+    public void setUserNote(String note){
+        this.userNote = note;
+    }
+
+    public String getUserNote(){
+        return userNote;
+    }
+
 
     public Map<String, Attachment> getAttachs() {
         return attachs;

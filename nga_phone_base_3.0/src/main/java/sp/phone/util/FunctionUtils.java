@@ -396,6 +396,7 @@ public class FunctionUtils {
             fgColor = nickNameTV.getResources().getColor(R.color.title_orange);
             nickName += "(" + blacklistban + ")";
         }
+
         if (row.getISANONYMOUS()) {
             fgColor = nickNameTV.getResources().getColor(R.color.title_red);
             nickName += "(匿名)";
@@ -403,6 +404,11 @@ public class FunctionUtils {
 
         if (Objects.equals(row.getAuthor(), topicOwner)) {
             nickName += "(楼主)";
+        }
+
+        if (row.getUserNote() != null && !row.getUserNote().isEmpty()) {
+            String userNote = row.getUserNote();
+            nickName += "(" + userNote + ")";
         }
 
         nickNameTV.setText(nickName);

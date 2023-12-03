@@ -135,6 +135,7 @@
     <string name="sample_post_date">11:11:11</string>
     <string name="sample_nick_name">骷髅党</string>
     <string name="sample_user_level">级别:骷髅党</string>
+    <string name="sample_note">备注：</string>
     <string name="split">菜单按钮在下面(4.0以上)</string>
     <string name="replysplit">发帖按钮在下面(4.0以上)</string>
     <string name="ha">硬件加速(4.0以上)</string>

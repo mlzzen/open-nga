@@ -17,8 +17,6 @@ import sp.phone.common.NoteMananger
 import sp.phone.common.NoteManangerImpl
 import sp.phone.common.PhoneConfiguration
 import sp.phone.common.User
-import sp.phone.common.UserManager
-import sp.phone.common.UserManagerImpl
 import sp.phone.ui.adapter.NotesListAdapter
 import sp.phone.view.RecyclerViewEx
 
@@ -51,6 +49,7 @@ class SettingsNotesListFragment : BaseFragment(), View.OnClickListener {
         mListView = view.findViewById(R.id.list)
         mListView?.setLayoutManager(LinearLayoutManager(context))
         mListView?.setAdapter(mListAdapter)
+
         val touchHelper =
             ItemTouchHelper(object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT) {
                 override fun onMove(
@@ -62,8 +61,8 @@ class SettingsNotesListFragment : BaseFragment(), View.OnClickListener {
                 }
 
                 override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-                    val user = viewHolder.itemView.tag as User
-                    mNotesList!!.removeFromNotesList(user.userId)
+                    val noteInfo = viewHolder.itemView.tag as NoteInfo
+                    mNotesList!!.removeFromNotesList(noteInfo.userId)
                     mListAdapter!!.notifyItemRemoved(viewHolder.adapterPosition)
                 }
             })
@@ -72,7 +71,7 @@ class SettingsNotesListFragment : BaseFragment(), View.OnClickListener {
     }
 
     override fun onClick(v: View) {
-        val user = v.tag as User
+        val user = v.tag as NoteInfo
         showUserProfile(user.nickName)
     }
 
@@ -88,7 +87,7 @@ class SettingsNotesListFragment : BaseFragment(), View.OnClickListener {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return if (item.itemId == R.id.menu_delete_all) {
+        return if (item.itemId == R.id.menu_delete_all_notes) {
             mNotesList!!.removeAllNotesList()
             mListAdapter!!.notifyDataSetChanged()
             true

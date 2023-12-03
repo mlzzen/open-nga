@@ -7,11 +7,19 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "notes")
 class NoteInfo {
+    operator fun component1(): String? {
+        return note
+    }
+
+    operator fun component2(): String {
+        return nickName
+    }
+
     @ColumnInfo(name = "note")
     var note: String? = null
 
     @ColumnInfo(name = "nickName")
-    var nickName: String? = null
+    lateinit var nickName: String
 
     @PrimaryKey
     @ColumnInfo(name = "userId")

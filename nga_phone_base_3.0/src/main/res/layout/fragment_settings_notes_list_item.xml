@@ -10,12 +10,12 @@
     android:paddingStart="?attr/listPreferredItemPaddingLeft">
 
     <TextView
-        android:id="@+id/user_name"
+        android:id="@+id/note_user_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:layout_marginStart="24dp"
-        android:text="@string/sample_nick_name"
+        android:text="@string/sample_note"
         android:textSize="18dp"/>
 
 </RelativeLayout>

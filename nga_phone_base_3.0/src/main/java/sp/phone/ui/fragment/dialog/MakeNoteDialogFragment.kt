@@ -34,7 +34,7 @@ class MakeNoteDialogFragment : BaseDialogFragment() {
                     val noteInfo = NoteInfo()
                     noteInfo.note = note.toString()
                     noteInfo.userId = uid!!
-                    noteInfo.nickName = userName
+                    noteInfo.nickName = userName!!
                     noteMananger?.addToNotesList(noteInfo)
                     dialog.dismiss()
                     ToastUtils.success(R.string.add_to_noteslist_success);
