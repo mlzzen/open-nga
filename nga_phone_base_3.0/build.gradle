@@ -40,6 +40,10 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
+    viewBinding  {
+        enabled true
+    }
+
     buildTypes {
         release {
             debuggable false
@@ -79,6 +83,7 @@ dependencies {
 
     implementation "com.google.android.material:material:$androidxMaterial"
     implementation "androidx.cardview:cardview:1.0.0"
+    implementation 'com.android.databinding:viewbinding:4.0.1'
 
     implementation 'commons-io:commons-io:2.11.0'
 

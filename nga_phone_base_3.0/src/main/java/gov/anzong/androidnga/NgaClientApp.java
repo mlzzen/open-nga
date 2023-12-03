@@ -21,6 +21,7 @@ import gov.anzong.androidnga.common.PreferenceKey;
 import gov.anzong.androidnga.common.util.ReflectUtils;
 import gov.anzong.androidnga.db.AppDatabase;
 import sp.phone.common.FilterKeywordsManagerImpl;
+import sp.phone.common.NoteManangerImpl;
 import sp.phone.common.UserManagerImpl;
 import sp.phone.common.VersionUpgradeHelper;
 import sp.phone.task.CheckInTask;
@@ -96,6 +97,7 @@ public class NgaClientApp extends Application {
 
     private void initCoreModule() {
         UserManagerImpl.getInstance().initialize(this);
+        NoteManangerImpl.Companion.getInstance().initialize(this);
         FilterKeywordsManagerImpl.getInstance().initialize(this);
 //        // 注册crashHandler
 //        CrashHandler.getInstance().init(this);

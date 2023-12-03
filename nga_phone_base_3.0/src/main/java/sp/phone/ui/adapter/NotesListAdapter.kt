@@ -1,47 +1,36 @@
 package sp.phone.ui.adapter
 
 import android.content.Context
-import android.graphics.Bitmap
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import butterknife.BindView
-import butterknife.ButterKnife
 import gov.anzong.androidnga.R
+import gov.anzong.androidnga.databinding.FragmentSettingsNotesListItemBinding
 import sp.phone.common.NoteInfo
-import sp.phone.common.User
-import sp.phone.util.ImageUtils
 
-class NotesListAdapter(context: Context?, notesList: List<NoteInfo>?) : RecyclerView.Adapter<NotesListAdapter.NoteViewHolder>() {
+class NotesListAdapter(context: Context?, notesList: MutableList<NoteInfo>) :
+    RecyclerView.Adapter<NotesListAdapter.NoteViewHolder>() {
     private var mContext: Context? = null
 
-    private var mNotesList: List<NoteInfo>? = null
+    private var mNotesList: MutableList<NoteInfo>
 
     private var mOnClickListener: View.OnClickListener? = null
 
-    private var mDefaultAvatar: Bitmap? = null
+    lateinit var binding: FragmentSettingsNotesListItemBinding
+
 
     class NoteViewHolder(itemView: View?) : RecyclerView.ViewHolder(
         itemView!!
     ) {
-        @BindView(R.id.user_name)
         var userNameView: TextView? = null
-
-        @BindView(R.id.avatar)
-        var avatarView: ImageView? = null
-
-        init {
-            ButterKnife.bind(this, itemView!!)
-        }
     }
 
     init {
         mContext = context
         mNotesList = notesList
-        mDefaultAvatar = ImageUtils.loadDefaultAvatar()
     }
 
     fun setOnClickListener(listener: View.OnClickListener?) {
@@ -49,20 +38,28 @@ class NotesListAdapter(context: Context?, notesList: List<NoteInfo>?) : Recycler
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteViewHolder {
+        binding = FragmentSettingsNotesListItemBinding.inflate(
+            LayoutInflater.from(parent.context),
+            parent,
+            false
+        )
+
         val convertView: View = LayoutInflater.from(mContext)
             .inflate(R.layout.fragment_settings_notes_list_item, parent, false)
         val holder = NoteViewHolder(convertView)
         holder.itemView.setOnClickListener(mOnClickListener)
-        holder.avatarView!!.setImageBitmap(mDefaultAvatar)
+        holder.userNameView = binding.userName
         return holder
     }
 
     override fun onBindViewHolder(holder: NoteViewHolder, position: Int) {
-        holder.userNameView!!.text = mNotesList!![position].nickName
+//        holder.userNameView!!.text = mNotesList!![position].nickName
+        holder.userNameView?.setText(mNotesList!![position].nickName)
+        Log.d("holder.userNameView.text", holder.userNameView?.text.toString())
         holder.itemView.tag = mNotesList!![position]
     }
 
     override fun getItemCount(): Int {
-        return mNotesList?.size ?: 0
+        return mNotesList.size
     }
 }

@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import gov.anzong.androidnga.R
+import sp.phone.common.NoteInfo
 import sp.phone.common.NoteMananger
 import sp.phone.common.NoteManangerImpl
 import sp.phone.common.PhoneConfiguration
@@ -45,7 +46,7 @@ class SettingsNotesListFragment : BaseFragment(), View.OnClickListener {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        mListAdapter = NotesListAdapter(context, mNotesList!!.getNotesList())
+        mListAdapter = NotesListAdapter(context, mNotesList!!.getNotesList() ?: emptyList<NoteInfo>().toMutableList())
         mListAdapter!!.setOnClickListener(this)
         mListView = view.findViewById(R.id.list)
         mListView?.setLayoutManager(LinearLayoutManager(context))

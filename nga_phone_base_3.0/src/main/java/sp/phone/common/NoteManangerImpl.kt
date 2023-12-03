@@ -1,18 +1,72 @@
 package sp.phone.common
 
+import android.content.Context
+import android.content.SharedPreferences
+import android.preference.PreferenceManager
+import android.text.TextUtils
+import com.alibaba.fastjson.JSON
+import gov.anzong.androidnga.base.util.PreferenceUtils
+import gov.anzong.androidnga.base.util.ThreadUtils
+import gov.anzong.androidnga.common.PreferenceKey
+import gov.anzong.androidnga.db.AppDatabase
+
 class NoteManangerImpl() : NoteMananger {
-    private val notesList: MutableList<NoteInfo>? = null
-    override fun addToNotesList(note: NoteInfo?) {
-        if (!notesList?.contains(note)!!) {
-            if (note != null) {
-                notesList.add(note)
+    private var notesList: MutableList<NoteInfo>? = null
+    private var mPrefs: SharedPreferences? = null
+    private var mContext: Context? = null
+
+    override fun initialize(context: Context) {
+        mContext = context.applicationContext
+        mPrefs = PreferenceManager.getDefaultSharedPreferences(context);
+        val notesListStr = mPrefs?.getString(PreferenceKey.PREF_NOTES_LIST, "")
+        if (TextUtils.isEmpty(notesListStr)) {
+            notesList = ArrayList()
+        } else {
+            notesList = JSON.parseArray(notesListStr, NoteInfo::class.java)
+            if (notesList == null) {
+                notesList = ArrayList()
             }
         }
-//        notesList.edit().putString(PreferenceKey.BLACK_LIST, JSON.toJSONString(mBlackList)).apply()
+        notesList = AppDatabase.getInstance().noteDao().loadNotes() as MutableList<NoteInfo>?
+    }
+
+    override fun addToNotesList(note: NoteInfo?) {
+        for (i in notesList?.indices!!) {
+            val localNote: NoteInfo = notesList!![i]
+            if (localNote.userId == note?.userId) {
+                if (note != null) {
+                    notesList!![i].note = note.note
+                    commit()
+                    return
+                }
+            }
+        }
+        if (note != null) {
+            notesList!!.add(note)
+            commit()
+        }
     }
 
     private object SingletonHolder {
         var sInstance: NoteMananger = NoteManangerImpl()
+    }
+
+    private fun commit() {
+        mPrefs?.edit()
+            ?.putString(PreferenceKey.PREF_NOTES_LIST, JSON.toJSONString(notesList))
+            ?.apply()
+        saveNotes()
+    }
+
+    private fun saveNotes() {
+        ThreadUtils.postOnSubThread {
+            synchronized(this) {
+                notesList?.let {
+                    AppDatabase.getInstance().noteDao()
+                        .updateNotes(*it.toTypedArray<NoteInfo>())
+                }
+            }
+        }
     }
 
     companion object {
@@ -21,13 +75,8 @@ class NoteManangerImpl() : NoteMananger {
         }
     }
 
-    override fun getNotesList() : MutableList<NoteInfo>?{
+    override fun getNotesList(): MutableList<NoteInfo>? {
         return notesList
-    }
-
-
-    override fun addToNotesList(name: String?, uid: String?, note: String?) {
-        TODO("Not yet implemented")
     }
 
     override fun removeAllNotesList() {
@@ -36,5 +85,15 @@ class NoteManangerImpl() : NoteMananger {
 
     override fun removeFromNotesList(uid: String?) {
         TODO("Not yet implemented")
+    }
+
+    override fun getNoteFromList(uid: String): String? {
+        for (i in notesList?.indices!!) {
+            val localNote: NoteInfo = notesList!![i]
+            if (localNote.userId == uid) {
+                return localNote.note
+            }
+        }
+        return null
     }
 }

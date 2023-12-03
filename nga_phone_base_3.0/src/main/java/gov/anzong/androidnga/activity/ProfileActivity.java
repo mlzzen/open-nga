@@ -401,7 +401,11 @@ public class ProfileActivity extends BaseActivity implements OnHttpCallBack<Prof
 
     public void showMakeNoteDialog() {
         BaseDialogFragment df = new MakeNoteDialogFragment();
-        df.show(getSupportFragmentManager());
+        Bundle bundle = new Bundle();
+        bundle.putString("userName", mProfileData.getUserName());
+        bundle.putString("uid", mProfileData.getUid());
+        df.setArguments(bundle);
+        df.show(getSupportFragmentManager(), mProfileData.getUid());
     }
 
     private void startModifyAvatar() {

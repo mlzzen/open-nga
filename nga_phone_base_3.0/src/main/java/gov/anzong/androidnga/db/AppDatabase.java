@@ -6,13 +6,15 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
+import gov.anzong.androidnga.db.note.NoteDao;
 import gov.anzong.androidnga.db.user.UserDao;
+import sp.phone.common.NoteInfo;
 import sp.phone.common.User;
 
 /**
  * @author yangyihang
  */
-@Database(entities = {User.class}, version = 1, exportSchema = false)
+@Database(entities = {User.class, NoteInfo.class}, version = 2, exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
 
     private static final String MAIN_DB_NAME = "app_database.db";
@@ -22,6 +24,7 @@ public abstract class AppDatabase extends RoomDatabase {
     public static void init(Context context) {
         sInstance = Room.databaseBuilder(context, AppDatabase.class, MAIN_DB_NAME)
                 .allowMainThreadQueries()
+                .fallbackToDestructiveMigration()
                 .build();
     }
 
@@ -30,5 +33,7 @@ public abstract class AppDatabase extends RoomDatabase {
     }
 
     public abstract UserDao userDao();
+
+    public abstract NoteDao noteDao();
 
 }
