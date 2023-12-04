@@ -36,7 +36,6 @@
     <string name="daymode">日间模式</string>
     <string name="menu_title_open_with_preload_browser">使用内置浏览器打开</string>
     <string name="menu_title_open_with_browser">使用外置浏览器打开</string>
-    <string name="menu_title_export_pic">导出为图片</string>
     <string name="iconmode">使用原版板块图标</string>
     <string name="refresh">刷新</string>
     <string name="back">返回</string>
