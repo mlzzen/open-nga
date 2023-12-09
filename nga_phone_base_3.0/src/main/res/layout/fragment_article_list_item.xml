@@ -40,6 +40,7 @@
             android:id="@+id/tv_floor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_post_time"
             android:layout_alignTop="@+id/tv_detail"
             android:layout_alignBottom="@+id/tv_detail"
             android:layout_alignParentEnd="true"
@@ -59,11 +60,22 @@
             android:textColor="@color/text_color_disabled"
             android:textSize="14dp" />
 
+        <TextView
+            android:id="@+id/tv_post_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/tv_nickName"
+            android:layout_alignParentEnd="true"
+            android:textColor="@color/text_color_disabled"
+            android:textIsSelectable="false"
+            android:textSize="14dp" />
+
 
         <ImageView
             android:id="@+id/iv_client"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_post_time"
             android:layout_alignTop="@+id/tv_floor"
             android:layout_alignBottom="@+id/tv_floor"
             android:layout_marginEnd="2dp"
@@ -75,6 +87,10 @@
         android:id="@+id/wv_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="48dp" />
 
         <TextView
             android:id="@+id/tv_content"
@@ -93,22 +109,12 @@
         android:gravity="end|center"
         android:orientation="horizontal"
         android:padding="10dp">
-        <TextView
-            android:id="@+id/tv_post_time"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_weight="1"
-            android:textColor="@color/text_color_disabled"
-            android:textIsSelectable="false"
-            android:textSize="14dp" />
 
         <ImageView
             android:id="@+id/iv_support"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_marginEnd="4dp"
-            android:layout_weight="0"
             android:padding="3dp"
             android:background="?android:attr/selectableItemBackgroundBorderless"
             android:src="@drawable/ic_baseline_thumb_up_24" />
@@ -117,7 +123,6 @@
             android:id="@+id/tv_score"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="0"
             android:padding="4dp"
             android:textIsSelectable="false" />
 
@@ -126,7 +131,6 @@
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_marginStart="4dp"
-            android:layout_weight="0"
             android:padding="3dp"
             android:background="?android:attr/selectableItemBackgroundBorderless"
             android:src="@drawable/ic_baseline_thumb_down_24" />
@@ -136,7 +140,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
-            android:layout_weight="0"
             android:contentDescription="@string/quote_subject"
             android:src="@drawable/ic_reply_24dp" />
 
@@ -144,7 +147,6 @@
             android:id="@+id/iv_more"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="0"
             android:layout_marginStart="4dp"
             android:src="@drawable/ic_more_ver_24dp" />
 
