@@ -9,7 +9,6 @@ build
 local.properties
 *.DS_Store
 gradle.properties
-/gradle
 *.apk
 projectFilesBackup/
 nga_phone_base_3.0/release/
