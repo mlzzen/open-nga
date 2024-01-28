@@ -203,11 +203,11 @@ public class UserManagerImpl implements UserManager {
 
     @Override
     public void removeUser(int index) {
-        mUserList.remove(index);
+        User user = mUserList.remove(index);
         if (mUserList.isEmpty() || mActiveIndex == index) {
             mActiveIndex = 0;
         }
-        commit();
+        AppDatabase.getInstance().userDao().deleteUserById(user.getUserId());
     }
 
     private void commit() {

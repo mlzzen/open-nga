@@ -21,4 +21,6 @@ public interface UserDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void updateUsers(User... users);
 
+    @Query("DELETE FROM users WHERE uid = :uid")
+    void deleteUserById(String uid);
 }
