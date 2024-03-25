@@ -121,7 +121,7 @@ public class MessageUtil {
         List<MessageArticlePageInfo> __R = new ArrayList<MessageArticlePageInfo>();
         if (rowMap == null)
             return null;
-        JSONObject rowObj = (JSONObject) rowMap.get("0");
+        JSONObject rowObj = (JSONObject) ((JSONObject) rowMap.get("allmsgs")).get("0");
         for (int i = 1; rowObj != null; i++) {
             MessageArticlePageInfo row = new MessageArticlePageInfo();
 
@@ -138,7 +138,7 @@ public class MessageUtil {
             fillUserInfo(row, userInfoMap);
             fillFormated_html_data(row, i);
             __R.add(row);
-            rowObj = (JSONObject) rowMap.get(String.valueOf(i));
+            rowObj = (JSONObject) ((JSONObject) rowMap.get("allmsgs")).get(String.valueOf(i));
         }
         return __R;
     }
