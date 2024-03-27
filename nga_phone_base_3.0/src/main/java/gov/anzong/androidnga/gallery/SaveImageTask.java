@@ -28,7 +28,7 @@ public class SaveImageTask {
 
     private int mDownloadCount;
 
-    private static final String PATH_IMAGES = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES)+ "/nga_open_source/";
+    private static final String PATH_IMAGES = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES) + "/nga_open_source/";
 
     private Subscription mSubscription;
 
@@ -69,6 +69,10 @@ public class SaveImageTask {
                 .map(result -> {
                     String url = result.url;
                     String suffix = url.substring(url.lastIndexOf('.'));
+                    int questionMarkPosition = suffix.lastIndexOf('?');
+                    if (questionMarkPosition != -1) {
+                        suffix = suffix.substring(0, questionMarkPosition);
+                    }
                     String path = PATH_IMAGES + System.currentTimeMillis() + suffix;
                     File target = new File(path);
                     FileUtils.copyFile(result.file, target);
