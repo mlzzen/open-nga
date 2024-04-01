@@ -37,7 +37,7 @@ public class TopicConvertFactory {
         if (js.startsWith("window.script_muti_get_var_store=")) {
             js = js.substring("window.script_muti_get_var_store=".length());
         }
-
+        js = js.replace(",\"parent\":\"\"", "");
         TopicListBean topicListBean = JSON.parseObject(js, TopicListBean.class);
 
         try {
