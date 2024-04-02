@@ -180,6 +180,16 @@ public class ArticleTabFragment extends BaseRxFragment {
         mFam.collapse();
     }
 
+    @OnClick(R.id.fab_goto_top)
+    public void gotoTop() {
+        FragmentManager fm = getSupportFragmentManager();
+        ArticleListFragment articleListFragment = (ArticleListFragment) fm.findFragmentByTag(ArticleListFragment.class.getSimpleName());
+        if (articleListFragment != null) {
+            articleListFragment.scrollToTop();
+        }
+        mFam.collapse();
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {

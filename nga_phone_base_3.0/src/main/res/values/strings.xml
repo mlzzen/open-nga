@@ -43,6 +43,7 @@
     <string name="new_message">发新消息</string>
     <string name="reply_message">回短消息</string>
     <string name="reply_thread">回帖</string>
+    <string name="goto_top">回到顶部</string>
     <string name="bookmark">收藏本帖</string>
     <string name="bookmark_title">已收藏的主题</string>
     <string name="goto_bookmark">收藏夹</string>

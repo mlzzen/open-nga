@@ -226,6 +226,11 @@ public class ArticleListFragment extends BaseMvpFragment<ArticleListPresenter> i
         });
     }
 
+    public void scrollToTop() {
+        RecyclerViewEx recyclerView = mListView.findViewById(R.id.list);
+        recyclerView.smoothScrollToPosition(0);
+    }
+
     @Override
     protected void accept(@NonNull RxEvent rxEvent) {
         if (rxEvent.what == RxEvent.EVENT_ARTICLE_GO_FLOOR

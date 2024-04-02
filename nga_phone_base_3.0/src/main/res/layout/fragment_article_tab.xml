@@ -58,6 +58,14 @@
             tools:ignore="VectorDrawableCompat" />
 
         <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_goto_top"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fab_title="@string/goto_top"
+            app:srcCompat="@drawable/btn_ic_create"
+            tools:ignore="VectorDrawableCompat" />
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab_refresh"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
