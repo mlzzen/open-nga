@@ -12,6 +12,8 @@
 6. 发帖上传的图片宽度调整
 7. 评分正常显示
 8. 投票正常展示
+9. 备注用户
+10. 
 
 ## roadmap
 
@@ -19,26 +21,8 @@ https://github.com/mlzzen/open-nga/issues/1
 
 ## 下载
 
-https://github.com/mlzzen/open-nga/releases
+[github](https://github.com/mlzzen/open-nga/releases)
 
-https://gitee.com/mlzzen/open-nga/releases
+[gitee](https://gitee.com/mlzzen/open-nga/releases)
 
-# 以下为原README
-
-NGA-CLIENT-VER-OPEN-SOURCE
-==========================
-
-NGA客户端开源版代码仓库
-
-可直接导入Android Studio。
-
-- - -
-更新内容去下面链接找
-- - -
-
-[<img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png"
-     alt="Get it on F-Droid"
-     height="80">](https://f-droid.org/packages/gov.anzong.androidnga/)
-[<img src="https://play.google.com/intl/en_us/badges/images/generic/en-play-badge.png"
-     alt="Get it on Google Play"
-     height="80">](https://play.google.com/store/apps/details?id=gov.anzong.androidnga)
+[酷安](http://www.coolapk.com/u/1683318)

@@ -32,13 +32,13 @@ public class AboutActivity extends MaterialAboutActivity {
     @NonNull
     @Override
     protected MaterialAboutList getMaterialAboutList(@NonNull Context context) {
-        return new MaterialAboutList(buildAppCard(), buildDevelopCard(), buildExtraCard());
+        return new MaterialAboutList(buildAppCard(), buildDevelopCard());
     }
 
     private MaterialAboutCard buildAppCard() {
         MaterialAboutCard.Builder builder = new MaterialAboutCard.Builder();
         builder.addItem(new MaterialAboutActionItem.Builder()
-                .text(R.string.start_title)
+                .text("NGA客户端-liang魔改版")
                 .icon(R.mipmap.ic_launcher)
                 .setOnClickAction(() -> new VersionUpgradeDialogFragment().show(getSupportFragmentManager(), null))
                 .build());
@@ -57,6 +57,13 @@ public class AboutActivity extends MaterialAboutActivity {
                         //FunctionUtils.openUrlByDefaultBrowser(AboutActivity.this, "https://www.coolapk.com/apk/gov.anzong.androidnga");
                     }
                 })
+                .build());
+
+        builder.addItem(new MaterialAboutActionItem.Builder()
+                .text("代码")
+                .subText("[@mlzzen]")
+                .setOnLongClickAction(Debugger::toggleDebugMode)
+                .icon(R.drawable.ic_code)
                 .build());
 
         builder.addItem(new MaterialAboutActionItem.Builder()
@@ -81,27 +88,8 @@ public class AboutActivity extends MaterialAboutActivity {
                 .setOnClickAction(() -> FunctionUtils.openUrlByDefaultBrowser(AboutActivity.this, "https://gitee.com/mlzzen/open-nga/releases"))
                 .icon(R.drawable.ic_gitee)
                 .build());
-
-        return builder.build();
-    }
-
-    private MaterialAboutCard buildDevelopCard() {
-        MaterialAboutCard.Builder builder = new MaterialAboutCard.Builder();
-        builder.title("开发团队");
-        builder.addItem(new MaterialAboutActionItem.Builder()
-                .text("代码")
-                .subText("[@竹井詩織里]/[@cfan8]/[@jjimmys]\n[@Moandor]/[@Elrond]/[@Justwen]/[@外地洋芋]")
-                .setOnLongClickAction(Debugger::toggleDebugMode)
-                .icon(R.drawable.ic_code)
-                .build());
-
-        builder.addItem(new MaterialAboutActionItem.Builder()
-                .text("美工")
-                .subText("[@那个惩戒骑]/[@从来不卖萌]")
-                .icon(R.drawable.ic_color_lens)
-                .build());
-
-        builder.addItem(new MaterialAboutActionItem.Builder()
+        
+                builder.addItem(new MaterialAboutActionItem.Builder()
                 .text("Github")
                 .subText("bug & 建议")
                 .setOnClickAction(() -> FunctionUtils.openUrlByDefaultBrowser(AboutActivity.this, "https://github.com/mlzzen/open-nga/issues"))
@@ -117,10 +105,16 @@ public class AboutActivity extends MaterialAboutActivity {
         return builder.build();
     }
 
-
-    private MaterialAboutCard buildExtraCard() {
+    private MaterialAboutCard buildDevelopCard() {
         MaterialAboutCard.Builder builder = new MaterialAboutCard.Builder();
-        builder.title("赞美片总!感谢[@force0119]");
+        builder.title("原来的NGA开源版");
+
+        builder.addItem(new MaterialAboutActionItem.Builder()
+                .text("Github")
+                .setOnClickAction(() -> FunctionUtils.openUrlByDefaultBrowser(AboutActivity.this, "https://github.com/Justwen/NGA-CLIENT-VER-OPEN-SOURCE"))
+                .icon(R.drawable.ic_github)
+                .build());
+
         return builder.build();
     }
 
