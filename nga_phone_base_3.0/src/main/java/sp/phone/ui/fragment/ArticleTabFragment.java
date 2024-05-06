@@ -157,7 +157,7 @@ public class ArticleTabFragment extends BaseRxFragment {
     }
 
     @OnClick(R.id.fab_post)
-    public void reply() {
+    public void replyArticle() {
         Intent intent = new Intent();
         String tid = String.valueOf(mRequestParam.tid);
         intent.putExtra("prefix", "");
@@ -174,7 +174,7 @@ public class ArticleTabFragment extends BaseRxFragment {
     }
 
     @OnClick(R.id.fab_refresh)
-    public void refresh() {
+    public void refreshPage() {
         getActivityViewModel().setRefreshPage(mViewPager.getCurrentItem() + 1);
         mRequestParam.page = mViewPager.getCurrentItem() + 1;
         mFam.collapse();
