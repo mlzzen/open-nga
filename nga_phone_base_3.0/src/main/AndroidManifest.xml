@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="gov.anzong.androidnga"
     android:configChanges="orientation|screenSize"
     android:installLocation="auto"
     android:largeHeap="true">
@@ -14,7 +13,7 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE" tools:node="remove"/>
 
     <application
-        android:name=".NgaClientApp"
+        android:name="gov.anzong.androidnga.NgaClientApp"
         android:anyDensity="false"
         android:hardwareAccelerated="false"
         android:icon="@mipmap/ic_launcher"
@@ -28,7 +27,7 @@
         tools:replace="android:label">
         <meta-data android:name="EasyGoClient" android:value="true" />
         <activity
-            android:name=".activity.MainActivity"
+            android:name="gov.anzong.androidnga.activity.MainActivity"
             android:configChanges="orientation|screenSize|locale|screenLayout|smallestScreenSize"
             android:label="@string/app_name"
             android:theme="@style/AppTheme"
@@ -46,39 +45,39 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activity.LoginActivity"
+            android:name="gov.anzong.androidnga.activity.LoginActivity"
             android:configChanges="orientation|screenSize"
             android:label="@string/label_activity_login"
             android:launchMode="singleTop"
             android:windowSoftInputMode="adjustPan" />
-        <activity android:name=".activity.ProfileActivity" />
+        <activity android:name="gov.anzong.androidnga.activity.ProfileActivity" />
         <activity
-            android:name=".activity.PostActivity"
+            android:name="gov.anzong.androidnga.activity.PostActivity"
             android:configChanges="orientation|screenSize"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".activity.AvatarPostActivity"
+            android:name="gov.anzong.androidnga.activity.AvatarPostActivity"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".activity.SignPostActivity"
+            android:name="gov.anzong.androidnga.activity.SignPostActivity"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".activity.MessagePostActivity"
+            android:name="gov.anzong.androidnga.activity.MessagePostActivity"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".activity.SettingsActivity"
+            android:name="gov.anzong.androidnga.activity.SettingsActivity"
             android:configChanges="orientation|screenSize"
             android:label="@string/menu_setting"
             android:launchMode="singleTop" />
         <activity
-            android:name=".activity.MessageListActivity"
+            android:name="gov.anzong.androidnga.activity.MessageListActivity"
             android:label="@string/label_activity_message_list" />
         <activity
-            android:name=".activity.MessageDetailActivity"
+            android:name="gov.anzong.androidnga.activity.MessageDetailActivity"
             android:label="@string/label_activity_message_detail" />
 
         <activity
-            android:name=".activity.TopicListActivity"
+            android:name="gov.anzong.androidnga.activity.TopicListActivity"
             android:configChanges="orientation|screenSize|locale|screenLayout|smallestScreenSize"
             android:exported="true">
             <intent-filter>
@@ -131,7 +130,7 @@
         </activity>
 
         <activity
-            android:name=".activity.ArticleListActivity"
+            android:name="gov.anzong.androidnga.activity.ArticleListActivity"
             android:configChanges="orientation|screenSize|locale|screenLayout|smallestScreenSize"
             android:exported="true">
             <intent-filter>
@@ -179,22 +178,22 @@
 
             </intent-filter>
         </activity>
-        <activity android:name=".gallery.ImageZoomActivity" />
-        <activity android:name=".activity.ForumListActivity" />
-        <activity android:name=".activity.WebViewerActivity" />
-        <activity android:name=".activity.RecentNotificationActivity" />
-        <activity android:name=".activity.LauncherSubActivity" />
+        <activity android:name="gov.anzong.androidnga.gallery.ImageZoomActivity" />
+        <activity android:name="gov.anzong.androidnga.activity.ForumListActivity" />
+        <activity android:name="gov.anzong.androidnga.activity.WebViewerActivity" />
+        <activity android:name="gov.anzong.androidnga.activity.RecentNotificationActivity" />
+        <activity android:name="gov.anzong.androidnga.activity.LauncherSubActivity" />
         <activity
-            android:name=".activity.SearchActivity"
+            android:name="gov.anzong.androidnga.activity.SearchActivity"
             android:label="@string/search" />
         <activity
-            android:name=".activity.AboutActivity"
+            android:name="gov.anzong.androidnga.activity.AboutActivity"
             android:label="@string/title_about" />
 
-        <activity android:name=".activity.TopicCacheActivity" android:label="我的缓存" />
-        <activity android:name=".activity.ArticleCacheActivity" />
+        <activity android:name="gov.anzong.androidnga.activity.TopicCacheActivity" android:label="我的缓存" />
+        <activity android:name="gov.anzong.androidnga.activity.ArticleCacheActivity" />
 
-        <activity android:name=".activity.WebViewActivity" />
+        <activity android:name="gov.anzong.androidnga.activity.WebViewActivity" />
 
         <provider
             android:name="androidx.core.content.FileProvider"

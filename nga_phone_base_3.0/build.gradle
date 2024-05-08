@@ -15,9 +15,9 @@ def isJenkins() {
 
 android {
     compileSdkVersion project.compileSdkVersion
-
+    namespace 'gov.anzong.androidnga'
     defaultConfig {
-        applicationId "gov.anzong.androidnga"
+        applicationId "dev.mlzzen.androidnga"
         minSdkVersion project.minSdkVersion
         targetSdkVersion project.targetSdkVersion
         resConfigs "zh", "en"

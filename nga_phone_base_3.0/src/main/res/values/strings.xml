@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">NGA客户端</string>
+    <string name="app_name">OPEN NGA</string>
     <string name="menu_login">登录</string>
     <string name="menu_setting">设置</string>
     <string name="menu_exit">退出</string>
@@ -157,7 +157,7 @@
     <string name="prompt">提示</string>
     <string name="promptnewversion">提示(花几秒看完它)</string>
     <string name="i_know">知道了</string>
-    <string name="start_title">NGA客户端</string>
+    <string name="start_title">OPEN NGA</string>
     <string name="create_cache_dir">创建缓存目录</string>
     <string name="move_avatar">移动头像到新位置</string>
     <string name="error">错误</string>
@@ -238,7 +238,6 @@
     <string name="cancle">取消</string>
     <string name="showColortxtWarn">彩虹发帖模式易导致禁言,专供有自杀需求的用户!</string>
     <string name="showNewweibaWarn">发送可见尾巴易导致禁言,专供有自杀需求的用户!</string>
-    <string name="about_client">NGA客户端开源版开发团队&lt;br/&gt;代码:[@竹井詩織里]/[@cfan8]/[@jjimmys]/[@Moandor]/[@Elrond]/[@Justwen]&lt;br/&gt;美工:[@那个惩戒骑]/[@从来不卖萌]&lt;br/&gt;查找更新请前往Play商店或酷安&lt;br/&gt;赞美片总!感谢[@force0119]!&lt;br/&gt;客户端吐槽QQ群:714556852&lt;br/&gt;License:&lt;a style="color:blue;" href="file:///android_asset/LICENSE.TXT"&gt;GNU GPL v2&lt;/a&gt;,&lt;a style="color:blue;" href="file:///android_asset/OSLICENSE.TXT"&gt;开放源代码许可&lt;/a&gt;&lt;br/&gt;软件版本:%1$s</string>
     <string name="richtext">富文本</string>
     <string name="atsomeone">[@用户名]</string>
     <string name="urladd">[url]</string>
@@ -393,7 +392,7 @@
     <string name="label_activity_message_detail">短消息正文</string>
     <string name="label_activity_topic_history">浏览历史</string>
     <string name="label_activity_login">登录</string>
-    <string name="label_activity_main">NGA客户端开源版</string>
+    <string name="label_activity_main">OPEN NGA</string>
     <string name="title_about">关于</string>
 
     <!-- error -->

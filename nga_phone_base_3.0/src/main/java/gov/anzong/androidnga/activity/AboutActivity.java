@@ -38,7 +38,7 @@ public class AboutActivity extends MaterialAboutActivity {
     private MaterialAboutCard buildAppCard() {
         MaterialAboutCard.Builder builder = new MaterialAboutCard.Builder();
         builder.addItem(new MaterialAboutActionItem.Builder()
-                .text("NGA客户端-liang魔改版")
+                .text("OPEN NGA")
                 .icon(R.mipmap.ic_launcher)
                 .setOnClickAction(() -> new VersionUpgradeDialogFragment().show(getSupportFragmentManager(), null))
                 .build());
