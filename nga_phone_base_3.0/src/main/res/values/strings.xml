@@ -81,6 +81,7 @@
     <string name="vote_dialog">投票/投注</string>
     <string name="showprofile">查看用户信息</string>
     <string name="mark_note">添加备注</string>
+    <string name="follow_this_one">关注此人</string>
     <string name="ban_thisone">屏蔽此人</string>
     <string name="cancel_ban_thisone">取消屏蔽此人</string>
     <string name="avatar_dialog">查看头像</string>
