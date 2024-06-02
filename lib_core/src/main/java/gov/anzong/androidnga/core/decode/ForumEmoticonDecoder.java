@@ -1,5 +1,7 @@
 package gov.anzong.androidnga.core.decode;
 
+import static gov.anzong.androidnga.common.util.EmoticonUtils.EMOTICON_URL;
+
 import com.google.common.collect.HashBasedTable;
 import com.google.common.collect.Table;
 
@@ -146,27 +148,27 @@ public class ForumEmoticonDecoder implements IForumDecoder {
     private static Table<String, String, String> sEmotionTable = HashBasedTable.create();
 
     static {
-        for (int i = 0; i < UBB_CODE_ACNIANG.length; i++) {
-            sEmotionTable.put("ac", UBB_CODE_ACNIANG[i], IMG_ADD_ACNIANG[i]);
+        for (int i = 0; i < EMOTICON_URL[1].length; i++) {
+            sEmotionTable.put("ac", EMOTICON_URL[1][i][1], EMOTICON_URL[1][i][2]);
         }
 
-        for (int i = 0; i < UBB_CODE_ACNIANG_NEW.length; i++) {
-            sEmotionTable.put("a2", UBB_CODE_ACNIANG_NEW[i], IMG_ADD_ACNIANG_NEW[i]);
+        for (int i = 0; i < EMOTICON_URL[2].length; i++) {
+            sEmotionTable.put("a2", EMOTICON_URL[2][i][1], EMOTICON_URL[2][i][2]);
         }
 
-        for (int i = 0; i < UBB_CODE_NGNIANG.length; i++) {
-            sEmotionTable.put("ng", UBB_CODE_NGNIANG[i], IMG_ADD_NGNIANG[i]);
+        for (int i = 0; i < EMOTICON_URL[3].length; i++) {
+            sEmotionTable.put("ng", EMOTICON_URL[3][i][1], EMOTICON_URL[3][i][2]);
         }
 
-        for (int i = 0; i < UBB_CODE_PST.length; i++) {
-            sEmotionTable.put("pst", UBB_CODE_PST[i], IMG_ADD_PST[i]);
+        for (int i = 0; i < EMOTICON_URL[4].length; i++) {
+            sEmotionTable.put("pst", EMOTICON_URL[4][i][1], EMOTICON_URL[4][i][1]);
         }
-        for (int i = 0; i < UBB_CODE_DT.length; i++) {
-            sEmotionTable.put("dt", UBB_CODE_DT[i], IMG_ADD_DT[i]);
+        for (int i = 0; i < EMOTICON_URL[5].length; i++) {
+            sEmotionTable.put("dt", EMOTICON_URL[5][i][1], EMOTICON_URL[5][i][2]);
         }
 
-        for (int i = 0; i < UBB_CODE_PENGUIN.length; i++) {
-            sEmotionTable.put("pg", UBB_CODE_PENGUIN[i], IMG_ADD_PENGUIN[i]);
+        for (int i = 0; i < EMOTICON_URL[6].length; i++) {
+            sEmotionTable.put("pg", EMOTICON_URL[6][i][1], EMOTICON_URL[6][i][2]);
         }
     }
 
