@@ -1,0 +1,12 @@
+<h3>New Features</h3>
+<ul>
+<li>Auto check in</li>
+<li>NG girl emoji</li>
+<li>Post emoji with bbcode</li>
+<li>From post to forum</li>
+<li>Most used emoji</li>
+<li>Adjust uploaded image width in posts</li>
+<li>Show rate</li>
+<li>Show vote</li>
+<li>Remark users</li>
+</ul>
