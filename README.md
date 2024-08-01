@@ -27,3 +27,7 @@
 [酷安](https://www.coolapk.com/u/1683318)
 
 [123 盘](https://www.123pan.com/s/q6P8jv-mB9Fd.html)
+
+[<img src="https://fdroid.gitlab.io/artwork/badge/get-it-on-zh-hans.png"
+    alt="下载应用，请到 F-Droid"
+    height="80">](https://f-droid.org/packages/dev.mlzzen.androidnga)
