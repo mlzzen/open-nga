@@ -6,6 +6,7 @@ import android.os.Bundle;
 import java.util.Map;
 
 import gov.anzong.androidnga.http.OnHttpCallBack;
+import sp.phone.http.OnSimpleHttpCallBack;
 import sp.phone.http.bean.ThreadData;
 import sp.phone.http.bean.ThreadRowInfo;
 import sp.phone.param.ArticleListParam;
@@ -26,9 +27,9 @@ public interface ArticleListContract {
 
         void postComment(ArticleListParam param, ThreadRowInfo row);
 
-        void postSupportTask(int tid, int pid);
+        void postSupportTask(int tid, int pid, OnSimpleHttpCallBack callBack);
 
-        void postOpposeTask(int tid, int pid);
+        void postOpposeTask(int tid, int pid, OnSimpleHttpCallBack callBack);
 
         void quote(ArticleListParam param, ThreadRowInfo row);
 

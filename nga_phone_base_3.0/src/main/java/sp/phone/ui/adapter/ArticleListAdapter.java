@@ -346,6 +346,9 @@ public class ArticleListAdapter extends RecyclerView.Adapter<ArticleListAdapter.
         @BindView(R.id.tv_score)
         TextView scoreTv;
 
+        // TODO
+        
+
         @BindView(R.id.iv_more)
         ImageView menuIv;
 

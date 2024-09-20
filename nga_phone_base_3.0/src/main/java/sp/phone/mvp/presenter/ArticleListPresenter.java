@@ -15,6 +15,7 @@ import gov.anzong.androidnga.common.PreferenceKey;
 import gov.anzong.androidnga.http.OnHttpCallBack;
 import sp.phone.common.UserManager;
 import sp.phone.common.UserManagerImpl;
+import sp.phone.http.OnSimpleHttpCallBack;
 import sp.phone.http.bean.ThreadData;
 import sp.phone.http.bean.ThreadRowInfo;
 import sp.phone.mvp.contract.ArticleListContract;
@@ -217,15 +218,20 @@ public class ArticleListPresenter extends BasePresenter<ArticleListFragment, Art
     }
 
     @Override
-    public void postSupportTask(int tid, int pid) {
+    public void postSupportTask(int tid, int pid, OnSimpleHttpCallBack callback) {
         if (mLikeTask == null) {
             mLikeTask = new LikeTask();
         }
-        mLikeTask.execute(tid, pid, LikeTask.SUPPORT, ToastUtils::success);
+        mLikeTask.execute(tid, pid, LikeTask.SUPPORT, result -> {
+            ToastUtils.success(result);
+            if (callback != null) {
+                callback.onResult(result);
+            }
+        });
     }
 
     @Override
-    public void postOpposeTask(int tid, int pid) {
+    public void postOpposeTask(int tid, int pid, OnSimpleHttpCallBack callback) {
         if (mLikeTask == null) {
             mLikeTask = new LikeTask();
         }

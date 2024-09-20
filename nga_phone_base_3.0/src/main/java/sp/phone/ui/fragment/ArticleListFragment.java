@@ -2,6 +2,7 @@ package sp.phone.ui.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -130,10 +131,28 @@ public class ArticleListFragment extends BaseMvpFragment<ArticleListPresenter> i
                             .navigation();
                     break;
                 case R.id.menu_support:
-                    mPresenter.postSupportTask(tid, row.getPid());
+                    mPresenter.postSupportTask(tid, row.getPid(), result-> {
+                        // 0 -> 你对这个帖子表示反对
+                        // 你取消了对这个帖子的反对
+                        //  0 -> 你对这个帖子表示支持
+                        // 0 -> 你取消了对这个帖子的支持
+//                        if (result.contains("你取消了对这个帖子的支持")) {
+//                            // 取消支持
+//                            // 更新视图
+//
+//                        } else if (result.contains("你取消了对这个帖子的反对")) {
+//                            // 取消反对
+//                        } else if (result.contains("你对这个帖子表示支持")) {
+//                            // 支持
+//                        } else if (result.contains("你对这个帖子表示反对")) {
+//                            // 反对
+//                        }
+                    });
                     break;
                 case R.id.menu_oppose:
-                    mPresenter.postOpposeTask(tid, row.getPid());
+                    mPresenter.postOpposeTask(tid, row.getPid(), result-> {
+
+                    });
                     break;
                 case R.id.menu_favorite:
                     BookmarkTask.execute(tidStr, pidStr);
@@ -189,7 +208,9 @@ public class ArticleListFragment extends BaseMvpFragment<ArticleListPresenter> i
         @Override
         public void onClick(View view) {
             ThreadRowInfo row = ((ThreadRowInfo) view.getTag());
-            mPresenter.postSupportTask(row.getTid(), row.getPid());
+            mPresenter.postSupportTask(row.getTid(), row.getPid(), result-> {
+
+            });
         }
     };
 
@@ -197,7 +218,9 @@ public class ArticleListFragment extends BaseMvpFragment<ArticleListPresenter> i
         @Override
         public void onClick(View view) {
             ThreadRowInfo row = ((ThreadRowInfo) view.getTag());
-            mPresenter.postOpposeTask(row.getTid(), row.getPid());
+            mPresenter.postOpposeTask(row.getTid(), row.getPid(), result-> {
+
+            });
         }
     };
 
