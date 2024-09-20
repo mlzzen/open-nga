@@ -52,6 +52,10 @@ public class PreferenceKey {
 
     public static final String PREF_NOTES_LIST = "pref_notes_list";
 
+    public static final String PREF_DRAFT_TOPIC = "pref_draft_topic";
+
+    public static final String PREF_DRAFT_REPLY = "pref_draft_reply";
+
     public static final String PREF_BLACK_LIST = "pref_black_list";
 
     public static final String PREF_USER = "pref_user";
@@ -101,6 +105,8 @@ public class PreferenceKey {
     public static final String KEY_WEBVIEW_DATA_INDEX = "webview_data_index";
 
     public static final String KEY_CLEAR_CACHE = "key_clear_cache";
+
+    public static final String KEY_CLEAR_DRAFT = "key_clear_draft";
 
     public static final String KEY_WEBVIEW_TEXT_ZOOM = "key_webview_zoom_size";
 

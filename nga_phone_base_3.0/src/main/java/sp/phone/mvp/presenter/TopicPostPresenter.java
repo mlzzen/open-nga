@@ -2,6 +2,7 @@ package sp.phone.mvp.presenter;
 
 import android.Manifest;
 import android.app.Activity;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
@@ -13,6 +14,8 @@ import android.text.TextUtils;
 import android.text.style.ImageSpan;
 import android.util.DisplayMetrics;
 
+import androidx.preference.PreferenceManager;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
@@ -21,6 +24,7 @@ import gov.anzong.androidnga.R;
 import gov.anzong.androidnga.base.util.ContextUtils;
 import gov.anzong.androidnga.base.util.PermissionUtils;
 import gov.anzong.androidnga.base.util.ToastUtils;
+import gov.anzong.androidnga.common.PreferenceKey;
 import gov.anzong.androidnga.common.util.EmoticonUtils;
 import gov.anzong.androidnga.http.OnHttpCallBack;
 import gov.anzong.androidnga.rxjava.BaseSubscriber;
@@ -263,5 +267,13 @@ public class TopicPostPresenter extends BasePresenter<TopicPostFragment, TopicPo
     @Override
     protected TopicPostModel onCreateModel() {
         return new TopicPostModel();
+    }
+
+    public void saveDraft(String title, String body) {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(mBaseView.getContext());
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putString(PreferenceKey.PREF_DRAFT_TOPIC, title);
+        editor.putString(PreferenceKey.PREF_DRAFT_REPLY, body);
+        editor.apply();
     }
 }

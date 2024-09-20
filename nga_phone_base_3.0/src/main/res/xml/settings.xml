@@ -62,6 +62,10 @@
             android:title="@string/setting_title_size" />
 
         <PreferenceScreen
+            android:key="key_clear_draft"
+            android:title="清除草稿"/>
+
+        <PreferenceScreen
             android:key="key_clear_cache"
             android:title="清除缓存"/>
 

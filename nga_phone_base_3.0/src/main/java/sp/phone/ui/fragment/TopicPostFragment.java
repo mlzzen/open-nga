@@ -2,9 +2,12 @@ package sp.phone.ui.fragment;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -16,10 +19,12 @@ import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.preference.PreferenceManager;
 
 import gov.anzong.androidnga.R;
 import gov.anzong.androidnga.base.util.ToastUtils;
 import gov.anzong.androidnga.base.widget.ProgressBarEx;
+import gov.anzong.androidnga.common.PreferenceKey;
 import sp.phone.mvp.contract.TopicPostContract;
 import sp.phone.mvp.presenter.TopicPostPresenter;
 import sp.phone.param.ParamKey;
@@ -64,9 +69,51 @@ public class TopicPostFragment extends BaseMvpFragment<TopicPostPresenter> imple
         return rootView;
     }
 
+    @Override
+    public boolean onBackPressed() {
+        if (!TextUtils.isEmpty(mTitleEditText.getText()) || !TextUtils.isEmpty(mBodyEditText.getText())) {
+            new AlertDialog.Builder(getActivity())
+                .setTitle("提示")
+                .setMessage("是否保存当前编辑内容为草稿？")
+                .setPositiveButton("保存", (dialog, which) -> {
+                    saveDraft();
+                    getActivity().finish();
+                })
+                .setNegativeButton("不保存", (dialog, which) -> {
+                    getActivity().finish();
+                })
+                .show();
+            return true;
+        } else {
+            getActivity().finish();
+            return true;
+        }
+    }
+
+    private void saveDraft() {
+        String title = mTitleEditText.getText().toString();
+        String body = mBodyEditText.getText().toString();
+        mPresenter.saveDraft(title, body);
+    }
+
     @SuppressLint("ClickableViewAccessibility")
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getContext());
+        String draftTitle = prefs.getString(PreferenceKey.PREF_DRAFT_TOPIC, "");
+        String draftBody = prefs.getString(PreferenceKey.PREF_DRAFT_REPLY, "");
+        
+        if (!TextUtils.isEmpty(draftTitle) || !TextUtils.isEmpty(draftBody)) {
+            new AlertDialog.Builder(getActivity())
+                .setTitle("加载草稿")
+                .setMessage("检测到有未发布的草稿，是否加载？")
+                .setPositiveButton("加载", (dialog, which) -> {
+                    mTitleEditText.setText(draftTitle);
+                    mBodyEditText.setText(draftBody);
+                })
+                .setNegativeButton("取消", null)
+                .show();
+        }
         mAnonyCheckBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
             if (isChecked) {
                 ToastUtils.info("匿名发帖/回复每次将扣除一百铜币,慎重");
@@ -96,10 +143,11 @@ public class TopicPostFragment extends BaseMvpFragment<TopicPostPresenter> imple
         outState.putBoolean("anoay", mAnonyCheckBox.isChecked());
     }
 
-    @Override
-    public boolean onBackPressed() {
-        return mToolbarContainer.onBackPressed();
-    }
+//    @Override
+//    public boolean onBackPressed() {
+//
+//        return mToolbarContainer.onBackPressed();
+//    }
 
     @Override
     public void insertBodyText(CharSequence text) {

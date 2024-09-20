@@ -2,8 +2,10 @@ package sp.phone.ui.fragment;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.WindowManager;
 
 import androidx.annotation.Nullable;
@@ -11,6 +13,7 @@ import androidx.preference.EditTextPreference;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceGroup;
+import androidx.preference.PreferenceManager;
 
 import com.bumptech.glide.Glide;
 
@@ -51,12 +54,22 @@ public class SettingsFragment extends BasePreferenceFragment implements Preferen
             return true;
         });
 
+        findPreference(PreferenceKey.KEY_CLEAR_DRAFT).setOnPreferenceClickListener(preference -> {
+            showClearDraftDialog();
+            return true;
+        });
     }
 
     private void showClearCacheDialog() {
         AlertDialogFragment dialogFragment = AlertDialogFragment.create("确认要清除缓存吗？");
         dialogFragment.setPositiveClickListener((dialog, which) -> clearCache());
         dialogFragment.show(((BaseActivity)getActivity()).getSupportFragmentManager(),"clear_cache");
+    }
+
+    private void showClearDraftDialog() {
+        AlertDialogFragment dialogFragment = AlertDialogFragment.create("确认要清除草稿吗？");
+        dialogFragment.setPositiveClickListener((dialog, which) -> clearDraft());
+        dialogFragment.show(((BaseActivity)getActivity()).getSupportFragmentManager(),"clear_draft");
     }
 
     private void clearCache() {
@@ -74,6 +87,14 @@ public class SettingsFragment extends BasePreferenceFragment implements Preferen
             }
         });
         ToastUtils.success("缓存清除成功");
+    }
+
+    private void clearDraft() {
+        // 清除草稿
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getContext());
+        prefs.edit().remove(PreferenceKey.PREF_DRAFT_TOPIC).apply();
+        prefs.edit().remove(PreferenceKey.PREF_DRAFT_REPLY).apply();
+        ToastUtils.success("草稿清除成功");
     }
 
     @Override
