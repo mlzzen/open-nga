@@ -138,7 +138,9 @@ public class BoardPresenter extends BasePresenter<NavigationDrawerFragment, Boar
     @Override
     public void clearRecentBoards() {
         mBaseModel.removeAllBookmarks();
-        mBaseView.notifyDataSetChanged();
+        if(mBaseView != null){
+            mBaseView.notifyDataSetChanged();
+        }
     }
 
     @Override

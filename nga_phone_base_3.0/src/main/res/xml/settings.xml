@@ -69,6 +69,10 @@
             android:key="key_clear_cache"
             android:title="清除缓存"/>
 
+        <PreferenceScreen
+            android:key="key_clear_favorite"
+            android:title="清除我的收藏"/>
+
     </PreferenceCategory>
 
     <PreferenceCategory android:title="主题列表设置">

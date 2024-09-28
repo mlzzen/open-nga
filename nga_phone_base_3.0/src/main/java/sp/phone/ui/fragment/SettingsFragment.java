@@ -4,15 +4,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.WindowManager;
 
 import androidx.annotation.Nullable;
-import androidx.preference.EditTextPreference;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
-import androidx.preference.PreferenceGroup;
 import androidx.preference.PreferenceManager;
 
 import com.bumptech.glide.Glide;
@@ -31,12 +28,19 @@ import gov.anzong.androidnga.base.util.ToastUtils;
 import gov.anzong.androidnga.common.PreferenceKey;
 import gov.anzong.androidnga.ui.fragment.BasePreferenceFragment;
 import sp.phone.common.UserManagerImpl;
-import sp.phone.http.retrofit.RetrofitHelper;
+import sp.phone.mvp.presenter.BoardPresenter;
 import sp.phone.theme.ThemeManager;
 import sp.phone.ui.fragment.dialog.AlertDialogFragment;
-import sp.phone.view.webview.WebViewEx;
 
 public class SettingsFragment extends BasePreferenceFragment implements Preference.OnPreferenceChangeListener {
+    private BoardPresenter boardPresenter;
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        Log.d("boardPresenter", "onCreate: ");
+        boardPresenter = new BoardPresenter();
+    }
 
     @Override
     public void onCreatePreferences(@Nullable Bundle savedInstanceState, @Nullable String rootKey) {
@@ -58,6 +62,11 @@ public class SettingsFragment extends BasePreferenceFragment implements Preferen
             showClearDraftDialog();
             return true;
         });
+
+        findPreference(PreferenceKey.KEY_CLEAR_FAVORITE).setOnPreferenceClickListener(preference -> {
+            showClearFavoriteDialog();
+            return true;
+        });
     }
 
     private void showClearCacheDialog() {
@@ -70,6 +79,15 @@ public class SettingsFragment extends BasePreferenceFragment implements Preferen
         AlertDialogFragment dialogFragment = AlertDialogFragment.create("确认要清除草稿吗？");
         dialogFragment.setPositiveClickListener((dialog, which) -> clearDraft());
         dialogFragment.show(((BaseActivity)getActivity()).getSupportFragmentManager(),"clear_draft");
+    }
+
+    private void showClearFavoriteDialog() {
+        AlertDialogFragment dialogFragment = AlertDialogFragment.create("确认要清除我的收藏吗？");
+        dialogFragment.setPositiveClickListener((dialog, which) -> {
+            boardPresenter.clearRecentBoards();
+            ToastUtils.success("收藏清除成功");
+        });
+        dialogFragment.show(((BaseActivity)getActivity()).getSupportFragmentManager(),"clear_favorite");
     }
 
     private void clearCache() {
@@ -96,6 +114,7 @@ public class SettingsFragment extends BasePreferenceFragment implements Preferen
         prefs.edit().remove(PreferenceKey.PREF_DRAFT_REPLY).apply();
         ToastUtils.success("草稿清除成功");
     }
+
 
     @Override
     public void onResume() {

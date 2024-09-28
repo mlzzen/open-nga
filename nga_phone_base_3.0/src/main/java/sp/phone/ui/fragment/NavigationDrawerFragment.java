@@ -157,24 +157,11 @@ public class NavigationDrawerFragment extends BaseMvpFragment<BoardPresenter> im
             case R.id.menu_login:
                 jumpToLogin();
                 break;
-            case R.id.menu_clear_recent:
-                clearFavoriteBoards();
-                break;
             default:
                 return getActivity().onOptionsItemSelected(item);
         }
         return true;
     }
-
-    private void clearFavoriteBoards() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-        builder.setMessage("是否要清空我的收藏？")
-                .setNegativeButton(android.R.string.cancel, null)
-                .setPositiveButton(android.R.string.ok, (dialog, which) -> mPresenter.clearRecentBoards())
-                .create()
-                .show();
-    }
-
 
     private void gotoForumList() {
         Intent intent = new Intent(getActivity(), ForumListActivity.class);

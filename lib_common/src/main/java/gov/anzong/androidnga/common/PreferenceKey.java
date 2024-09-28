@@ -108,6 +108,8 @@ public class PreferenceKey {
 
     public static final String KEY_CLEAR_DRAFT = "key_clear_draft";
 
+    public static final String KEY_CLEAR_FAVORITE = "key_clear_favorite";
+
     public static final String KEY_WEBVIEW_TEXT_ZOOM = "key_webview_zoom_size";
 
     public static final String KEY_PRELOAD_BOARD_VERSION = "key_preload_board_version";

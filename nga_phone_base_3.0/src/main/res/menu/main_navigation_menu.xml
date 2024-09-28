@@ -21,10 +21,6 @@
                 android:title="由URL读取"/>
 
             <item
-                android:id="@+id/menu_clear_recent"
-                android:icon="@drawable/ic_action_warning"
-                android:title="清空我的收藏"/>
-            <item
                 android:id="@+id/menu_gun"
                 android:icon="@drawable/ic_action_gun"
                 android:title="最近被喷"/>
