@@ -27,7 +27,7 @@ public class PreferenceKey {
     String HANDSIDE = "HandSide";
 
     public static final String USER_LIST = "userList";
-    public static final String BLACK_LIST = "";
+    public static final String BLACK_LIST = "black_list";
     public static final String FILTER_KEYWORDS_LIST = "filter_keywords";
 
     public static final String SHOW_ICON_MODE = "showiconmode";
@@ -109,6 +109,10 @@ public class PreferenceKey {
     public static final String KEY_CLEAR_DRAFT = "key_clear_draft";
 
     public static final String KEY_CLEAR_FAVORITE = "key_clear_favorite";
+
+    public static final String KEY_EXPORT_SETTINGS = "key_export_settings";
+
+    public static final String KEY_IMPORT_SETTINGS = "key_import_settings";
 
     public static final String KEY_WEBVIEW_TEXT_ZOOM = "key_webview_zoom_size";
 

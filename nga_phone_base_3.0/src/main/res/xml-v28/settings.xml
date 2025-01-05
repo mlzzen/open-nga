@@ -79,6 +79,14 @@
             android:key="key_clear_favorite"
             android:title="清除我的收藏"/>
 
+        <PreferenceScreen
+            android:key="key_export_settings"
+            android:title="导出设置"/>
+        
+        <PreferenceScreen
+            android:key="key_import_settings"
+            android:title="导入设置"/>
+
     </PreferenceCategory>
 
     <PreferenceCategory android:title="主题列表设置">

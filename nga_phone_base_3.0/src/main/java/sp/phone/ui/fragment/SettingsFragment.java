@@ -1,9 +1,13 @@
 package sp.phone.ui.fragment;
 
+import static android.app.Activity.RESULT_OK;
+
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.util.Log;
 import android.view.WindowManager;
 
@@ -15,8 +19,16 @@ import androidx.preference.PreferenceManager;
 import com.bumptech.glide.Glide;
 
 import org.apache.commons.io.FileUtils;
+import org.json.JSONException;
+import org.json.JSONObject;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 import gov.anzong.androidnga.R;
 import gov.anzong.androidnga.activity.BaseActivity;
@@ -35,6 +47,8 @@ import sp.phone.ui.fragment.dialog.AlertDialogFragment;
 public class SettingsFragment extends BasePreferenceFragment implements Preference.OnPreferenceChangeListener {
     private BoardPresenter boardPresenter;
 
+    private static final int REQUEST_CODE_IMPORT_JSON = 1001;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +61,8 @@ public class SettingsFragment extends BasePreferenceFragment implements Preferen
         addPreferencesFromResource(R.xml.settings);
         mapping(getPreferenceScreen());
         configPreference();
+
+        // setPreferencesFromResource(R.xml.settings, rootKey);
     }
 
     private void configPreference() {
@@ -67,6 +83,39 @@ public class SettingsFragment extends BasePreferenceFragment implements Preferen
             showClearFavoriteDialog();
             return true;
         });
+
+        findPreference(PreferenceKey.KEY_EXPORT_SETTINGS).setOnPreferenceClickListener(preference -> {
+            exportSharedPreferences();
+            return true;
+        });
+
+        findPreference(PreferenceKey.KEY_IMPORT_SETTINGS).setOnPreferenceClickListener(preference -> {
+            // 启动文件选择器
+            Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
+            intent.addCategory(Intent.CATEGORY_OPENABLE);
+            intent.setType("application/json");
+            startActivityForResult(intent, REQUEST_CODE_IMPORT_JSON);
+            return true;
+        });
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == REQUEST_CODE_IMPORT_JSON && resultCode == RESULT_OK) {
+            if (data != null) {
+                Uri uri = data.getData(); // 获取用户选择的文件 URI
+
+                // 获取持久化权限
+                requireContext().getContentResolver().takePersistableUriPermission(
+                        uri, Intent.FLAG_GRANT_READ_URI_PERMISSION
+                );
+
+                // 导入 SharedPreferences
+                importSharedPreferencesFromUri(uri);
+            }
+        }
     }
 
     private void showClearCacheDialog() {
@@ -114,6 +163,81 @@ public class SettingsFragment extends BasePreferenceFragment implements Preferen
         prefs.edit().remove(PreferenceKey.PREF_DRAFT_REPLY).apply();
         ToastUtils.success("草稿清除成功");
     }
+
+    private void exportSharedPreferences() {
+        // 创建一个 JSON 对象
+        JSONObject jsonObject = new JSONObject();
+        try {
+            SharedPreferences mPrefs = android.preference.PreferenceManager.getDefaultSharedPreferences(ContextUtils.getContext());
+            // 获取 BLACK_LIST 和 BOOKMARK_BOARD 的值
+            String blackList = mPrefs.getString(PreferenceKey.BLACK_LIST, null);
+
+            // 将值放入 JSON 对象
+            if (blackList != null) {
+                jsonObject.put(PreferenceKey.BLACK_LIST, blackList);
+            }
+
+            // 检查外部存储是否可用
+            if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
+                // 获取下载目录路径
+                File downloadDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
+                File exportFile = new File(downloadDir, "open-nga-settings.json");
+
+                if (exportFile.exists()) {
+                    if (exportFile.delete()) {
+                        Log.d("File", "Existing file deleted.");
+                    } else {
+                        ToastUtils.error("导入失败");
+                        Log.e("File", "Failed to delete existing file.");
+                        return; // 如果删除失败，直接返回
+                    }
+                }
+
+                // 将 JSON 对象写入下载目录
+                FileOutputStream fos = new FileOutputStream(exportFile);
+                fos.write(jsonObject.toString().getBytes());
+                fos.close();
+                ToastUtils.success("导出成功");
+            }
+        } catch (IOException | JSONException e) {
+            ToastUtils.error("导入失败");
+            e.printStackTrace();
+        }
+    }
+
+    private void importSharedPreferencesFromUri(Uri uri) {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(ContextUtils.getContext());
+        SharedPreferences.Editor editor = prefs.edit();
+
+        try {
+            // 从 URI 读取文件内容
+            InputStream inputStream = requireContext().getContentResolver().openInputStream(uri);
+            BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+            StringBuilder stringBuilder = new StringBuilder();
+            String line;
+            while ((line = reader.readLine()) != null) {
+                stringBuilder.append(line);
+            }
+            String jsonString = stringBuilder.toString();
+
+            // 解析 JSON 数据
+            JSONObject jsonObject = new JSONObject(jsonString);
+
+            // 导入 BLACK_LIST
+            if (jsonObject.has(PreferenceKey.BLACK_LIST)) {
+                editor.putString(PreferenceKey.BLACK_LIST, jsonObject.getString(PreferenceKey.BLACK_LIST));
+            }
+
+            // 提交更改
+            editor.apply();
+            ToastUtils.success("导入成功");
+            Log.d("Import", "SharedPreferences imported successfully!");
+        } catch (Exception e) {
+            e.printStackTrace();
+            Log.e("Import", "Failed to import SharedPreferences: " + e.getMessage());
+        }
+    }
+
 
 
     @Override
