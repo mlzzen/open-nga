@@ -14,7 +14,7 @@ jobs:
       - uses: actions/setup-java@v3
         with:
           distribution: temurin
-          java-version: 11
+          java-version: 17
       - uses: gradle/gradle-build-action@v2
         with:
           arguments: assembleRelease
@@ -26,6 +26,8 @@ jobs:
           alias: ${{ secrets.ALIAS }}
           keyStorePassword: ${{ secrets.KEY_STORE_PASSWORD }}
           keyPassword: ${{ secrets.KEY_PASSWORD }}
+        env:
+          BUILD_TOOLS_VERSION: "34.0.0"
       - run: mv ${{steps.sign_app.outputs.signedReleaseFile}} open_nga_$GITHUB_REF_NAME.apk
       - uses: ncipollo/release-action@v1
         with:
