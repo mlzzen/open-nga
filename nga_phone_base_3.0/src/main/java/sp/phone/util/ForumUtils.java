@@ -26,6 +26,20 @@ public class ForumUtils {
         return context.getResources().getStringArray(R.array.nga_domain_no_http)[index];
     }
 
+    public static String getAvailableImageDomain() {
+        Context context = ContextUtils.getContext();
+        SharedPreferences sp = context.getSharedPreferences(PreferenceKey.PERFERENCE, Context.MODE_PRIVATE);
+        int index = Integer.parseInt(sp.getString(PreferenceKey.KEY_NGA_IMAGE_DOMAIN, "0"));
+        return context.getResources().getStringArray(R.array.nga_image_domain)[index];
+    }
+
+    public static String getAvailableImageDomainNoHttp() {
+        Context context = ContextUtils.getContext();
+        SharedPreferences sp = context.getSharedPreferences(PreferenceKey.PERFERENCE, Context.MODE_PRIVATE);
+        int index = Integer.parseInt(sp.getString(PreferenceKey.KEY_NGA_IMAGE_DOMAIN, "0"));
+        return context.getResources().getStringArray(R.array.nga_image_domain_no_http)[index];
+    }
+
     /**
      * @param statusCode
      * @return 返回子板块是否被订阅

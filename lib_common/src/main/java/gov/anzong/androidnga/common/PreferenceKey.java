@@ -72,6 +72,8 @@ public class PreferenceKey {
 
     public static final String KEY_NGA_DOMAIN = "nga_domain";
 
+    public static final String KEY_NGA_IMAGE_DOMAIN = "nga_image_domain";
+
     public static final String KEY_SEARCH_HISTORY_TOPIC = "search_history_topic";
 
     public static final String KEY_SEARCH_HISTORY_BOARD = "search_history_board";

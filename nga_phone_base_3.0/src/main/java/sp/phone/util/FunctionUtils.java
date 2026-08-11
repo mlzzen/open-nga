@@ -40,7 +40,6 @@ import gov.anzong.androidnga.BuildConfig;
 import gov.anzong.androidnga.R;
 import gov.anzong.androidnga.Utils;
 import gov.anzong.androidnga.base.util.ToastUtils;
-import gov.anzong.androidnga.core.data.HtmlData;
 import gov.anzong.androidnga.core.decode.ForumDecoder;
 import sp.phone.common.PhoneConfiguration;
 import sp.phone.common.UserManagerImpl;
@@ -454,7 +453,7 @@ public class FunctionUtils {
                                              boolean showImage, int imageQuality, final String fgColorStr,
                                              final String bgcolorStr, Context context) {
         initStaticStrings(context);
-        String ngaHtml = ForumDecoder.decode(row.getSignature(), HtmlData.create(row.getSignature(), Utils.getNGAHost()));
+        String ngaHtml = ForumDecoder.decode(row.getSignature(), Utils.getNGAHost(), Utils.getNGAImageDomain());
         if (StringUtils.isEmpty(ngaHtml)) {
             ngaHtml = row.getAlterinfo();
         }

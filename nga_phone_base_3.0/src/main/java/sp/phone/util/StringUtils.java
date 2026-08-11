@@ -427,11 +427,12 @@ public class StringUtils {
 
         // [img]./ddd.jpg[/img]
         // if(showImage){
+        String imageDomain = Utils.getNGAImageDomain();
         ret = ret.replaceAll(ignoreCaseTag
                         + "\\[img\\]\\s*\\.(/[^\\[|\\]]+)\\s*\\[/img\\]",
-                "<a href='http://" + HttpUtil.NGA_ATTACHMENT_HOST
-                        + "/attachments$1'><img src='http://"
-                        + HttpUtil.NGA_ATTACHMENT_HOST
+                "<a href='" + imageDomain
+                        + "/attachments$1'><img src='"
+                        + imageDomain
                         + "/attachments$1' style= 'max-width:100%' ></a>");
         ret = ret.replaceAll(ignoreCaseTag
                         + "\\[img\\]\\s*(http[^\\[|\\]]+)\\s*\\[/img\\]",
@@ -480,7 +481,7 @@ public class StringUtils {
                         + s1
                         + "' style= 'max-width:100%' >";
                 content = content.replace(s0, newImgBlock);
-                int t = s1.indexOf(HttpUtil.NGA_ATTACHMENT_HOST);
+                int t = s1.indexOf(Utils.getNGAImageDomainNoHttp());
                 if (t != -1 && imageUrls != null) {
                     imageUrls.add(s1);
                 }

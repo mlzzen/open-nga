@@ -24,6 +24,14 @@ public class Utils {
         return DOMAIN;
     }
 
+    public static String getNGAImageDomain() {
+        return ForumUtils.getAvailableImageDomain();
+    }
+
+    public static String getNGAImageDomainNoHttp() {
+        return ForumUtils.getAvailableImageDomainNoHttp();
+    }
+
     /**
      * 保存图片成功后，更新系统图库
      *

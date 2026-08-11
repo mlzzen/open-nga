@@ -32,7 +32,6 @@ import gov.anzong.androidnga.Utils;
 import gov.anzong.androidnga.arouter.ARouterConstants;
 import gov.anzong.androidnga.base.util.DeviceUtils;
 import gov.anzong.androidnga.base.util.ToastUtils;
-import gov.anzong.androidnga.core.data.HtmlData;
 import gov.anzong.androidnga.core.decode.ForumDecoder;
 import gov.anzong.androidnga.http.OnHttpCallBack;
 import sp.phone.common.NoteManangerImpl;
@@ -557,7 +556,7 @@ public class ProfileActivity extends BaseActivity implements OnHttpCallBack<Prof
     }
 
     public String signatureToHtmlText(final ProfileData ret, final String fgColorStr, final String bgcolorStr) {
-        String ngaHtml = ForumDecoder.decode(ret.getSign(), HtmlData.create(ret.getSign(), Utils.getNGAHost()));
+        String ngaHtml = ForumDecoder.decode(ret.getSign(), Utils.getNGAHost(), Utils.getNGAImageDomain());
 
         ngaHtml = "<HTML> <HEAD><META   http-equiv=Content-Type   content= \"text/html;   charset=utf-8 \">"
                 + "<body bgcolor= '#"

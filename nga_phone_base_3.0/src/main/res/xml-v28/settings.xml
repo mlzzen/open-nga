@@ -11,6 +11,14 @@
             android:key="nga_domain"
             android:title="@string/setting_nga_domain" />
 
+        <ListSummaryPreference
+            android:defaultValue="0"
+            android:dialogTitle="@string/setting_nga_image_domain"
+            android:entries="@array/nga_image_domain"
+            android:entryValues="@array/nga_image_domain_value"
+            android:key="nga_image_domain"
+            android:title="@string/setting_nga_image_domain" />
+
         <PreferenceScreen
             android:fragment="sp.phone.ui.fragment.SettingsUserFragment"
             android:key="pref_user"

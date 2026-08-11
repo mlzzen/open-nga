@@ -28,6 +28,8 @@ public class HtmlData implements Cloneable {
 
     private String mNGAHost;
 
+    private String mNGAImageDomain;
+
     private List<CommentData> mCommentList;
 
     private List<AttachmentData> mAttachmentList;
@@ -143,6 +145,14 @@ public class HtmlData implements Cloneable {
 
     public void setNGAHost(String NGAHost) {
         mNGAHost = NGAHost;
+    }
+
+    public String getNGAImageDomain() {
+        return mNGAImageDomain;
+    }
+
+    public void setNGAImageDomain(String NGAImageDomain) {
+        mNGAImageDomain = NGAImageDomain;
     }
 
     public static HtmlData create(String rawData, String host) {

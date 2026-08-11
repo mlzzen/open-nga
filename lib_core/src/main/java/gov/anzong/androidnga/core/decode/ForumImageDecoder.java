@@ -25,13 +25,13 @@ public class ForumImageDecoder implements IForumDecoder {
 
     private static final String REGEX_IMG_NO_HTTP = IGNORE_CASE_TAG + "\\[img]\\s*\\.(/[^\\[|\\]]+)\\s*\\[/img]";
 
-    private static final String REPLACE_IMG_NO_HTTP = "<a href='http://%1$s/attachments%2$s'><img src='http://%1$s/attachments%2$s'></a>";
+    private static final String REPLACE_IMG_NO_HTTP = "<a href='%1$s/attachments%2$s'><img src='%1$s/attachments%2$s'></a>";
 
     private static final String REGEX_IMG_WITH_HTTP = IGNORE_CASE_TAG + "\\[img]\\s*(http[^\\[|\\]]+)\\s*\\[/img]";
 
     private static final String REPLACE_IMG_WITH_HTTP = "<a href='$1'><img src='$1'></a>";
 
-    private static final String NGA_ATTACHMENT_HOST = "img.nga.178.com";
+    private static final String DEFAULT_IMAGE_DOMAIN = "http://img.nga.178.com";
 
     @Override
     public String decode(String content) {
@@ -40,7 +40,11 @@ public class ForumImageDecoder implements IForumDecoder {
 
     @Override
     public String decode(String content, HtmlData htmlData) {
-        String replace = String.format(REPLACE_IMG_NO_HTTP, NGA_ATTACHMENT_HOST, "$1");
+        String imageDomain = htmlData == null ? DEFAULT_IMAGE_DOMAIN : htmlData.getNGAImageDomain();
+        if (imageDomain == null) {
+            imageDomain = DEFAULT_IMAGE_DOMAIN;
+        }
+        String replace = String.format(REPLACE_IMG_NO_HTTP, imageDomain, "$1");
         content = StringUtils.replaceAll(content, REGEX_IMG_NO_HTTP, replace);
         content = StringUtils.replaceAll(content, REGEX_IMG_WITH_HTTP, REPLACE_IMG_WITH_HTTP);
         content = StringUtils.replaceAll(content, "(http\\S+).gif.(thumb_s|medium|thumb|thumb_ss).jpg", "$1.gif");
