@@ -36,6 +36,16 @@ public class ForumDecoder {
         return decode(rawData, htmlData, null);
     }
 
+    public static String decode(String rawData, String host, String imageDomain, List<String> urls) {
+        HtmlData htmlData = HtmlData.create(rawData, host);
+        htmlData.setNGAImageDomain(imageDomain);
+        return decode(rawData, htmlData, urls);
+    }
+
+    public static String decode(String rawData, String host, String imageDomain) {
+        return decode(rawData, host, imageDomain, null);
+    }
+
     public static String decodeBasic(String rawData) {
         return new ForumBasicDecoder().decode(rawData);
     }

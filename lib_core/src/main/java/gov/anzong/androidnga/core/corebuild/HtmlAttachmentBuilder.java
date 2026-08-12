@@ -13,7 +13,7 @@ public class HtmlAttachmentBuilder implements IHtmlBuild {
 
     private static StringBuilder buildAudioAttachment(StringBuilder ret, AttachmentData attachment) {
         String url = attachment.getAttachUrl();
-        ret.append("<tr><td><a href='http://")
+        ret.append("<tr><td><a href='")
                 .append(attachment.getAttachmentHost())
                 .append("/attachments/")
                 .append(url)
@@ -25,7 +25,7 @@ public class HtmlAttachmentBuilder implements IHtmlBuild {
 
     private static StringBuilder buildVideoAttachment(StringBuilder ret, AttachmentData attachment) {
         String url = attachment.getAttachUrl();
-        ret.append("<tr><td><a href='http://")
+        ret.append("<tr><td><a href='")
                 .append(attachment.getAttachmentHost())
                 .append("/attachments/")
                 .append(url)
@@ -37,7 +37,7 @@ public class HtmlAttachmentBuilder implements IHtmlBuild {
 
     private static StringBuilder buildImageAttachment(StringBuilder ret, AttachmentData attachment, int index, List<String> imageUrls) {
 
-        String attachUrl = "http://" + attachment.getAttachmentHost() + "/attachments/" + attachment.getAttachUrl();
+        String attachUrl = attachment.getAttachmentHost() + "/attachments/" + attachment.getAttachUrl();
         String attachUrlThumb = attachUrl;
         String indexStr = String.valueOf(index);
         if ("1".equals(attachment.getThumb())) {

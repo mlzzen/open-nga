@@ -12,7 +12,6 @@ import java.util.Map;
 
 import gov.anzong.androidnga.R;
 import gov.anzong.androidnga.Utils;
-import gov.anzong.androidnga.core.data.HtmlData;
 import gov.anzong.androidnga.core.decode.ForumDecoder;
 import sp.phone.common.PhoneConfiguration;
 import sp.phone.http.bean.Attachment;
@@ -70,7 +69,7 @@ public class HtmlUtils {
         }
 
         List<String> imageUrls = new ArrayList<>();
-        String ngaHtml = ForumDecoder.decode(row.getContent(), HtmlData.create(row.getContent(), Utils.getNGAHost()), imageUrls);
+        String ngaHtml = ForumDecoder.decode(row.getContent(), Utils.getNGAHost(), Utils.getNGAImageDomain(), imageUrls);
         if (row.get_isInBlackList()) {
             ngaHtml = "<HTML> <HEAD><META http-equiv=Content-Type content= \"text/html; charset=utf-8 \">"
                     + "<body "
@@ -174,7 +173,7 @@ public class HtmlUtils {
 
     private static StringBuilder buildImageAttachment(StringBuilder ret, Attachment attachment, int index, List<String> imageUrls) {
 
-        String attachUrl = "http://" + HttpUtil.NGA_ATTACHMENT_HOST + "/attachments/" + attachment.getAttachurl();
+        String attachUrl = Utils.getNGAImageDomain() + "/attachments/" + attachment.getAttachurl();
         String attachUrlThumb = attachUrl;
         String indexStr = String.valueOf(index);
         if ("1".equals(attachment.getThumb())) {
@@ -209,7 +208,7 @@ public class HtmlUtils {
             int end = content.indexOf("[/b]");
             String time = '(' + comment.getPostdate() + ')';
             content = content.substring(end + 4);
-            content =  ForumDecoder.decode(content, HtmlData.create(content, Utils.getNGAHost()));
+            content =  ForumDecoder.decode(content, Utils.getNGAHost(), Utils.getNGAImageDomain());
             ret.append(String.format("<tr><td width='10%%'> <img src='%s' align='absmiddle' style='max-width:32;' />  <span style='font-weight:bold'>%s %s</span>%s</td></tr>",
                     avatarUrl, author, time, content));
 

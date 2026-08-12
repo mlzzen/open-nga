@@ -27,7 +27,6 @@ import sp.phone.http.bean.ThreadRowInfo;
 import sp.phone.mvp.model.entity.ThreadPageInfo;
 import sp.phone.theme.ThemeManager;
 import sp.phone.util.FunctionUtils;
-import sp.phone.util.HttpUtil;
 import sp.phone.util.NLog;
 import sp.phone.util.StringUtils;
 
@@ -164,13 +163,14 @@ public class ArticleConvertFactory {
         htmlData.setSubject(row.getSubject());
         htmlData.setShowImage(PhoneConfiguration.getInstance().isImageLoadEnabled());
         htmlData.setNGAHost(Utils.getNGAHost());
+        htmlData.setNGAImageDomain(Utils.getNGAImageDomain());
         if (row.getAttachs() != null) {
             List<AttachmentData> attachments = new ArrayList<>();
             for (Map.Entry<String, Attachment> entry : row.getAttachs().entrySet()) {
                 AttachmentData data = new AttachmentData();
                 data.setAttachUrl(entry.getValue().getAttachurl());
                 data.setThumb(entry.getValue().getThumb());
-                data.setAttachmentHost(HttpUtil.NGA_ATTACHMENT_HOST);
+                data.setAttachmentHost(Utils.getNGAImageDomain());
                 attachments.add(data);
             }
             htmlData.setAttachmentList(attachments);

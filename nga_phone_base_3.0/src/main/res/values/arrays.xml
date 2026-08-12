@@ -89,4 +89,19 @@
         <item>4</item>
     </string-array>
 
+    <string-array name="nga_image_domain">
+        <item>http://img.nga.178.com</item>
+        <item>https://img.nga.cn</item>
+    </string-array>
+
+    <string-array name="nga_image_domain_no_http">
+        <item>img.nga.178.com</item>
+        <item>img.nga.cn</item>
+    </string-array>
+
+    <string-array name="nga_image_domain_value">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+
 </resources>
