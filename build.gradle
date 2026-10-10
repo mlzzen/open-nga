@@ -1,9 +1,11 @@
 buildscript {
     ext.kotlin_version = '1.5.0'
     repositories {
+        maven { url 'https://maven.aliyun.com/repository/google' }
+        maven { url 'https://maven.aliyun.com/repository/central' }
+        maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
         google()
         mavenCentral()
-        maven { url 'https://repo.huaweicloud.com/repository/maven/' }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:7.0.4'
@@ -13,10 +15,12 @@ buildscript {
 
 allprojects {
     repositories {
+        maven { url 'https://maven.aliyun.com/repository/google' }
+        //TODO Remove all dependencies in jcenter
+        maven { url 'https://maven.aliyun.com/repository/public' }
+        maven { url 'https://www.jitpack.io' }
         google()
         mavenCentral()
-        maven { url 'https://repo.huaweicloud.com/repository/maven/' }
-        maven { url 'https://www.jitpack.io' }
     }
 }
 
