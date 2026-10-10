@@ -5,6 +5,7 @@ import static gov.anzong.androidnga.common.util.EmoticonUtils.EMOTICON_URL;
 import com.google.common.collect.HashBasedTable;
 import com.google.common.collect.Table;
 
+import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -145,6 +146,14 @@ public class ForumEmoticonDecoder implements IForumDecoder {
 
     private static final String HTML_EMOTICON_ACNIANG = "<img class='emoticon invertFilter' src='file:///android_asset/%s/%s'>";
 
+    // 网页版/服务端渲染后的表情已经是 HTML 形式，例如：
+    // <img class="smile_pg" src="https://img4.nga.cn/ngabbs/post/smile/pg01.png" alt="战斗力">
+    private static final Pattern HTML_IMG_TAG = Pattern.compile("<img\\b[^>]*>", Pattern.CASE_INSENSITIVE);
+
+    private static final Pattern HTML_IMG_CLASS = Pattern.compile("class\\s*=\\s*['\"]?smile_([a-zA-Z0-9]+)", Pattern.CASE_INSENSITIVE);
+
+    private static final Pattern HTML_IMG_SRC = Pattern.compile("src\\s*=\\s*['\"]?[^'\"\\s>]*?/post/smile/([^'\"\\s>]+)", Pattern.CASE_INSENSITIVE);
+
     private static Table<String, String, String> sEmotionTable = HashBasedTable.create();
 
     static {
@@ -160,15 +169,16 @@ public class ForumEmoticonDecoder implements IForumDecoder {
             sEmotionTable.put("ng", EMOTICON_URL[3][i][1], EMOTICON_URL[3][i][2]);
         }
 
+        // 注意 EMOTICON_URL 的下标顺序：1=ac, 2=a2, 3=ng, 4=pg(企鹅), 5=pst(潘斯特), 6=dt
         for (int i = 0; i < EMOTICON_URL[4].length; i++) {
-            sEmotionTable.put("pst", EMOTICON_URL[4][i][1], EMOTICON_URL[4][i][1]);
+            sEmotionTable.put("pg", EMOTICON_URL[4][i][1], EMOTICON_URL[4][i][2]);
         }
         for (int i = 0; i < EMOTICON_URL[5].length; i++) {
-            sEmotionTable.put("dt", EMOTICON_URL[5][i][1], EMOTICON_URL[5][i][2]);
+            sEmotionTable.put("pst", EMOTICON_URL[5][i][1], EMOTICON_URL[5][i][2]);
         }
 
         for (int i = 0; i < EMOTICON_URL[6].length; i++) {
-            sEmotionTable.put("pg", EMOTICON_URL[6][i][1], EMOTICON_URL[6][i][2]);
+            sEmotionTable.put("dt", EMOTICON_URL[6][i][1], EMOTICON_URL[6][i][2]);
         }
     }
 
@@ -185,9 +195,76 @@ public class ForumEmoticonDecoder implements IForumDecoder {
                 continue;
             }
             String image = sEmotionTable.get(category, emoticon);
-            String html = category.contains("ac") || category.contains("a2") ? HTML_EMOTICON_ACNIANG : HTML_EMOTICON;
+            String html = isAcCategory(category) ? HTML_EMOTICON_ACNIANG : HTML_EMOTICON;
             content = content.replace(matched, String.format(html, category, image));
         }
+        content = convertHtmlEmoticon(content);
         return content;
+    }
+
+    /**
+     * 部分帖子（网页版发布、评分模板等）里的表情已经是渲染好的 HTML 形式：
+     * <img class="smile_pg" src="https://img4.nga.cn/ngabbs/post/smile/pg01.png" alt="战斗力">
+     * 这里把它规范化成本地表情资源，与 [s:pg:战斗力] 走同一条渲染路径。
+     */
+    private String convertHtmlEmoticon(String content) {
+        Matcher imgMatcher = HTML_IMG_TAG.matcher(content);
+        StringBuilder builder = new StringBuilder(content.length());
+        int lastEnd = 0;
+        boolean changed = false;
+        while (imgMatcher.find()) {
+            String tag = imgMatcher.group();
+            Matcher srcMatcher = HTML_IMG_SRC.matcher(tag);
+            if (!srcMatcher.find()) {
+                continue;
+            }
+            String image = srcMatcher.group(1);
+            Matcher classMatcher = HTML_IMG_CLASS.matcher(tag);
+            String category = classMatcher.find()
+                    ? classMatcher.group(1).toLowerCase(Locale.ROOT)
+                    : getCategoryByImage(image);
+            if (category == null) {
+                continue;
+            }
+            String html = isAcCategory(category) ? HTML_EMOTICON_ACNIANG : HTML_EMOTICON;
+            builder.append(content, lastEnd, imgMatcher.start());
+            builder.append(String.format(html, category, image));
+            lastEnd = imgMatcher.end();
+            changed = true;
+        }
+        if (!changed) {
+            return content;
+        }
+        builder.append(content, lastEnd, content.length());
+        return builder.toString();
+    }
+
+    private static boolean isAcCategory(String category) {
+        return category.contains("ac") || category.contains("a2");
+    }
+
+    /**
+     * 兜底：class 缺失时根据文件名推断表情分类（pg01.png -&gt; pg，pt00.png -&gt; pst）。
+     */
+    private static String getCategoryByImage(String image) {
+        if (image.startsWith("a2")) {
+            return "a2";
+        }
+        if (image.startsWith("ac")) {
+            return "ac";
+        }
+        if (image.startsWith("ng")) {
+            return "ng";
+        }
+        if (image.startsWith("pg")) {
+            return "pg";
+        }
+        if (image.startsWith("pt")) {
+            return "pst";
+        }
+        if (image.startsWith("dt")) {
+            return "dt";
+        }
+        return null;
     }
 }
