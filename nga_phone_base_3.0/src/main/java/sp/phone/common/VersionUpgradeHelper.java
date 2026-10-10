@@ -12,9 +12,15 @@ import gov.anzong.androidnga.common.PreferenceKey;
  */
 public class VersionUpgradeHelper {
 
+    /**
+     * 标记「NGA图片域名」选项顺序是否已完成调整
+     */
+    private static final String KEY_IMAGE_DOMAIN_REORDERED = "nga_image_domain_reordered";
+
     public static void upgrade() {
         upgradeBookmarkBoards();
         upgradeSettings();
+        upgradeImageDomain();
     }
 
     private static void upgradeBookmarkBoards() {
@@ -44,6 +50,22 @@ public class VersionUpgradeHelper {
                     .remove(PreferenceKey.DOWNLOAD_IMG_NO_WIFI)
                     .apply();
         }
+    }
+
+    /**
+     * 「NGA图片域名」中 img.nga.cn 与 img.nga.178.com 调换了位置（img.nga.cn 变为默认项，即新值 0）。
+     * 这里把旧值 1（原本表示 img.nga.cn）改写为新值 0，避免老用户原本的选择被换成 img.nga.178.com。
+     */
+    private static void upgradeImageDomain() {
+        SharedPreferences sp = ContextUtils.getSharedPreferences(PreferenceKey.PERFERENCE);
+        if (sp.contains(KEY_IMAGE_DOMAIN_REORDERED)) {
+            return;
+        }
+        SharedPreferences.Editor editor = sp.edit().putBoolean(KEY_IMAGE_DOMAIN_REORDERED, true);
+        if ("1".equals(sp.getString(PreferenceKey.KEY_NGA_IMAGE_DOMAIN, null))) {
+            editor.putString(PreferenceKey.KEY_NGA_IMAGE_DOMAIN, "0");
+        }
+        editor.apply();
     }
 
 }

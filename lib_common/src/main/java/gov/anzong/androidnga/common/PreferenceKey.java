@@ -74,6 +74,16 @@ public class PreferenceKey {
 
     public static final String KEY_NGA_IMAGE_DOMAIN = "nga_image_domain";
 
+    /**
+     * 「NGA图片域名」选择「自定义」时，用户填写的域名
+     */
+    public static final String KEY_NGA_IMAGE_DOMAIN_CUSTOM = "nga_image_domain_custom";
+
+    /**
+     * 「NGA图片域名」的默认下标，对应 R.array.nga_image_domain 的第 0 项（https://img.nga.cn）
+     */
+    public static final String DEFAULT_NGA_IMAGE_DOMAIN = "0";
+
     public static final String KEY_SEARCH_HISTORY_TOPIC = "search_history_topic";
 
     public static final String KEY_SEARCH_HISTORY_BOARD = "search_history_board";

@@ -354,6 +354,8 @@
     <string name="setting_title_filter_sub_board">过滤版主固定的渣帖子</string>
     <string name="setting_nga_domain">NGA域名</string>
     <string name="setting_nga_image_domain">NGA图片域名</string>
+    <string name="setting_nga_image_domain_custom">自定义图片域名</string>
+    <string name="setting_nga_image_domain_custom_hint">例如 img.nga.cn 或 https://img.nga.cn</string>
     <string name="setting_avatar_network_title">载入头像</string>
     <string name="setting_avatar_network_summary">移动数据网络下载入头像</string>
     <string name="setting_image_network_title">载入帖子图片</string>

@@ -8,10 +8,12 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.WindowManager;
 
 import androidx.annotation.Nullable;
+import androidx.preference.EditTextPreference;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceManager;
@@ -43,6 +45,7 @@ import sp.phone.common.UserManagerImpl;
 import sp.phone.mvp.presenter.BoardPresenter;
 import sp.phone.theme.ThemeManager;
 import sp.phone.ui.fragment.dialog.AlertDialogFragment;
+import sp.phone.util.ForumUtils;
 
 public class SettingsFragment extends BasePreferenceFragment implements Preference.OnPreferenceChangeListener {
     private BoardPresenter boardPresenter;
@@ -68,6 +71,8 @@ public class SettingsFragment extends BasePreferenceFragment implements Preferen
     private void configPreference() {
         findPreference(PreferenceKey.NIGHT_MODE).setEnabled(!ThemeManager.getInstance().isNightModeFollowSystem());
         findPreference(PreferenceKey.MATERIAL_THEME).setEnabled(!ThemeManager.getInstance().isNightMode());
+
+        initImageDomainPreference();
 
         findPreference(PreferenceKey.KEY_CLEAR_CACHE).setOnPreferenceClickListener(preference -> {
             showClearCacheDialog();
@@ -97,6 +102,47 @@ public class SettingsFragment extends BasePreferenceFragment implements Preferen
             startActivityForResult(intent, REQUEST_CODE_IMPORT_JSON);
             return true;
         });
+    }
+
+    private void initImageDomainPreference() {
+        EditTextPreference custom = findPreference(PreferenceKey.KEY_NGA_IMAGE_DOMAIN_CUSTOM);
+        if (custom == null) {
+            return;
+        }
+        custom.setSummary(buildImageDomainSummary(custom.getText()));
+        updateCustomImageDomainVisibility();
+    }
+
+    /**
+     * 仅当「NGA图片域名」选中「自定义」时，才显示自定义域名输入框
+     */
+    private void updateCustomImageDomainVisibility() {
+        ListPreference domain = findPreference(PreferenceKey.KEY_NGA_IMAGE_DOMAIN);
+        updateCustomImageDomainVisibility(domain == null ? null : domain.getValue());
+    }
+
+    private void updateCustomImageDomainVisibility(String selectedValue) {
+        EditTextPreference custom = findPreference(PreferenceKey.KEY_NGA_IMAGE_DOMAIN_CUSTOM);
+        if (custom == null) {
+            return;
+        }
+        custom.setVisible(String.valueOf(ForumUtils.getCustomImageDomainIndex()).equals(selectedValue));
+    }
+
+    private CharSequence buildImageDomainSummary(CharSequence value) {
+        return TextUtils.isEmpty(value) ? getString(R.string.setting_nga_image_domain_custom_hint) : value;
+    }
+
+    /**
+     * 选中「自定义」后若还没填过域名，直接弹出输入框
+     */
+    private void promptCustomImageDomain() {
+        EditTextPreference custom = findPreference(PreferenceKey.KEY_NGA_IMAGE_DOMAIN_CUSTOM);
+        if (custom == null || !TextUtils.isEmpty(custom.getText())) {
+            return;
+        }
+        // 等列表选择对话框关闭后再弹出，避免被同时 dismiss
+        ThreadUtils.postOnMainThreadDelay(custom::performClick, 200);
     }
 
     @Override
@@ -269,6 +315,18 @@ public class SettingsFragment extends BasePreferenceFragment implements Preferen
                         getActivity().recreate();
                     }
                 }, 200);
+                break;
+            case PreferenceKey.KEY_NGA_IMAGE_DOMAIN: {
+                String selected = newValue == null ? null : newValue.toString();
+                updateCustomImageDomainVisibility(selected);
+                if (String.valueOf(ForumUtils.getCustomImageDomainIndex()).equals(selected)) {
+                    promptCustomImageDomain();
+                }
+                break;
+            }
+            case PreferenceKey.KEY_NGA_IMAGE_DOMAIN_CUSTOM:
+                ((EditTextPreference) preference)
+                        .setSummary(buildImageDomainSummary(newValue == null ? null : newValue.toString()));
                 break;
             default:
                 break;

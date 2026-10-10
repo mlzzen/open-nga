@@ -19,6 +19,13 @@
             android:key="nga_image_domain"
             android:title="@string/setting_nga_image_domain" />
 
+        <EditTextPreference
+            android:defaultValue=""
+            android:dialogTitle="@string/setting_nga_image_domain_custom"
+            android:key="nga_image_domain_custom"
+            android:summary="@string/setting_nga_image_domain_custom_hint"
+            android:title="@string/setting_nga_image_domain_custom" />
+
         <PreferenceScreen
             android:fragment="sp.phone.ui.fragment.SettingsUserFragment"
             android:key="pref_user"

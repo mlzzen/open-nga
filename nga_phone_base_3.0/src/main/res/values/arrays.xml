@@ -90,18 +90,21 @@
     </string-array>
 
     <string-array name="nga_image_domain">
-        <item>http://img.nga.178.com</item>
         <item>https://img.nga.cn</item>
+        <item>http://img.nga.178.com</item>
+        <item>自定义</item>
     </string-array>
 
     <string-array name="nga_image_domain_no_http">
-        <item>img.nga.178.com</item>
         <item>img.nga.cn</item>
+        <item>img.nga.178.com</item>
+        <item>自定义</item>
     </string-array>
 
     <string-array name="nga_image_domain_value">
         <item>0</item>
         <item>1</item>
+        <item>2</item>
     </string-array>
 
 </resources>
