@@ -107,7 +107,7 @@ public class FunctionUtils {
         contentTV.setWebViewClient(client);
 
         contentTV.setTag(row.getLou());
-        contentTV.loadDataWithBaseURL(null, row.getFormated_html_data(),
+        contentTV.loadDataWithBaseURL("https://nga.local/post", row.getFormated_html_data(),
                 "text/html", "utf-8", null);
     }
 
@@ -192,7 +192,7 @@ public class FunctionUtils {
         contentTV.setWebViewClient(client);
         contentTV
                 .loadDataWithBaseURL(
-                        null,
+                        "https://nga.local/signature",
                         FunctionUtils.signatureToHtmlText(row, showImage,
                                 ArticleUtil.showImageQuality(), fgColorStr,
                                 bgcolorStr, context), "text/html", "utf-8", null);
@@ -334,7 +334,7 @@ public class FunctionUtils {
         });
         contentTV.setWebViewClient(client);
         contentTV.loadDataWithBaseURL(
-                null,
+                "https://nga.local/vote",
                 FunctionUtils.VoteToHtmlText(row, showImage, ArticleUtil.showImageQuality(),
                         fgColorStr, bgcolorStr), "text/html", "utf-8", null);
         contentTV.requestLayout();
